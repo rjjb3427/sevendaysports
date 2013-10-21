@@ -10,6 +10,6 @@ FactoryGirl.define do
     city "sample"
     state "TS"
     zip "12345"
-    dob Date.parse("2002-01-05")
+    dob Date.parse("2022-01-05")
   end
 end
