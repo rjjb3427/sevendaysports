@@ -5,6 +5,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  attr_accessible #:email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name,
+                  :last_name, :school_name, :address, :city, :state, :zip, :dob
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, format: {with: VALID_EMAIL_REGEX}
+  validates_presence_of :first_name, :last_name, :password, :password_confirmation, 
+                        :school_name, :dob
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
