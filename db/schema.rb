@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131021170832) do
+ActiveRecord::Schema.define(:version => 20131021180049) do
+
+  create_table "media", :force => true do |t|
+    t.string   "author"
+    t.string   "title"
+    t.text     "details"
+    t.string   "url"
+    t.string   "type"
+    t.integer  "event_id"
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "teams", :force => true do |t|
     t.string   "name"

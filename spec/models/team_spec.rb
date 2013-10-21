@@ -14,11 +14,4 @@ describe Team do
     team.sport_type = "softball"
     expect(team.sport_type).to be_present
   end
-
-  it "belongs to .University" do
-    team = FactoryGirl.build :team, university_id: nil
-    expect(team.university_id).to be_blank
-    team.university_id = 5
-    expect(team.university_id).to eql 5 
-  end
 end
