@@ -4,10 +4,10 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :author, :name, :title, :event_on
 
-  # scope :by_user, ->(user_id) {where(user_id: user_id, name: name).order(name: :asc)}
-  # scope :by_team, ->(team_id) {where(team_id: team_id).order(sport_type: :asc)}
-  # scope :upcoming_events, -> {where(id: id, event_on: >= 1.minute.from.now)}
-  # scope :past_events, -> {where(id: id, event_on: < 1.minute.ago)}
-  # scope :recent_articles, -> {where(id: id, created_at: "< 3.days.ago.limit(3)")}
-  # scope :recent_scores, -> {where(id: id, created_at: "< 3.days.ago.limit(3)")}
+  scope :by_user, ->(user_id) {where(user_id: user_id).order("name")}
+  scope :by_team, ->(team_id) {where(team_id: team_id).order("sport_type")}
+  scope :upcoming_events, -> {where("event_on >= ?", 1.minute.from_now)}
+  scope :past_events, -> {where("event_on < ?", 1.minute.ago)}
+  scope :recent_articles, -> {where("event_on > ?", 3.days.ago).limit(3)}
+  scope :recent_scores, -> {where("event_on > ?", 3.days.ago).limit(3)}
 end

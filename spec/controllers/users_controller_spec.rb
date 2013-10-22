@@ -28,7 +28,12 @@ describe UsersController do
     it "assigns @user" do
       user = User.create
       get :new
-      expect(assigns(:user)).to eql([users])
+      expect(assigns(:user)).to eql(@user)
+    end
+
+    it "renders the new template" do
+      get :new
+      expect(response).to render_template("new")
     end
   end
 
