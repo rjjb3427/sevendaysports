@@ -4,5 +4,5 @@ class Score < Event
 
   validates_presence_of :author, :description, :home_team_score, :away_team_score
 
-  scope :by_score, -> {where("created_at <= ?", Time.now).order("DESC")}}
+  scope :by_score, -> {where("created_at <= ?", Time.now).order("DESC")}
 end

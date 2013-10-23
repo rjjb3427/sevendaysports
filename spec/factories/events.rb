@@ -7,5 +7,6 @@ FactoryGirl.define do
     event_on "Date.parse(2015-05-05)"
     home_team_score 13
     away_team_score 8
+    type "article"
   end
 end

@@ -1,8 +1,8 @@
 class Event < ActiveRecord::Base
   attr_accessible :author, :away_team_id, :away_team_score, :details, :event_on, 
-                  :home_team_id, :home_team_score, :name, :title, :user_id
+                  :home_team_id, :home_team_score, :name, :title, :type, :user_id
 
-  validates_presence_of :author, :name, :title, :event_on
+  validates_presence_of :author, :name, :title, :event_on, :type
 
   scope :by_user, ->(user_id) {where(user_id: user_id).order("name")}
   scope :by_team, ->(team_id) {where(team_id: team_id).order("sport_type")}
