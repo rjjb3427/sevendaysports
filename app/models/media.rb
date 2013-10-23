@@ -1,7 +1,11 @@
 class Media < ActiveRecord::Base
-  attr_accessible :author, :details, :event_id, :team_id, :title, :type, :url, :user_id
+  attr_accessible :author, :details, :title, :type, :url, :event_id, :team_id,  :user_id
 
   validates_presence_of :author, :details, :title, :type, :url
+
+  belongs_to :event
+  belongs_to :team
+  belongs_to :user
 
   scope :by_user, ->(user_id) {where(user_id: user_id).order(full_name: full_name)}
   scope :by_team, ->(team_id) {where(team_id: team_id).order(name: name)}

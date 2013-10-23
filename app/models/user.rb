@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name,
                   :last_name, :school_name, :address, :city, :state, :zip, :dob
 
+  has_many :medias, dependent: :destroy
+  has_many :events, dependent: :destroy
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: {with: VALID_EMAIL_REGEX}
   validates_presence_of :first_name, :last_name, :password, :password_confirmation, 
