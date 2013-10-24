@@ -1,36 +1,25 @@
 require 'spec_helper'
 
 describe Event do
-  it "requires an #author to be present" do
-    event = FactoryGirl.build :event, author: nil
-    expect(event).not_to be_valid
-    event.author = "Jimmy Dean"
-    expect(event).to be_valid
-  end
+  it { validate_presence_of(:author) }
 
-  it "requires a #name to be present" do
-    event = FactoryGirl.build :event, name: nil
-    expect(event).not_to be_valid
-    event.name = "playoffs"
-    expect(event).to be_valid
-  end
+  it { validate_presence_of(:name) }
 
-  it "requires a #title to be present" do
-    event = FactoryGirl.build :event, title: nil
-    expect(event).not_to be_valid
-    event.title = "The standoff"
-    expect(event).to be_valid
-  end
+  it { validate_presence_of(:title) }
 
-  it "requires an #event_on date to be present" do
-    event = FactoryGirl.build :event, event_on: nil
-    expect(event).not_to be_valid
-    event.event_on = Date.parse("2014-05-05")
-    expect(event).to be_valid
+  it { validate_presence_of(:event_on) }
+
+  describe "associations" do
+    it { should have_many(:articles) }
+    it { should have_many(:medias) }
+    # how to name more than 1 foreign key from a parent class?
+    # it { should belong_to(:team) } 
+    it { should belong_to(:user) }
   end
 
   describe "scopes" do
     describe ".upcoming_events" do
+      
       it "queries for future events up to 3 days from current time" do
         future_events = FactoryGirl.create :event, event_on: 2.days.from_now, name: "future"
         past_events = FactoryGirl.create :event, event_on: 1.day.ago, name: "past"
