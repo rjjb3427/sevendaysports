@@ -3,13 +3,7 @@ require 'spec_helper'
 describe User do
 	it { should validate_presence_of(:email) }
 
-	it { should }
-	it "requires a valid #email" do
-		user = FactoryGirl.build :user, email: "bad email address"
-		expect(user).not_to be_valid
-		user.email = "test@example.com"
-		expect(user).to be_valid
-	end
+	it { should allow_value("a@b.com").for(:email) }
 
 	it "requires presence of #first_name" do
 		user = FactoryGirl.build :user, first_name: nil

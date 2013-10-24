@@ -19,7 +19,6 @@ describe Event do
 
   describe "scopes" do
     describe ".upcoming_events" do
-      
       it "queries for future events up to 3 days from current time" do
         future_events = FactoryGirl.create :event, event_on: 2.days.from_now, name: "future"
         past_events = FactoryGirl.create :event, event_on: 1.day.ago, name: "past"
