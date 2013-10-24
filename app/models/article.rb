@@ -1,9 +1,9 @@
-class Article < Event
+class Article < ActiveRecord::Base
   attr_accessible :body, :event_id
 
   validates_presence_of :body
 
   belongs_to :event
 
-  scope :by_article, -> {where("created_at <= ?", Time.now).order("DESC")}
+  scope :recent, -> {where("created_at > ?", 3.days.ago).limit(3)}
 end

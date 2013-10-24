@@ -29,13 +29,6 @@ describe Event do
     expect(event).to be_valid
   end
 
-  it "requires an .Event#type" do 
-    event = FactoryGirl.build :event, type: nil
-    expect(event).not_to be_valid
-    event.type = "article"
-    expect(event.type).to eql "article"
-  end
-
   describe "scopes" do
     describe ".upcoming_events" do
       it "queries for future events up to 3 days from current time" do
@@ -64,11 +57,13 @@ describe Event do
 
     describe ".recent_articles" do
       it "queries for events less than 4 days old" do
-        older_articles = FactoryGirl.create :event, event_on: 4.days.ago, name: "older"
-        recent_articles = FactoryGirl.create :event, event_on: 3.days.ago, name: "recent"
-        expect(older_articles.event_on).to be < 3.days.ago
-        expect(recent_articles.event_on.to_s).to eq 3.days.ago.to_s
-        expect(recent_articles.event_on).to be > 4.days.ago
+        older_time = 4.days.ago
+        recent_time = 3.days.ago
+        older_articles = FactoryGirl.create :event, event_on: older_time, name: "older"
+        recent_articles = FactoryGirl.create :event, event_on: recent_time, name: "recent"
+        expect(older_articles.event_on).to be < recent_time
+        expect(recent_articles.event_on).to eq recent_time
+        expect(recent_articles.event_on).to be > older_time
       end
     end
 

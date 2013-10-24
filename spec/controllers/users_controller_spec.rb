@@ -10,7 +10,7 @@ describe UsersController do
     it "assigns @users" do
       user = User.create
       get :index
-      expect(assigns(:users)).not_to eq([user])
+      expect(assigns(:users)).to eq [user]
     end
 
     it "renders the index template" do
@@ -28,7 +28,7 @@ describe UsersController do
     it "assigns @user" do
       user = User.create
       get :new
-      expect(assigns(:user)).to eql(@user)
+      expect(assigns(:user)).to eq @user
     end
 
     it "renders the new template" do
@@ -44,12 +44,12 @@ describe UsersController do
   #   end
   # end
 
-  # describe "GET 'show'" do
-  #   it "returns http success" do
-  #     get 'show'
-  #     response.should be_success
-  #   end
-  # end
+  describe "GET 'show'" do
+    it "returns http success" do
+      get 'show'
+      response.should be_success
+    end
+  end
 
   # describe "GET 'edit'" do
   #   it "returns http success" do
@@ -65,10 +65,12 @@ describe UsersController do
   #   end
   # end
 
-  # describe "GET 'destroy'" do
-  #   it "returns http success" do
-  #     get 'destroy'
-  #     response.should be_success
-  #   end
-  # end
+  describe "GET 'destroy'" do
+    it "returns http success" do
+      user = 
+      get 'destroy'
+      response.should be_success
+      user.find
+    end
+  end
 end
