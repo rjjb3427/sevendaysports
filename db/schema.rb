@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(:version => 20131024145007) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "type"
-    t.string   "winner"
   end
 
   create_table "media", :force => true do |t|

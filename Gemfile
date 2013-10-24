@@ -16,4 +16,8 @@ group :tests, :development do
   gem 'pry-rails'
 end
 
+group :tests do
+  gem 'shoulda'
+end
+
 gem 'jquery-rails'
