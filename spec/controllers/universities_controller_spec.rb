@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe UsersController do
-  before(:each) { @user = FactoryGirl.create :user }
+describe UniversitiesController do
+  before(:each) { @university = FactoryGirl.create :university }
 
   describe "GET 'index'" do
     it "returns http success" do
@@ -9,9 +9,9 @@ describe UsersController do
       expect(response).to be_success
     end
 
-    it "assigns @users" do
+    it "assigns @universities" do
       get :index
-      expect(assigns(:users)).to eq [@user]
+      expect(assigns(:universities)).to eq [@university]
     end
 
     it "renders the index template" do
@@ -26,9 +26,9 @@ describe UsersController do
       expect(response).to be_success
     end
 
-    it "assigns @user" do
+    it "assigns @university" do
       get :new
-      expect(assigns(:user)).to be_a User
+      expect(assigns(:university)).to be_a University
     end
 
     it "renders the new template" do
@@ -40,26 +40,26 @@ describe UsersController do
   describe "POST 'create'" do
     context "given valid credentials" do
       it "returns http success" do
-        post :create, user: FactoryGirl.attributes_for(:user)
-        user = User.order(:created_at).last
-        expect(response).to redirect_to user
+        post :create, university: FactoryGirl.attributes_for(:university)
+        university = University.order(:created_at).last
+        expect(response).to redirect_to university
       end
 
       it "should redirect to the show path" do
-        post :create, user: FactoryGirl.attributes_for(:user)
-        user = User.order(:created_at).last
-        expect(response).to redirect_to user
+        post :create, university: FactoryGirl.attributes_for(:university)
+        university = University.order(:created_at).last
+        expect(response).to redirect_to university
       end
     end
 
     context "given invalid credentials" do
       it "returns http client error" do
-        post :create, user: FactoryGirl.attributes_for(:user)
-        user = User.order(:created_at).last
-        expect(response).not_to be_success 
+        post :create, university: FactoryGirl.attributes_for(:university)
+        university = University.order(:created_at).last
+        expect(response).not_to be_success
       end
 
-      it "should render the new template" do 
+      it "should render the new template" do
         post :create
         expect(response).to render_template(:new)
       end
@@ -68,49 +68,44 @@ describe UsersController do
 
   describe "GET 'show'" do
     it "returns http success" do
-      get :show, id: @user
+      get :show, id: @university
       expect(response).to be_success
     end
 
     it "renders the show template" do
-      get :show, id: @user
+      get :show, id: @university
       expect(response).to render_template(:show)
     end
   end
 
   describe "GET 'edit'" do
     it "returns http success" do
-      get :edit, id: @user
+      get :edit, id: @university
       expect(response).to be_success
     end
 
     it "renders the edit template" do
-      get :edit, id: @user
+      get :edit, id: @university
       expect(response).to render_template(:edit)
     end
   end
 
   describe "GET 'update'" do
     it "returns http success" do
-      get :update, id: @user
-      expect(response).to be_success
+      get :update, id: @university
+      expect(response.status).to eq 302 
     end
 
-    it "renders the edit template" do
-      get :update, id: @user
-      expect(response).to render_template(:edit)
+    it "should redirect to show template" do
+      get :update, id: @university
+      expect(response).to redirect_to @university
     end
   end
 
   describe "DELETE 'destroy'" do
-    it "should redirect to users_path" do
-      delete 'destroy', id: @user
-      expect(response).to redirect_to users_path
-    end
-
-    it "deletes a user from the database" do
-      delete 'destroy', id: @user
-      expect(User.where(id: @user.id)).to be_empty
+    it "should redirect to universities_path" do
+      delete :destroy, id: @university
+      expect(response).to redirect_to universities_path
     end
   end
 end
