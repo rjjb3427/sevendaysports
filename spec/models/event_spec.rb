@@ -1,13 +1,30 @@
 require 'spec_helper'
 
 describe Event do
-  it { validate_presence_of(:author) }
+  xit { should validate_presence_of(:author) }
 
-  it { validate_presence_of(:name) }
+  xit { should validate_presence_of(:name) }
 
-  it { validate_presence_of(:title) }
+  xit { should validate_presence_of(:title) }
 
-  it { validate_presence_of(:event_on) }
+  xit { should validate_presence_of(:event_on) }
+
+  describe "#winner" do
+    context "winning home team" do
+      it "returns the home team" do
+        event = Event.new
+        event.home_team_score = 20
+        event.away_team_score = 10
+        expect(event.winner).to eq event.home_team
+      end
+    end
+
+    context "winning away team" do
+    end
+
+    context "tie game" do
+    end
+  end
 
   describe "associations" do
     it { should have_many(:articles) }

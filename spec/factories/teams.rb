@@ -4,4 +4,5 @@ FactoryGirl.define do
     sport_type "softball"
     university_id "1"
   end
+  
 end

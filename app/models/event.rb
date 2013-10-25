@@ -9,7 +9,8 @@ class Event < ActiveRecord::Base
   has_many :medias, dependent: :destroy
 
   belongs_to :user
-  belongs_to :team
+  belongs_to :home_team, class_name: "Team"
+  belongs_to :away_team, class_name: "Team"
 
   scope :by_user, ->(user_id) {where(user_id: user_id).order("name")}
   scope :by_team, ->(team_id) {where(team_id: team_id).order("sport_type")}
