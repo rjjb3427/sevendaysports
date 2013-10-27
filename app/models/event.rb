@@ -21,11 +21,28 @@ class Event < ActiveRecord::Base
 
   def winner
     if home_team_score > away_team_score
-      "Winner: #{home_team.name} Score: #{home_team_score}"
+      home_team_name
     elsif home_team_score == away_team_score
-      "Tie: #{home_team.name} & #{away_team.name} Score: #{home_team_score}"
+      "#{home_team_name} #{away_team_name}"
     else
-      "Winner: #{away_team.name} Score: #{away_team_score}"
+      away_team_name
+    end
+  end
+
+  private
+  def home_team_name
+    if home_team.present?
+      home_team.name
+    else
+      'No team present'
+    end
+  end
+
+  def away_team_name
+    if away_team.present?
+      away_team.name
+    else
+      'No team present'
     end
   end
 end

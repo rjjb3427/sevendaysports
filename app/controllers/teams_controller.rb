@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   def index
+    # @home_teams = @university.teams
   end
 
   def new

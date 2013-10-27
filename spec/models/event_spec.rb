@@ -1,37 +1,92 @@
 require 'spec_helper'
 
 describe Event do
-  xit { should validate_presence_of(:author) }
+  it { should validate_presence_of(:author) }
 
-  xit { should validate_presence_of(:name) }
+  it { should validate_presence_of(:name) }
 
-  xit { should validate_presence_of(:title) }
+  it { should validate_presence_of(:title) }
 
-  xit { should validate_presence_of(:event_on) }
+  it { should validate_presence_of(:event_on) }
 
   describe "#winner" do
-    context "winning home team" do
-      it "returns the home team" do
+    context "a winning home team" do
+      it "returns the home team name" do
         event = Event.new
         event.home_team_score = 20
         event.away_team_score = 10
-        expect(event.winner).to eq event.home_team
+        event.home_team = Team.new(name: "bengals")
+        expect(event.winner).to eq event.home_team.name
+      end
+
+      it "doesn't return a losing away team name" do
+        event = Event.new
+        event.home_team_score = 20
+        event.away_team_score = 10
+        event.away_team = Team.new(name: "blue jays")
+        expect(event.winner).not_to eq event.away_team.name
       end
     end
 
-    context "winning away team" do
+    context "a winning away team" do
+      it "returns a winning away team name" do
+        event = Event.new
+        event.home_team_score = 7
+        event.away_team_score = 9
+        event.away_team = Team.new(name: "blue jays")
+        expect(event.winner).to eq event.away_team.name
+      end
+
+      it "doesn't return a losing home team name" do
+        event = Event.new
+        event.home_team_score = 7
+        event.away_team_score = 9
+        event.home_team = Team.new(name: "blue jays")
+        expect(event.winner).not_to eq event.home_team.name
+      end
     end
 
     context "tie game" do
+      it "returns both home and away team names" do
+        event = Event.new
+        event.home_team_score = 14
+        event.away_team_score = 14
+        event.home_team = Team.new(name: "bengals")
+        event.away_team = Team.new(name: "blue jays")
+        expect(event.winner).to eq "#{event.home_team.name} #{event.away_team.name}"  
+      end
+
+      it "doesn't return only a home team name" do
+        event = Event.new
+        event.home_team_score = 14
+        event.away_team_score = 14
+        event.home_team = Team.new(name: "bengals")
+        event.away_team = Team.new(name: "blue jays")
+        expect(event.winner).not_to eq event.home_team.name
+      end
+
+      it "doesn't return only an away team name" do
+        event = Event.new
+        event.home_team_score = 14
+        event.away_team_score = 14
+        event.home_team = Team.new(name: "bengals")
+        event.away_team = Team.new(name: "blue jays")
+        expect(event.winner).not_to eq event.away_team.name
+      end
     end
   end
 
   describe "associations" do
-    it { should have_many(:articles) }
-    it { should have_many(:medias) }
-    # how to name more than 1 foreign key from a parent class?
-    # it { should belong_to(:team) } 
-    it { should belong_to(:user) }
+    context "Event parent associations" do
+      it { should have_many(:articles) }
+      it { should have_many(:medias) }
+    end
+
+    context "Event decendant associations" do 
+      it { should belong_to(:home_team) }
+      it { should belong_to(:away_team) } 
+      it { should belong_to(:user) }
+    end
   end
 
   describe "scopes" do
