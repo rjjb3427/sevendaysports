@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.14'
 gem 'pg'
 gem 'devise'
+gem 'composite_primary_keys'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -16,7 +17,9 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'shoulda'
   gem 'factory_girl_rails', require: false
+  gem 'pry'
   gem 'pry-rails'
+  gem 'pry-remote'
   gem 'guard-zeus'
   gem 'guard-rspec', require: false
 end

@@ -5,59 +5,105 @@ describe TeamsController do
   describe "GET 'index'" do
     it "returns http success" do
       get :index
-      expect(response).to eq 200
+      expect(response).to be_success
     end
 
-    it "assigns @home_teams" do
-      get :index
-      expect(assigns(:home_teams)).to eq [@team]
-    end
-
-    # it "renders the index template" do
+    # it "assigns every team object into an @teams array" do
+    #   # team1 = FactoryGirl.create(:team) 
+    #   # team2 = FactoryGirl.create(:team) 
     #   get :index
-    #   expect(response).to render_template(:index)
+    #   expect(assigns(:teams)).to eq [@team]
     # end
+
+    it "renders the index template" do
+      get :index
+      expect(response).to render_template(:index)
+    end
   end
 
-  # describe "GET 'new'" do
-  #   it "returns http success" do
-  #     get 'new'
-  #     response.should be_success
-  #   end
-  # end
+  describe "GET 'new'" do
+    it "returns http success" do
+      get :new
+      expect(response).to be_success
+    end
 
-  # describe "GET 'create'" do
-  #   it "returns http success" do
-  #     get 'create'
-  #     response.should be_success
-  #   end
-  # end
+    it "assings @team" do
+      get :new
+      expect(assigns(:team)).to be_a Team
+    end
 
-  # describe "GET 'show'" do
-  #   it "returns http success" do
-  #     get 'show'
-  #     response.should be_success
-  #   end
-  # end
+    # it "assigns @team" do
+    #   # @team = FactoryGirl.create :team, name: "team1", sport_type: "baseball"
+    #   get :new, id: :team_id
+    #   expect(assigns(:team)).to be_a Team
+    # end
 
-  # describe "GET 'edit'" do
-  #   it "returns http success" do
-  #     get 'edit'
-  #     response.should be_success
-  #   end
-  # end
+    it "renders the 'new' template" do
+      get :new
+      expect(response).to render_template(:new)
+    end
+  end
 
-  # describe "GET 'update'" do
-  #   it "returns http success" do
-  #     get 'update'
-  #     response.should be_success
-  #   end
-  # end
+  describe "GET 'create'" do
+    context "given valid credentials" do
+      it "returns http success" do
+        post :create, team: FactoryGirl.attributes_for(:team)
+        team = Team.order(:created_at).last
+        expect(response).to be_redirect
+      end
+    end
+
+    context "given invalid credentials" do
+      it "returns http client error" do
+        post :create, team: FactoryGirl.attributes_for(:team)
+        team = Team.order(:created_at).last
+        expect(response).not_to be_success
+      end
+
+      it "should render the 'new' template" do
+        post :create
+        expect(response).to render_template(:new)
+      end
+    end
+  end
+
+  describe "GET 'show'" do
+    it "returns http success" do
+      team = FactoryGirl.create :team, name: "team_name", sport_type: "type of sport"
+      get :show, id: team
+      expect(response).to be_success
+    end
+
+    it "renders the 'show' template" do
+      team = FactoryGirl.create :team, name: "team_name", sport_type: "type of sport"
+      get :show, id: team
+      expect(response).to render_template(:show)
+    end
+  end
+
+  describe "GET 'edit'" do
+    it "returns http success" do
+      get :edit, id: @team
+      expect(response).to be_success
+    end
+
+    it "renders the 'edit' template" do
+      get :edit, id: @team
+      expect(response).to render_template(:edit)
+    end
+  end
+
+  describe "GET 'update'" do
+    it "returns http success" do
+      get :update, id: @team
+      expect(response.status).to be_redirect
+    end
+  end
 
   # describe "GET 'destroy'" do
   #   it "returns http success" do
   #     get 'destroy'
-  #     response.should be_success
+  #     expect(response).to be_success
   #   end
   # end
 end

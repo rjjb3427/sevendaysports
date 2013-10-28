@@ -1,12 +1,12 @@
 FactoryGirl.define do
-  factory :event do
-    name "bengals vs lamas"
-    author "charlie chattman"
-    title "pre-season game"
-    details "This is a hometown rivalry game"
-    event_on "Date.parse(2015-05-05)"
-    home_team_score 13
-    away_team_score 8
-    type "article"
+  factory :event do |f|
+    f.name "bengals vs lamas"
+    f.author "charlie chattman"
+    f.title "pre-season game"
+    f.details "This is a hometown rivalry game"
+    f.event_on "Date.parse(2015-05-05)"
+    f.home_team_score 13
+    f.away_team_score 8
+    f.type "article"
   end
 end

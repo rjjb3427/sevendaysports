@@ -12,10 +12,10 @@ describe Event do
   describe "#winner" do
     context "a winning home team" do
       it "returns the home team name" do
-        event = Event.new
-        event.home_team_score = 20
-        event.away_team_score = 10
-        event.home_team = Team.new(name: "bengals")
+        event =  Event.new(home_team_score: 20, away_team_score: 10)
+        event.home_team = Team.new(name: 'prune juice fruit')
+        # event.home_team_score = 20
+        # event.away_team_score = 10
         expect(event.winner).to eq event.home_team.name
       end
 

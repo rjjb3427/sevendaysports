@@ -5,12 +5,13 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :author, :name, :title, :event_on, :type
 
+  # has_many :contests
   has_many :articles, dependent: :destroy
   has_many :medias, dependent: :destroy
 
+  belongs_to :home_team, class_name: "Team", foreign_key: "home_team_id"
+  belongs_to :away_team, class_name: "Team", foreign_key: "away_team_id"
   belongs_to :user
-  belongs_to :home_team, class_name: "Team"
-  belongs_to :away_team, class_name: "Team"
 
   scope :by_user, ->(user_id) {where(user_id: user_id).order("name")}
   scope :by_team, ->(team_id) {where(team_id: team_id).order("sport_type")}
@@ -29,20 +30,19 @@ class Event < ActiveRecord::Base
     end
   end
 
-  private
   def home_team_name
-    if home_team.present?
-      home_team.name
-    else
-      'No team present'
-    end
+    home_team.try(:name) || "No home team associated"
   end
 
   def away_team_name
-    if away_team.present?
-      away_team.name
-    else
-      'No team present'
-    end
+    away_team.try(:name) || "No away team associated"
   end
+
+  # def home_team
+  #   team.home_team
+  # end
+
+  # def away_team
+  #   away_team.away_team
+  # end
 end
