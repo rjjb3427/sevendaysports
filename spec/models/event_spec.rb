@@ -11,67 +11,65 @@ describe Event do
 
   describe "#winner" do
     context "a winning home team" do
-      it "returns the home team name" do
-        event =  Event.new(home_team_score: 20, away_team_score: 10)
-        event.home_team = Team.new(name: 'prune juice fruit')
-        # event.home_team_score = 20
-        # event.away_team_score = 10
-        expect(event.winner).to eq event.home_team.name
+      it "returns the home team winning score" do
+        home_team_name = FactoryGirl.create :team
+        event = FactoryGirl.build :event, home_team_score: 20, away_team_score: 10
+        expect(event.winner).to eq event.home_team_name
       end
 
       it "doesn't return a losing away team name" do
-        event = Event.new
+        event = FactoryGirl.build :event
+        away_team_name = FactoryGirl.create :team, name: "blue jays"
         event.home_team_score = 20
         event.away_team_score = 10
-        event.away_team = Team.new(name: "blue jays")
-        expect(event.winner).not_to eq event.away_team.name
+        expect(event.winner).not_to eq "event.away_team_name"
       end
     end
 
     context "a winning away team" do
       it "returns a winning away team name" do
-        event = Event.new
+        event = FactoryGirl.build :event
+        home_team = FactoryGirl.create :team, name: "tiger sharks"
+        away_team = FactoryGirl.create :team, name: "blue jays"
         event.home_team_score = 7
         event.away_team_score = 9
-        event.away_team = Team.new(name: "blue jays")
-        expect(event.winner).to eq event.away_team.name
+        expect(event.winner).to eq event.away_team_name
       end
 
       it "doesn't return a losing home team name" do
-        event = Event.new
+        event = FactoryGirl.create :event
+        home_team = FactoryGirl.create :team, name: "Bengals"
         event.home_team_score = 7
         event.away_team_score = 9
-        event.home_team = Team.new(name: "blue jays")
-        expect(event.winner).not_to eq event.home_team.name
+        expect(event.winner).not_to eq "event.home_team_name"
       end
     end
 
     context "tie game" do
       it "returns both home and away team names" do
-        event = Event.new
+        event = FactoryGirl.create :event
+        home_team = FactoryGirl.create :team, name: "Bengals"
+        away_team = FactoryGirl.create :team, name: "Blue Jays"
         event.home_team_score = 14
         event.away_team_score = 14
-        event.home_team = Team.new(name: "bengals")
-        event.away_team = Team.new(name: "blue jays")
-        expect(event.winner).to eq "#{event.home_team.name} #{event.away_team.name}"  
+        expect(event.winner).to eq "#{event.home_team_name} #{event.away_team_name}"  
       end
 
-      it "doesn't return only a home team name" do
-        event = Event.new
+      it "doesn't return only #home_team_name" do
+        event = FactoryGirl.build :event
+        home_team = FactoryGirl.build :team, name: "Bengals"
+        away_team = FactoryGirl.build :team, name: "Blue Jays"
         event.home_team_score = 14
         event.away_team_score = 14
-        event.home_team = Team.new(name: "bengals")
-        event.away_team = Team.new(name: "blue jays")
-        expect(event.winner).not_to eq event.home_team.name
+        expect(event.winner).not_to eq event.home_team_name
       end
 
-      it "doesn't return only an away team name" do
-        event = Event.new
+      it "doesn't return only #away_team_name" do
+        event = FactoryGirl.create :event
+        away_team = FactoryGirl.create :team, name: "Blue Jays"
         event.home_team_score = 14
         event.away_team_score = 14
-        event.home_team = Team.new(name: "bengals")
-        event.away_team = Team.new(name: "blue jays")
-        expect(event.winner).not_to eq event.away_team.name
+        expect(event.winner).not_to eq event.away_team_name
       end
     end
   end
@@ -80,12 +78,12 @@ describe Event do
     context "Event parent associations" do
       it { should have_many(:articles) }
       it { should have_many(:medias) }
+      it { should have_many(:event_teams)}
     end
 
     context "Event decendant associations" do 
-      it { should belong_to(:home_team) }
-      it { should belong_to(:away_team) } 
       it { should belong_to(:user) }
+      it { should belong_to(:team) }
     end
   end
 

@@ -11,13 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131028225804) do
+ActiveRecord::Schema.define(:version => 20131030213002) do
 
   create_table "articles", :force => true do |t|
     t.text     "body"
     t.integer  "event_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "event_teams", :force => true do |t|
+    t.integer  "home_team_id"
+    t.integer  "away_team_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "event_id"
   end
 
   create_table "events", :force => true do |t|
@@ -34,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20131028225804) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "type"
+    t.integer  "team_id"
   end
 
   create_table "media", :force => true do |t|
@@ -65,7 +74,6 @@ ActiveRecord::Schema.define(:version => 20131028225804) do
     t.integer  "university_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.boolean  "is_home_team"
   end
 
   create_table "universities", :force => true do |t|
