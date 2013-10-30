@@ -1,21 +1,42 @@
 require 'spec_helper'
 
 describe EventsController do
-  describe "GET 'show'" do
-    # it "shows the winner of an event" do
-    #   team = FactoryGirl.create :team, name: "bengals"
-    #   event = FactoryGirl.create :event, winner: team 
-    #   get :show
-    #   expect(response.body).to eq team
-    # end
+  describe "GET :index" do
+    it "populates an array of all events" do
+      event1 = FactoryGirl.create :event
+      event2 = FactoryGirl.create :event
+      get :index
+      expect(assigns(:contacts)).to match_array([event1, event2])
+    end
+  end
+
+  describe "GET :new" do
+  
+  end
+
+  describe "GET :show" do
+    it "assigns the requested event to @event" do
+      event = FactoryGirl.create :event
+      get :show, id: event
+      expect(assigns(:event)).to eq event
+    end
+
+    it "renders the :show template" do
+
+    end
+
     context "displays the #winner of an event" do
-      it "shows a #home_team as the winner" do
-        home_team = FactoryGirl.create :team, name: "chicken wing kings"
+      it "shows #home_team as the winner" do
+        pending "Not implemented properly"
+        home_team = FactoryGirl.create :team, name: "Bengals"
         event = FactoryGirl.create :event
-        event.winner = home_team.name
-        get :show
-        expect(response).to eq home_team.name
+        get :show, id: event
+        expect(response).to render_template(:show)
       end
     end
+  end
+
+  describe "GET :edit" do
+
   end
 end

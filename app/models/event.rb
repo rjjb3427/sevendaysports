@@ -6,7 +6,8 @@ class Event < ActiveRecord::Base
   validates_presence_of :author, :name, :title, :event_on, :type
 
   has_many :event_teams
-  has_many :teams, through: :event_teams
+  has_many :home_teams
+  has_many :away_teams  
   has_many :articles, dependent: :destroy
   has_many :medias, dependent: :destroy
 
