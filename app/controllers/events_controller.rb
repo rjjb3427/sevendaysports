@@ -1,23 +1,24 @@
 class EventsController < ApplicationController
+  before_filter :load_team
   def index
-    @event = @team.events.all
+    @events = @team.events
   end
 
   def new
-    @event = @team.events.build
+    @event = @team.home_events.build
   end
 
   def create
-    @event = @team.events.build(params[:event_id])
+    @event = @team.home_events.build(params[:event])
     if @event.save
-      redirect_to events_team_events_path[@team, @event]
+      redirect_to team_event_path(@team, @event)
     else
       render :new
     end
   end
 
   def show
-    @event = @team.events.find(params[:id]) 
+    @event = @team.home_events.find_by_id(params[:id]) 
   end
 
   def edit
@@ -27,5 +28,10 @@ class EventsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def load_team
+    @team = Team.find(params[:team_id])
   end
 end

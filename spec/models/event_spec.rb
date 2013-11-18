@@ -78,12 +78,12 @@ describe Event do
     context "Event parent associations" do
       it { should have_many(:articles) }
       it { should have_many(:medias) }
-      it { should have_many(:event_teams)}
+      # it { should have_many(:event_teams)}
     end
 
     context "Event decendant associations" do 
       it { should belong_to(:user) }
-      it { should belong_to(:team) }
+      it { should belong_to(:home_team) }
     end
   end
 

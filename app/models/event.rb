@@ -1,17 +1,16 @@
 class Event < ActiveRecord::Base
   attr_accessible :author, :home_team_score, :away_team_score, :details, 
-                  :event_on, :name, :title, :type, :winner,
+                  :event_on, :name, :title, :kind, :winner,
                   :user_id, :team_id
 
-  validates_presence_of :author, :name, :title, :event_on, :type
+  validates_presence_of :author, :name, :title, :event_on, :kind
 
-  has_many :event_teams
-  has_many :home_teams
-  has_many :away_teams  
   has_many :articles, dependent: :destroy
   has_many :medias, dependent: :destroy
+  # has_many :event_teams, foreign_key: :event_team_id
 
-  belongs_to :team
+  belongs_to :home_team, class_name: "Team"
+  belongs_to :away_team, class_name: "Team"
   belongs_to :user
 
   scope :by_user, ->(user_id) {where(user_id: user_id).order("name")}
@@ -32,10 +31,10 @@ class Event < ActiveRecord::Base
   end
 
   def home_team_name
-    team.try(:name) || "No home team associated"
+    home_team.try(:name) || "No home team associated"
   end
 
   def away_team_name
-    team.try(:name) || "No home team associated"
+    away_team.try(:name) || "No home team associated"
   end
 end

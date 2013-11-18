@@ -7,6 +7,6 @@ FactoryGirl.define do
     f.event_on "Date.parse(2015-05-05)"
     f.home_team_score 13
     f.away_team_score 8
-    f.type "article"
+    f.kind "article"
   end
 end

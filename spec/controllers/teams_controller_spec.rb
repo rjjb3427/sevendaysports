@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe TeamsController do
-
   describe "GET 'index'" do
     it "returns http success" do
       get :index
@@ -31,12 +30,6 @@ describe TeamsController do
       get :new
       expect(assigns(:team)).to be_a Team
     end
-
-    # it "assigns @team" do
-    #   # @team = FactoryGirl.create :team, name: "team1", sport_type: "baseball"
-    #   get :new, id: :team_id
-    #   expect(assigns(:team)).to be_a Team
-    # end
 
     it "renders the 'new' template" do
       get :new
@@ -83,20 +76,23 @@ describe TeamsController do
 
   describe "GET 'edit'" do
     it "returns http success" do
-      get :edit, id: @team
+      team = FactoryGirl.create :team, name: "Bengals", sport_type: "Baseball"
+      get :edit, id: team.id
       expect(response).to be_success
     end
 
     it "renders the 'edit' template" do
-      get :edit, id: @team
+      team = FactoryGirl.create :team, name: "Bengals", sport_type: "Baseball"
+      get :edit, id: team.id
       expect(response).to render_template(:edit)
     end
   end
 
   describe "GET 'update'" do
     it "returns http success" do
-      get :update, id: @team
-      expect(response.status).to be_redirect
+      team = FactoryGirl.create :team, name: "Bengals", sport_type: "Baseball"
+      get :update, id: team.id
+      expect(response.status).to eql 302
     end
   end
 
