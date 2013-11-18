@@ -11,7 +11,8 @@ describe UniversitiesController do
 
     it "assigns @universities" do
       get :index
-      expect(assigns(:universities)).to eq [@university]
+      expect(assigns(:universities)).to eq [@university] 
+      # spec breaks when more than one entry in db
     end
 
     it "renders the index template" do
