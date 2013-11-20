@@ -3,11 +3,10 @@ class Event < ActiveRecord::Base
                   :event_on, :name, :title, :kind, :winner,
                   :user_id, :team_id
 
-  validates_presence_of :author, :name, :title, :event_on, :kind
+  validates_presence_of :author, :name, :title, :kind#, :event_on
 
   has_many :articles, dependent: :destroy
   has_many :medias, dependent: :destroy
-  # has_many :event_teams, foreign_key: :event_team_id
 
   belongs_to :home_team, class_name: "Team"
   belongs_to :away_team, class_name: "Team"

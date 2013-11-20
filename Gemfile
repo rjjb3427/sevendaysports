@@ -5,7 +5,6 @@ gem 'rails', '3.2.14'
 gem 'pg'
 gem 'devise'
 gem 'composite_primary_keys'
-gem 'clearance'
 gem 'bootstrap-sass', '~> 3.0.2.0'
 
 group :assets do

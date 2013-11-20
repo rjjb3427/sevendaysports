@@ -1,0 +1,12 @@
+<h1>Add a University</h2>
+<%= link_to :back %>
+<br />
+<%= form_fo @university, html: { class: "form-horizontal" } do |f| %>
+	<%= f.text_field :name, class: 'text_field', placeholder: 'University Name' %>
+	<%= f.text_field :url, class: 'text-field', placeholder: 'University Website' %>
+	<%= f.text_area :address, placeholder: 'University Address' %>
+	<%= f.text_fied :city, class: 'text-field', placeholder: 'University City' %>
+	<%= f.text_field :state, class: 'text-field', placeholder: 'University State' %>
+	<%= f.text_field :zip, class: 'text-field', placeholder: 'University Zip' %>
+	<%= f.button_to :submit, class: 'btn btn-large btn-primary' %>
+<% end %>	

@@ -1,0 +1,10 @@
+<h3>Create a Team</h3>
+<%= link_to :back %>
+<br />
+<%= form_for [@university, @team], html: { class: 'form-horizontal' } do |f| %>
+	<%= f.text_field :name, class: 'text_field', placeholder: 'Team name' %>
+	<%= f.select_tag :sport_type, options_for_select(['Baseball/Softball', 1], 
+	['Basketball', 2], ['Golf, 3'], ['Soccer', 4], ['Track & Field', 5]), 
+	class: 'select_tag' %>
+	<%= button_to 'Create Team!', name: 'commit', value: 'Create Team!', class: 'btn btn-large btn-primary' %>
+<% end %>
