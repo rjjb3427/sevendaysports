@@ -15,7 +15,7 @@ class EventsController < ApplicationController
       flash[:success] = 'Event created!'
       redirect_to team_event_path(@team, @event)
     else
-      render :new, flash[:error] = 'There was an error with your form'
+      render :new, flash[:error] = 'There was an error processing your form'
     end
   end
 
@@ -29,9 +29,9 @@ class EventsController < ApplicationController
 
   def update
     if home_or_way_team_attributes_update
-      flash[:success] = 'Media updated!'
+      flash[:success] = 'Event updated!'
     else
-      render :edit, flash[:error] = 'Unable to update media'
+      render :edit, flash[:error] = 'There was an error updating your form'
     end
   end
 
@@ -51,8 +51,7 @@ class EventsController < ApplicationController
     if has_home_team_events?
       @home_team = @home_team.events.find(params[:team_id])
     else
-      'No home team present'
-      # Event.find(params[:id])
+      Event.find(params[:id])
     end
   end
 

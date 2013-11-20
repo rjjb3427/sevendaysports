@@ -12,8 +12,10 @@ class MediasController < ApplicationController
   def create
     @media = @event.medias.build(params[:@media])
     if @media.save
+      flash[:success] = 'Media created!'
       redirect_to [@event, @media]
     else
+      flash[:error] = 'There was an error processing your form'
       render :new
     end
   end
@@ -26,7 +28,7 @@ class MediasController < ApplicationController
       flash[:success] = 'Media updated!'
       redirect_to [@event, @media], id: params[:id]
     else
-      render :edit, flash[:error] = 'Unable to update media'
+      render :edit, flash[:error] = 'There was an error updating your form'
     end
   end
 

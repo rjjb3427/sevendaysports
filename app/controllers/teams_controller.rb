@@ -31,7 +31,7 @@ class TeamsController < ApplicationController
       flash[:success] = 'Team updated!'
       redirect_to team_path
     else
-      flash[:error] = 'There was an error processing your form'
+      flash[:error] = 'There was an error updating your form'
       render :edit
     end
   end

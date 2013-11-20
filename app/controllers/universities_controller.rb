@@ -1,4 +1,6 @@
 class UniversitiesController < ApplicationController
+  before_filter :get_university
+
   def index
     @universities = University.all
   end
@@ -10,32 +12,38 @@ class UniversitiesController < ApplicationController
   def create
     @university = University.new(params[:university])
     if @university.save
+      flash[:success] = 'University added!'
       redirect_to @university
     else
+      flash[:error] = 'There was an error processing your form'
       render :new
     end
   end
 
   def show
-    @university = University.find(params[:id])
   end
 
   def edit
-    @university = University.find(params[:id])
   end
 
   def update
-    @university = University.find(params[:id])
     if @university.update_attributes(params[:university])
+      flash[:success] = 'University updated!'
       redirect_to university_path
     else
+      flash[:error] = 'There was an error updating your form'
       render :edit
     end
   end
 
   def destroy
-    @user = University.find(params[:id])
-    @user.destroy
+    @university.destroy
+    flash[:notice] = 'You sure?'
     redirect_to universities_path
+  end
+
+  private
+  def get_university
+    @university = University.find(params[:id])
   end
 end
