@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20131118164302) do
     t.string   "winner"
   end
 
-  create_table "media", :force => true do |t|
+  create_table "medias", :force => true do |t|
     t.string   "author"
     t.string   "title"
     t.text     "details"

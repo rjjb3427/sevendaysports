@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
                   :event_on, :name, :title, :kind, :winner,
                   :user_id, :team_id
 
-  validates_presence_of :author, :name, :title, :kind#, :event_on
+  validates_presence_of :author, :name, :title, :kind
 
   has_many :articles, dependent: :destroy
   has_many :medias, dependent: :destroy
