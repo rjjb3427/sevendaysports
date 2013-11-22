@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :get_home_team, :get_away_team
+  # before_filter :get_home_team, :get_away_team
 
   def index
     @events = @team.events
@@ -41,33 +41,33 @@ class EventsController < ApplicationController
     redirect_to team_events_path
   end
 
-  private
-  def home_or_away_attributes_update
-    @home_team.update_attributes(params[:event]) || 
-    @away_team.update_attributes(params[:event])
-  end
+  # private
+  # def home_or_away_attributes_update
+  #   @home_team.update_attributes(params[:event]) || 
+  #   @away_team.update_attributes(params[:event])
+  # end
 
-  def get_home_team
-    if has_home_team_events?
-      @home_team = @home_team.events.find(params[:team_id])
-    else
-      Event.find(params[:id])
-    end
-  end
+  # def get_home_team
+  #   if has_home_team_events?
+  #     @home_team = @home_team.events.find(params[:team_id])
+  #   else
+  #     Event.find(params[:id])
+  #   end
+  # end
 
-  def get_away_team
-    if has_away_team_events?
-      @away_team = @away_team.events.find(params[:id])
-    else
-      Event.find(params[:id])
-    end
-  end
+  # def get_away_team
+  #   if has_away_team_events?
+  #     @away_team = @away_team.events.find(params[:id])
+  #   else
+  #     Event.find(params[:id])
+  #   end
+  # end
 
-  def has_home_team_events?
-    @home_team.events.present?
-  end
+  # def has_home_team_events?
+  #   @home_team.events.present?
+  # end
 
-  def has_away_team_events?
-    @away_team.events.present?
-  end
+  # def has_away_team_events?
+  #   @away_team.events.present?
+  # end
 end

@@ -1,2 +1,35 @@
-<h1>Universities#index</h1>
-<p>Find me in app/views/universities/index.html.erb</p>
+<div class="container">	
+	<% if @universities.blank? %>
+	<h3>No University Created</h3>
+		<%= render 'first_object' %>
+	<% else %>
+		<% @universities.each do |university| %>
+		<h1>Universities#index</h1>
+		<p>Find me in app/views/universities/index.html.erb</p>
+		<%= link_to :back %>
+		<br />
+		<div class="table-responsive">
+			<table class="table table-bordered">
+				<thead>
+					<th>University Name</th>
+					<th>Url</th>
+					<th>Address</th>
+					<th>City</th>
+					<th>State</th>
+					<th>Zip</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td><%= university.name %></td>
+						<td><%= university.url %></td>
+						<td><%= university.address %></td>
+						<td><%= university.city %></td>
+						<td><%= university.state %></td>
+						<td><%= university.zip %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div><!-- END class table-responsive -->
+		<% end %>
+	<% end %>
+</div><!-- END class container -->

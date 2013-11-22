@@ -1,1 +1,39 @@
-<h3>All Events</h3>
+<div class="container">
+	<h3>Upcoming Events</h3>
+	<% if @universities.blank? %>
+		<h3>No Events Exist</h3>
+		<%= render 'first_object' %>
+	<% else %>
+		<% @events.each do |event| %>
+		<h1>Events#index</h1>
+		<p>Find me in app/views/events/index.html.erb</p>
+		<%= link_to :back %>
+		<br />
+		<div class="table-responsive">
+			<table class="table table-bordered">
+				<thead>
+					<th>Event Name</th>
+					<th>Date</th>
+					<th>Details</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td><%= event.name %></td>
+						<td><%= event.event_on.event_on_formatted %></td>
+						<td><%= %></td>
+						<td><%= %></td>
+						<td><%= %></td>
+						<td><%= %></td>
+					</tr>
+				</tbody>
+			</table>
+		</div><!-- END class table-responsive -->
+		<% end %>
+	<% end %>
+
+
+</div>
+
+<div class="container">
+	<h3>Past Events</h3>
+</div>

@@ -1,5 +1,5 @@
-class UniversitiesController < ApplicationController
-  before_filter :get_university
+ class UniversitiesController < ApplicationController
+  # before_filter :get_university
 
   def index
     @universities = University.all
@@ -43,7 +43,7 @@ class UniversitiesController < ApplicationController
   end
 
   private
-  def get_university
-    @university = University.find(params[:id])
-  end
+  # def get_university
+  #   @university = University.find(params[:id])
+  # end
 end
