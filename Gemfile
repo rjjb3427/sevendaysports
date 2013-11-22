@@ -6,6 +6,7 @@ gem 'pg'
 gem 'devise'
 gem 'composite_primary_keys'
 gem 'bootstrap-sass', '~> 3.0.2.0'
+gem 'bootstrap-datetimepicker-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -14,8 +15,6 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'nokogiri'
-  gem 'rspec-rails', '~> 2.0'
   gem 'shoulda-matchers'
   gem 'shoulda'
   gem 'factory_girl_rails', require: false

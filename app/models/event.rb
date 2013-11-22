@@ -1,7 +1,6 @@
 class Event < ActiveRecord::Base
   attr_accessible :author, :home_team_score, :away_team_score, :details, 
-                  :event_on, :name, :title, :kind, :winner,
-                  :user_id, :team_id
+                  :event_on, :name, :title, :kind, :winner
 
   validates_presence_of :author, :name, :title, :kind
 
@@ -15,9 +14,9 @@ class Event < ActiveRecord::Base
   scope :by_user, ->(user_id) {where(user_id: user_id).order("name")}
   scope :by_team, ->(team_id) {where(team_id: team_id).order("sport_type")}
   scope :by_score, -> {select(:home_team_score, :away_team_score, :winner)}
-  scope :upcoming_events, -> {where("event_on >= ?", 1.minute.from_now)}
-  scope :past_events, -> {where("event_on < ?", 1.minute.ago)}
-  scope :recent, -> {where("event_on > ?", 3.days.ago).limit(3)}
+  scope :upcoming, -> {where("event_on >= ?", 1.minute.from_now).order("event_on ASC")}
+  scope :past, -> {where("event_on < ?", 1.minute.ago).order("event_on DESC")}
+  scope :recent, -> {where("event_on > ?", 3.days.ago).order("event_on DESC").limit(3)}
 
   def winner
     if home_team_score > away_team_score

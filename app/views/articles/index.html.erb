@@ -1,6 +1,7 @@
 <div class="container">	
 	<% if @articles.blank? %>
-		<%= render 'first_object' %>
+		<h3>No Article Exists</h3>
+		<em><%= render 'first_object' %></em>
 	<% else %>
 	<h1>Articles#index</h1>
 	<p>Find me in app/views/articles/index.html.erb</p>

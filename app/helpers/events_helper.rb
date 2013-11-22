@@ -1,5 +1,5 @@
 module EventsHelper
   def event_on_formatted
-    strftime("%A %B %d, %Y")
+    event_on.strftime("%B %d, %Y at: %r")
   end
 end

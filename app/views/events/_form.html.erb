@@ -10,7 +10,7 @@
 	<%= f.text_field :away_team_score, class: 'text_field', placeholder: 'Away team away_team_score' %>
 	<%= f.text_field :winner, class: 'text_field', placeholder: 'Winning team name' %>
 	<%= f.text_area :details, class: 'text_area', placeholder: 'Details about the event' %>
-	<%= f.datetime_field :event_on, class: 'datetime_field' %>
-	<%= f.button_to 'Create Event!', name: 'commit', value: 'Create Event!', class: 'btn btn-primary btn-large' %>
-<%= end %>
+	<%= f.datetime_select :event_on, class: 'datetime_select' %>
+	<%= button_to 'Create Event!', name: 'commit', value: 'Create Event!', class: 'btn btn-primary btn-large' %>
+<% end %>
 <%= link_to 'cancel', :back, class: 'btn btn-small btn-danger' %>

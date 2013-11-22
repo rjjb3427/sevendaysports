@@ -1,33 +1,35 @@
 class EventsController < ApplicationController
-  # before_filter :get_home_team, :get_away_team
-
   def index
-    @events = @team.events
+    @events = Event.all
+    @upcoming_events = Event.upcoming
+    @past_events = Event.past
+    @recent_events = Event.recent
   end
 
   def new
-    @event = @team.home_events.build
+    @event = Event.new
   end
 
   def create
-    @event = @team.home_events.build(params[:event])
+    @event = Event.new(params[:event])
     if @event.save
       flash[:success] = 'Event created!'
-      redirect_to team_event_path(@team, @event)
+      redirect_to event_path( @event)
     else
-      render :new, flash[:error] = 'There was an error processing your form'
+      render :new #, flash[:error] = 'There was an error processing your form'
     end
   end
 
   def show
-    @home_team_event = @team.home_events.find_by_id(params[:id]) 
-    @away_team_event = @team.away_events.find_by_id(params[:id])
+    get_event
   end
 
   def edit
+    get_event
   end
 
   def update
+    get_event
     if home_or_way_team_attributes_update
       flash[:success] = 'Event updated!'
     else
@@ -36,38 +38,20 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    get_event
     @event.delete
     flash[:notice] = 'You sure?'
     redirect_to team_events_path
   end
 
-  # private
-  # def home_or_away_attributes_update
-  #   @home_team.update_attributes(params[:event]) || 
-  #   @away_team.update_attributes(params[:event])
-  # end
+  private
+  def get_event
+    @event = Event.find_by_id(params[:id])
+  end
 
-  # def get_home_team
-  #   if has_home_team_events?
-  #     @home_team = @home_team.events.find(params[:team_id])
-  #   else
-  #     Event.find(params[:id])
-  #   end
-  # end
-
-  # def get_away_team
-  #   if has_away_team_events?
-  #     @away_team = @away_team.events.find(params[:id])
-  #   else
-  #     Event.find(params[:id])
-  #   end
-  # end
-
-  # def has_home_team_events?
-  #   @home_team.events.present?
-  # end
-
-  # def has_away_team_events?
-  #   @away_team.events.present?
-  # end
+  def home_or_away_attributes_update
+    @home_team.update_attributes(params[:event]) || 
+    @away_team.update_attributes(params[:event])
+    @home_team.user_id = current_user_id
+  end
 end

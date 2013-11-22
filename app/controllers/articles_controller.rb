@@ -1,15 +1,18 @@
 class ArticlesController < ApplicationController
-  before_filter :get_event
 
   def index
-    @articles = @event.articles
+    @articles = Article.all
+    # get_event
+    # @articles = @event.articles
   end
 
   def new
+    get_event
     @article = @event.articles.build
   end
 
   def create
+    get_event
     @article = @event.articles.build(params[:article])
     if @article.save
       flash[:success] = 'Article created!'
@@ -21,12 +24,15 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    get_event
   end
 
   def edit
+    get_event
   end
 
   def update
+    get_event
     if @article.update_attributes(params[:article])
       flash[:success] = 'Article updated!'
       redirect_to [@event, @article], id: params[:id]
@@ -36,21 +42,21 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    get_event
     @article.delete
     flash[:notice] = 'You sure?'
     redirect_to event_articles_path
   end
 
   private
-  def get_event(event_id)
-    if has_event?
-      @event = @event.articles.find(params[:id])
-    else
-      Event.find(params[:id])
-    end
+  def get_event
+    # if event_exists?
+      @event = Event.find_by_id(params[:id])
+    # else
+    #   "No Events Present"
+    # end
   end
-
-  def has_event?
+  def event_exists?
     @event.present?
   end
 end

@@ -1,7 +1,7 @@
 <div class="container">
 	<h3>Upcoming Events</h3>
-	<% if @universities.blank? %>
-		<h3>No Events Exist</h3>
+	<% if @events.blank? %>
+		<h3><small>No Events Exist</small></h3>
 		<%= render 'first_object' %>
 	<% else %>
 		<% @events.each do |event| %>
@@ -19,7 +19,7 @@
 				<tbody>
 					<tr>
 						<td><%= event.name %></td>
-						<td><%= event.event_on.event_on_formatted %></td>
+						<td><%= event.event_on.strftime('%B %d, %Y at: %r') %></td>
 						<td><%= %></td>
 						<td><%= %></td>
 						<td><%= %></td>
