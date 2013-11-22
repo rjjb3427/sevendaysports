@@ -14,6 +14,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'nokogiri'
   gem 'rspec-rails', '~> 2.0'
   gem 'shoulda-matchers'
   gem 'shoulda'

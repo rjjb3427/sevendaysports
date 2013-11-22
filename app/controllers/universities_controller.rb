@@ -1,6 +1,4 @@
  class UniversitiesController < ApplicationController
-  # before_filter :get_university
-
   def index
     @universities = University.all
   end
@@ -21,12 +19,15 @@
   end
 
   def show
+    get_university
   end
 
   def edit
+    get_university
   end
 
   def update
+    get_university
     if @university.update_attributes(params[:university])
       flash[:success] = 'University updated!'
       redirect_to university_path
@@ -37,13 +38,14 @@
   end
 
   def destroy
+    get_university
     @university.destroy
     flash[:notice] = 'You sure?'
     redirect_to universities_path
   end
 
   private
-  # def get_university
-  #   @university = University.find(params[:id])
-  # end
+  def get_university
+    @university = University.find(params[:id])
+  end
 end
