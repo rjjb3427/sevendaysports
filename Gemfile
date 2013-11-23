@@ -15,6 +15,7 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'rspec-rails', '~> 2.0'
   gem 'shoulda-matchers'
   gem 'shoulda'
   gem 'factory_girl_rails', require: false

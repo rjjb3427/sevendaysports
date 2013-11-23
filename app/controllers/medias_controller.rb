@@ -1,19 +1,19 @@
-class MediasController < ApplicationController
-  before_filter :get_event
-  
+class MediasController < ApplicationController  
   def index
-    @medias = @event.medias
+    @event_mediable = Event.find_by_id(params[:event_id]) 
+    @team_mediable = Team.find_by_id(params[:team_id])
+    @user_mediable = User.find_by_id(params[:user_id])
   end
 
   def new
-    @media = @event.medias.build
+    @media = @mediable.medias.new
   end
 
   def create
-    @media = @event.medias.build(params[:@media])
+    @media = @mediable.medias.new(params[:media])
     if @media.save
       flash[:success] = 'Media created!'
-      redirect_to [@event, @media]
+      redirect_to :show, id: @media
     else
       flash[:error] = 'There was an error processing your form'
       render :new
@@ -21,6 +21,10 @@ class MediasController < ApplicationController
   end
 
   def show
+    @media = Media.find_by_id(params[:id])
+    @event_media = @event.medias.find_by_id(params[:id])
+    @team_media = @team.medias.find_by_id(params[:id])
+    @user_media = @user.medias.find_by_id(params[:id])
   end
 
   def update
@@ -39,18 +43,5 @@ class MediasController < ApplicationController
     @media.delete
     flash[:notice] = 'You sure?'
     redirect_to medias_path
-  end
-
-  private
-  def get_event
-    if has_event?
-      @event = @event.medias.find(params[:id])
-    else
-      Event.find(params[:id])
-    end
-  end
-
-  def has_event?
-    @event.medias.present?
   end
 end

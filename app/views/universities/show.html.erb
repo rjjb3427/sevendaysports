@@ -1,2 +1,22 @@
-<h1>Universities#show</h1>
-<p>Find me in app/views/universities/show.html.erb</p>
+<div class="container">
+	<h1>Universities#show</h1>
+	<p>Find me in app/views/universities/show.html.erb</p>
+	<%= link_to :back, new_university_path %>
+	<br />
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><%= @university.name %></h3>
+		</div>
+		<div class="panel-body">
+			<ul class="list-group">
+				<li class="list-group-item"><%= @university.name %></li>
+				<li class="list-group-item"><%= @university.url %></li>
+				<li class="list-group-item"><%= @university.address %></li>				
+				<li class="list-group-item"><%= @university.city %></li>
+				<li class="list-group-item"><%= @university.state %></li>
+				<li class="list-group-item"><%= @university.zip %></li>
+			</ul>
+		</div>
+	</div><!-- END CLASS panel panel-default -->
+</div><!-- END CLASS container -->

@@ -1,14 +1,14 @@
 <div class="container">
-	<h3>Upcoming Events</h3>
+	
 	<% if @events.blank? %>
 		<h3><small>No Events Exist</small></h3>
 		<%= render 'first_object' %>
 	<% else %>
-		<% @events.each do |event| %>
 		<h1>Events#index</h1>
 		<p>Find me in app/views/events/index.html.erb</p>
 		<%= link_to :back %>
 		<br />
+		<h3>Upcoming Events</h3>
 		<div class="table-responsive">
 			<table class="table table-bordered">
 				<thead>
@@ -17,23 +17,22 @@
 					<th>Details</th>
 				</thead>
 				<tbody>
+					<% @events.each do |event| %>
 					<tr>
 						<td><%= event.name %></td>
-						<td><%= event.event_on.strftime('%B %d, %Y at: %r') %></td>
+						<td><%= event.event_on %></td>
+<!-- 						<td><%= %></td>
 						<td><%= %></td>
 						<td><%= %></td>
-						<td><%= %></td>
-						<td><%= %></td>
+						<td><%= %></td> -->
 					</tr>
+					<% end %>
 				</tbody>
 			</table>
 		</div><!-- END class table-responsive -->
-		<% end %>
+		<div class="container">
+			<h3>Past Events</h3>
+		</div>
 	<% end %>
-
-
 </div>
 
-<div class="container">
-	<h3>Past Events</h3>
-</div>

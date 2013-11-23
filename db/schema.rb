@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131118164302) do
+ActiveRecord::Schema.define(:version => 20131123204314) do
 
   create_table "articles", :force => true do |t|
     t.text     "body"
@@ -37,18 +37,18 @@ ActiveRecord::Schema.define(:version => 20131118164302) do
     t.string   "winner"
   end
 
-  create_table "medias", :force => true do |t|
+  create_table "media", :force => true do |t|
     t.string   "author"
-    t.string   "title"
     t.text     "details"
+    t.string   "title"
     t.string   "url"
-    t.string   "type"
-    t.integer  "event_id"
-    t.integer  "team_id"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "mediable_type"
+    t.integer  "mediable_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
+
+  add_index "media", ["mediable_id", "mediable_type"], :name => "index_media_on_mediable_id_and_mediable_type"
 
   create_table "scores", :force => true do |t|
     t.string   "home_team_score"

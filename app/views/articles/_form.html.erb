@@ -1,7 +1,7 @@
 <h3>Create an Article</h3>
 <%= link_to :back %>
 <br />
-<%= form_for [@event, @article], html: { class: 'form-horizontal' } do |f| %>
+<%= form_for @article, html: { class: 'form-horizontal' } do |f| %>
 	<%= f.text_area :body, placeholder: 'Enter article here' %>
 	<%= button_to 'Create Article!', name: 'commit', value: 'Create Article!', class: 'btn btn-large btn-primary' %>
 <% end %>

@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   validates_presence_of :author, :name, :title, :kind
 
   has_many :articles, dependent: :destroy
-  has_many :medias, dependent: :destroy
+  has_many :medias, as: :mediable
 
   belongs_to :home_team, class_name: "Team"
   belongs_to :away_team, class_name: "Team"
