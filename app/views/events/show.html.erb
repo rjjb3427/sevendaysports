@@ -1,7 +1,7 @@
 <div class="container">
-	<h1>Universities#show</h1>
-	<p>Find me in app/views/universities/show.html.erb</p>
-	<%= link_to :back, events_path %>
+	<h1>Events#show</h1>
+	<p>Find me in app/views/events/show.html.erb</p>
+	<div><%= link_to :back, events_path %></div>
 	<br />
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -11,7 +11,7 @@
 			<ul class="list-group">
 				<li class="list-group-item"><%= @event.title %></li>
 				<li class="list-group-item"><%= @event.kind %></li>
-				<li class="list-group-item"><%= @event.event_on %></li>				
+				<li class="list-group-item"><%= @event.event_on.strftime("%A %B %d, %Y") %></li>				
 				<li class="list-group-item"><%= @event.home_team_score %></li>
 				<li class="list-group-item"><%= @event.away_team_score %></li>
 				<li class="list-group-item"><%= @event.winner %></li>
@@ -20,4 +20,5 @@
 			</ul>
 		</div>
 	</div><!-- END CLASS panel panel-default -->
+	<%= link_to :back, events_path %>
 </div><!-- END CLASS container -->

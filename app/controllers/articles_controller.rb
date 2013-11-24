@@ -8,7 +8,6 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    get_article
     @article = Article.new(params[:article])
     if @article.save
       flash[:success] = 'Article created!'
@@ -39,7 +38,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     get_article
-    @article.delete
+    @article.destroy
     flash[:notice] = 'You sure?'
     redirect_to event_articles_path
   end

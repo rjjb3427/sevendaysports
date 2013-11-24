@@ -1,3 +1,6 @@
 <div>
-	<em><%= link_to 'Create the first University!', new_university_path %></em>
-</div><!-- END class alert-info -->
+	<em>
+		<%= link_to 'Add the first University!', new_university_path, 
+				options = { method: :get } %>
+	</em>
+</div>

@@ -30,7 +30,7 @@ class EventsController < ApplicationController
 
   def update
     get_event
-    if home_or_way_team_attributes_update
+    if @event.update_attributes(params[:event])
       flash[:success] = 'Event updated!'
     else
       render :edit, flash[:error] = 'There was an error updating your form'
@@ -49,9 +49,9 @@ class EventsController < ApplicationController
     @event = Event.find_by_id(params[:id])
   end
 
-  def home_or_away_attributes_update
-    @home_team.update_attributes(params[:event]) || 
-    @away_team.update_attributes(params[:event])
-    @home_team.user_id = current_user_id
-  end
+  # def home_or_away_attributes_update
+  #   @home_team.update_attributes(params[:event]) || 
+  #   @away_team.update_attributes(params[:event])
+  #   @home_team.user_id = current_user_id
+  # end
 end

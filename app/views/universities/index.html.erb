@@ -4,28 +4,52 @@
 		<%= render 'first_object' %>
 	<% else %>
 		<% @universities.each do |university| %>
-		<h1>Universities#index</h1>
-		<p>Find me in app/views/universities/index.html.erb</p>
 		<%= link_to :back %>
+		<%= button_to 'Create a University', new_university_path, 
+				options = { 
+										method: :get, 
+										class: 'btn btn-lg btn-primary pull-right', 
+										style: 'margin-bottom: 2%;'
+									} %>
 		<br />
 		<div class="table-responsive">
 			<table class="table table-bordered">
 				<thead>
 					<th>University Name</th>
 					<th>Url</th>
-					<th>Address</th>
-					<th>City</th>
-					<th>State</th>
-					<th>Zip</th>
+					<th>View</th>
+					<th>Edit</th>
+					<th>Delete</th>
 				</thead>
 				<tbody>
 					<tr>
 						<td><%= university.name %></td>
 						<td><%= university.url %></td>
-						<td><%= university.address %></td>
-						<td><%= university.city %></td>
-						<td><%= university.state %></td>
-						<td><%= university.zip %></td>
+						<td>
+							<%= button_to :view, university_path(university), 
+									options = { 
+															method: :get, 
+															class: 'btn btn-xs btn-info', 
+																type: 'button' 
+														} %>
+						</td>
+						<td>
+							<%= button_to :edit, edit_university_path(university), 
+									options = { 
+															method: :get, 
+															class: 'btn btn-xs btn-default', 
+															style: 'display: inline;', 
+															type: 'button' 
+														} %>
+						</td>
+						<td>
+							<%= button_to :delete, university_path(university), 
+									options = { 
+															method: :delete, 
+															class: 'btn btn-xs btn-danger', 
+															style: 'display: inline;' 
+														} %>
+						</td>
 					</tr>
 				</tbody>
 			</table>

@@ -1,5 +1,5 @@
 Sevendaysports::Application.routes.draw do
-  root to: 'static_pages#home'
+  root to: 'static_pages#home', controller: 'static_pages', action: 'home', as: 'root'
 
   match 'static_pages/contact', to: 'static_pages#contact', as: :contact
 
@@ -7,7 +7,6 @@ Sevendaysports::Application.routes.draw do
   resources :users
   resources :universities
   resources :events
-  # resources :calendars
   resources :articles
   resources :medias
 

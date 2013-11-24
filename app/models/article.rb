@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  attr_accessible :body, :event_id
+  attr_accessible :author, :body, :title,  :event_id
 
   validates_presence_of :body
 

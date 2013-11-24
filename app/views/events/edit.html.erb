@@ -1,5 +1,5 @@
 <h3>Edit Event</h3>
-<%= link_to :back %>
+<%= link_to :back, events_path %>
 <%= form_for [@team, @event], html: { class: 'form-horizontal'  } do |f| %>
 	<%= f.text_field :author, class: 'text_field', placeholder: 'Your name' %>
 	<%= f.text_field :name, class: 'text_field', placeholder: 'Event name' %>
@@ -9,7 +9,7 @@
 	<%= f.text_field :away_team_score, class: 'text_field', placeholder: 'Away team away_team_score' %>
 	<%= f.text_field :winner, class: 'text_field', placeholder: 'Winning team name' %>
 	<%= f.text_area :details, class: 'text_area', placeholder: 'Details about the event' %>
-	<%= f.datetime_field :event_on, class: 'datetime_field' %>
-	<%= f.button_to 'Update Event!', name: 'commit', value: 'Update Event!', class: 'btn btn-large btn-success' %>
-<%= end %>
-<%= link_to 'cancel', :back, class: 'btn btn-small btn-danger' %>
+	<%= f.datetime_select :event_on, class: 'datetime_field' %>
+	<%= button_to :update!, event_path(@event), options = { method: :get, class: 'btn btn-large btn-success' }%>
+<% end %>
+<%= button_to :cancel, :back, options = { method: :get, class: 'btn btn-small btn-danger' } %>

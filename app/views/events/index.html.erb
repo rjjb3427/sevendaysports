@@ -1,12 +1,17 @@
 <div class="container">
-	
 	<% if @events.blank? %>
 		<h3><small>No Events Exist</small></h3>
 		<%= render 'first_object' %>
 	<% else %>
 		<h1>Events#index</h1>
 		<p>Find me in app/views/events/index.html.erb</p>
-		<%= link_to :back %>
+		<%= link_to :back, root_path %>
+		<%= button_to 'Create an Event', new_event_path, 
+				options = { 
+										method: :get, 
+										class: 'btn btn-lg btn-primary pull-right', 
+										style: 'margin-bottom: 2%;' 
+									} %>
 		<br />
 		<h3>Upcoming Events</h3>
 		<div class="table-responsive">
@@ -15,24 +20,47 @@
 					<th>Event Name</th>
 					<th>Date</th>
 					<th>Details</th>
+					<th>View</th>
+					<th>Edit</th>
+					<th>Delete</th>
 				</thead>
 				<tbody>
 					<% @events.each do |event| %>
 					<tr>
 						<td><%= event.name %></td>
-						<td><%= event.event_on %></td>
-<!-- 						<td><%= %></td>
-						<td><%= %></td>
-						<td><%= %></td>
-						<td><%= %></td> -->
+						<td><%= event.event_on.strftime("%a %B %e, %Y") %></td>
+						<td><%= event.details %></td>
+						<td>
+							<%= button_to :view, event_path(event), 
+									options = { 
+															method: :get, 
+															class: 'btn btn-xs btn-info' 
+														} %>
+						</td>
+						<td>
+							<%= button_to :edit, edit_event_path(event), 
+									options = { 
+															method: :get, 
+															class: 'btn btn-xs btn-default' 
+														} %>
+						</td>
+						<td>
+							<%= button_to :delete, event_path(event), 
+									options = { 
+															method: :destroy, 
+															confirm: 'You sure?', 
+															class: 'btn btn-xs btn-danger' 
+														} %>
+						</td>
 					</tr>
 					<% end %>
 				</tbody>
 			</table>
-		</div><!-- END class table-responsive -->
-		<div class="container">
-			<h3>Past Events</h3>
-		</div>
+		</div><!-- END class table-responsive -->	
+	</div><!-- END class container -->
+	<div class="container">
+		<h3>Past Events</h3>
+	</div><!-- END class container -->
 	<% end %>
-</div>
+
 

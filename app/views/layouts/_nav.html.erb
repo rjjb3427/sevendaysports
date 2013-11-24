@@ -11,13 +11,13 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="<%= link_to :sevendaysports, root_path %> </a>
+		<%= link_to :sevendaysports, root_path, class: 'navbar-brand' %>
 	</div>
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav navbar-right">
 			<% if user_signed_in? %>
 			  <li>
-			  	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>     
+			  	<%= link_to('Logout', destroy_user_session_path, method: :delete) %>     
 			  </li>
 			<% else %>
 			  <li><%= link_to('Login', new_user_session_path) %></li>
@@ -36,9 +36,9 @@
 			<li>
 				<p class="navbar-text"><%= link_to 'Articles', articles_path %></p>
 			</li>
-			<li>
+			<!-- <li>
 				<p class="navbar-text"><%= link_to 'Media', medias_path %></p>
-			</li>
+			</li> -->
 <!-- 			<li>
 				<p class="navbar-text">
 					<%#= link_to 'Calendar', root_path %>
