@@ -13,5 +13,5 @@
 		</div>
 	<% end %>
 	<%= f.text_area :body, placeholder: 'Enter article here' %>
-	<%= button_to 'Create Article!', name: 'commit', value: 'Create Article!', class: 'btn btn-large btn-primary' %>
+	<%= f.submit 'Create Article!', options = { class: 'btn btn-large btn-primary' } %>
 <% end %>

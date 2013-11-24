@@ -38,9 +38,8 @@ class ArticlesController < ApplicationController
 
   def destroy
     get_article
-    @article.destroy
-    flash[:notice] = 'You sure?'
-    redirect_to event_articles_path
+    @article.delete
+    redirect_to articles_path
   end
 
   private

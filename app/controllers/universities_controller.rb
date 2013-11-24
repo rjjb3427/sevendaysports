@@ -11,7 +11,7 @@
     @university = University.new(params[:university])
     if @university.save
       flash[:success] = 'University added!'
-      redirect_to @university
+      redirect_to university_path(@university)
     else
       flash[:error] = 'There was an error processing your form'
       render :new
@@ -39,8 +39,8 @@
 
   def destroy
     get_university
-    @university.destroy
-    flash[:notice] = 'You sure?'
+    @university.delete
+    # flash[:notice] = 'You sure?'
     redirect_to universities_path
   end
 

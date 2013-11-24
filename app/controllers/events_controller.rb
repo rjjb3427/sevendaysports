@@ -14,7 +14,7 @@ class EventsController < ApplicationController
     @event = Event.new(params[:event])
     if @event.save
       flash[:success] = 'Event created!'
-      redirect_to event_path( @event)
+      redirect_to event_path(@event)
     else
       render :new #, flash[:error] = 'There was an error processing your form'
     end
@@ -40,8 +40,8 @@ class EventsController < ApplicationController
   def destroy
     get_event
     @event.delete
-    flash[:notice] = 'You sure?'
-    redirect_to team_events_path
+    # flash[:notice] = 'You sure?'
+    redirect_to events_path
   end
 
   private

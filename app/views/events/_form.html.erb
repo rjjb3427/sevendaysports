@@ -1,7 +1,7 @@
 <h3>Create an Event</h3>
 <%= link_to :back %>
 <br />
-<%= form_for [@team, @event], html: { class: 'form-horizontal' } do |f| %>
+<%= form_for @event, html: { class: 'form-horizontal' } do |f| %>
 	<% if @event.errors.any? %>
 		<div class="error_messages">
 			<h3>Please correct the following errors.</h3>
@@ -21,9 +21,9 @@
 	<%= f.text_field :winner, class: 'text_field', placeholder: 'Winning team name' %>
 	<%= f.text_area :details, class: 'text_area', placeholder: 'Details about the event' %>
 	<%= f.datetime_select :event_on, class: 'datetime_select' %>
-	<%= button_to 'Create Event!', options = {
-																							method: :post,
-																							class: 'btn btn-primary btn-lg'
-																					  } %>
+	<%= f.submit 'Create Event!', options = {
+																						method: :post,
+																						class: 'btn btn-primary btn-lg'
+																					} %>
 <% end %>
 <%= link_to :cancel, events_path, class: 'btn btn-small btn-danger' %>

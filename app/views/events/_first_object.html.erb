@@ -1,3 +1,6 @@
 <div>
-	<em><%= link_to 'Create the first Event!', new_event_path %></em>
+	<em>
+		<%= link_to 'Create the first Event!', new_event_path, 
+				options = { method: :get }  %>
+	</em>
 </div><!-- END class alert-info -->

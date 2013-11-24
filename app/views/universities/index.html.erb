@@ -3,7 +3,6 @@
 		<h3><small>No Universitites Exist</small></h3>
 		<%= render 'first_object' %>
 	<% else %>
-		<% @universities.each do |university| %>
 		<%= link_to :back %>
 		<%= button_to 'Create a University', new_university_path, 
 				options = { 
@@ -22,6 +21,7 @@
 					<th>Delete</th>
 				</thead>
 				<tbody>
+					<% @universities.each do |university| %>
 					<tr>
 						<td><%= university.name %></td>
 						<td><%= university.url %></td>
@@ -45,7 +45,8 @@
 						<td>
 							<%= button_to :delete, university_path(university), 
 									options = { 
-															method: :delete, 
+															method: :delete,
+															confirm: 'You sure?', 
 															class: 'btn btn-xs btn-danger', 
 															style: 'display: inline;' 
 														} %>

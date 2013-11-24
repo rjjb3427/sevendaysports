@@ -18,7 +18,7 @@
 	<%= f.text_field :city, class: 'text-field', placeholder: 'University City' %>
 	<%= f.text_field :state, class: 'text-field', placeholder: 'University State' %>
 	<%= f.text_field :zip, class: 'text-field', placeholder: 'University Zip' %>
-	<%= button_to 'Create University!', university_path(@university), options = { 
+	<%= f.submit 'Create University!', options = { 
 																									method: :post, 
 																									class: 'btn btn-lg btn-primary' 
 																								} %>

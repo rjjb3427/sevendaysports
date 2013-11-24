@@ -4,7 +4,6 @@ Sevendaysports::Application.routes.draw do
   match 'static_pages/contact', to: 'static_pages#contact', as: :contact
 
   devise_for :users
-  resources :users
   resources :universities
   resources :events
   resources :articles
