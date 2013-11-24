@@ -1,7 +1,17 @@
-<h3>Upload some Media</h3>
+<h3>Add some Media</h3>
 <%= link_to :back %>
 <br />
-<%= form_for [@event, @article], html: { class: 'form-horizontal' } do |f| %>
+<%= form_for [@mediable, @media], html: { class: 'form-horizontal' } do |f| %>
+	<% if @media.errors.any? %>
+		<div class="error_messages">
+			<h3>Please correct the following errors.</h3>
+			<ul>
+				<% @media.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
 	<%= f.text_area :body, placeholder: 'Enter article here' %>
 	<%= button_to 'Create Article!', name: 'commit', value: 'Create Article!', class: 'btn btn-large btn-primary' %>
 <% end %>

@@ -14,10 +14,12 @@
 				<th>body</th>
 			</thead>
 			<tbody>
+				<% @articles.each do |article| %>
 				<tr>
-					<td>@article.title</td>
-					<td>@article.body</td>
+					<td><%#= article.title %></td>
+					<td><%= article.body %></td>
 				</tr>
+				<% end %>
 			</tbody>
 		</table>
 	</div><!-- END class table-responsive -->

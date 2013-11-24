@@ -1,8 +1,11 @@
 class MediasController < ApplicationController  
+  before_filter :load_mediable
+
   def index
-    @event_mediable = Event.find_by_id(params[:event_id]) 
-    @team_mediable = Team.find_by_id(params[:team_id])
-    @user_mediable = User.find_by_id(params[:user_id])
+    @medias = @mediable.medias
+    # @event_mediable = Event.find(params[:event_id]) 
+    # @team_mediable = Team.find_by_id(params[:team_id])
+    # @user_mediable = User.find_by_id(params[:user_id])
   end
 
   def new
@@ -13,7 +16,7 @@ class MediasController < ApplicationController
     @media = @mediable.medias.new(params[:media])
     if @media.save
       flash[:success] = 'Media created!'
-      redirect_to :show, id: @media
+      redirect_to [@mediable, :medias]
     else
       flash[:error] = 'There was an error processing your form'
       render :new
@@ -21,10 +24,9 @@ class MediasController < ApplicationController
   end
 
   def show
-    @media = Media.find_by_id(params[:id])
-    @event_media = @event.medias.find_by_id(params[:id])
-    @team_media = @team.medias.find_by_id(params[:id])
-    @user_media = @user.medias.find_by_id(params[:id])
+    # @event_media = @event.medias.find_by_id(params[:id])
+    # @team_media = @team.medias.find_by_id(params[:id])
+    # @user_media = @user.medias.find_by_id(params[:id])
   end
 
   def update
@@ -44,4 +46,15 @@ class MediasController < ApplicationController
     flash[:notice] = 'You sure?'
     redirect_to medias_path
   end
+
+  private
+  def load_mediable
+    klass = [Event, Team, User].detect { |m| params["#{m.name.underscore}_id"] }
+    @mediable = klass.find(params["#{klass.name.underscore}_id"])
+  end
+
+  # def load_mediable
+  #   resource, id = request.path.split('/')[1, 2]
+  #   @mediable = resource.singularize.classify.constantize.find(id)
+  # end
 end
