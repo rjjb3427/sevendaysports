@@ -6,3 +6,16 @@
 <%= @media.url %>
 <%= @media.type %>
 <%= @media.author %>
+	<%= div class="row-fluid">
+		<%= button_to :edit, edit_medias_path(@media),
+				options = {
+										method: :get,
+										class: 'btn btn-sm btn-default'
+									} %>
+		<%= button_to :delete, media_path(@media),
+				options = {
+										method: :delete,
+										confirm: 'You sure?',
+										class: 'btn btn-sm btn-danger'
+									} %>
+	</div>

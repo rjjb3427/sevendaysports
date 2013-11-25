@@ -1,10 +1,26 @@
 <h3>Create a Team</h3>
-<%= link_to :back %>
+<%= link_to :back, university_path(@university) %>
 <br />
 <%= form_for [@university, @team], html: { class: 'form-horizontal' } do |f| %>
-	<%= f.text_field :name, class: 'text_field', placeholder: 'Team name' %>
-	<%= f.select_tag :sport_type, options_for_select(['Baseball/Softball', 1], 
-	['Basketball', 2], ['Golf, 3'], ['Soccer', 4], ['Track & Field', 5]), 
-	class: 'select_tag' %>
+	<div>
+		<%= f.text_field :name, class: 'text_field', placeholder: "Add this team's name" %>
+	</div>
+	<br />
+	<div>
+		<span><%= "Sport Type:" %></span><br />
+		<%= f.select :sport_type, [
+																['Baseball/Softball', 'Baseball/Softball'],
+																['Basketball', 'Basketball'], 
+																['Golf', 'Golf'],
+																['Soccer', 'Soccer'],
+																['Track & Field', 'Track & Field']
+															] %>
+	</div>
+	<br />
 	<%= f.submit 'Create Team!', options = { class: 'btn btn-large btn-primary' } %>
+	<%= button_to :cancel, university_path(@university), 
+			options = {
+									confirm: 'You sure?',
+									class: 'btn btn-sm btn-danger'
+								} %>
 <% end %>

@@ -1,24 +1,35 @@
 <div class="container">
-	<h1>Events#show</h1>
-	<p>Find me in app/views/events/show.html.erb</p>
 	<div><%= link_to :back, events_path %></div>
 	<br />
-	<div class="panel panel-default">
+	<div class="panel panel-default" style="width: 50%;">
 		<div class="panel-heading">
-			<h3 class="panel-title"><%= @event.name %></h3>
+			<h3 class="panel-title"><%= @event.title %></h3>
 		</div>
 		<div class="panel-body">
 			<ul class="list-group">
-				<li class="list-group-item"><%= @event.title %></li>
-				<li class="list-group-item"><%= @event.kind %></li>
-				<li class="list-group-item"><%= @event.event_on.strftime("%A %B %d, %Y") %></li>				
+				<li class="list-group-item"><b>Name</b>: <%= @event.name %></li>
+				<li class="list-group-item"><b>Sport</b>: <%= @event.kind %></li>
+				<li class="list-group-item"><b>Date</b>: <%= @event.event_on.strftime("%A %B %d, %Y") %></li>				
 				<li class="list-group-item"><%= @event.home_team_score %></li>
 				<li class="list-group-item"><%= @event.away_team_score %></li>
 				<li class="list-group-item"><%= @event.winner %></li>
-				<li class="list-group-item"><%= @event.details %></li>
-				<li class="list-group-item"><%= @event.author %></li>
+				<li class="list-group-item"><b>Details</b>: <%= @event.details %></li>
+				<li class="list-group-item"><b>Author</b>: <%= @event.author %></li>
 			</ul>
 		</div>
 	</div><!-- END CLASS panel panel-default -->
+	<%= div class="row-fluid">
+		<%= button_to :edit, edit_events_path(@event),
+				options = {
+										method: :get,
+										class: 'btn btn-sm btn-default'
+									} %>
+		<%= button_to :delete, event_path(@event),
+				options = {
+										method: :delete,
+										confirm: 'You sure?',
+										class: 'btn btn-sm btn-danger'
+									} %>
+	</div>
 	<%= link_to :back, events_path %>
 </div><!-- END CLASS container -->

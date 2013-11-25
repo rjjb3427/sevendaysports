@@ -1,6 +1,6 @@
 <div class="container">
-	<% if @events.blank? %>
-		<h3><small>No Events Exist</small></h3>
+	<% if @upcoming_events.blank? %>
+		<h3><small>No Upcoming Events Exist</small></h3>
 		<%= render 'first_object' %>
 	<% else %>
 		<%= link_to :back, root_path %>
@@ -29,21 +29,21 @@
 						<td><%= upcoming_event.event_on.strftime("%a %B %e, %Y") %></td>
 						<td><%= upcoming_event.details %></td>
 						<td>
-							<%= button_to :view, event_path(event), 
+							<%= button_to :view, event_path(upcoming_event), 
 									options = { 
 															method: :get, 
 															class: 'btn btn-xs btn-info' 
 														} %>
 						</td>
 						<td>
-							<%= button_to :edit, edit_event_path(event), 
+							<%= button_to :edit, edit_event_path(upcoming_event), 
 									options = { 
 															method: :get, 
 															class: 'btn btn-xs btn-default' 
 														} %>
 						</td>
 						<td>
-							<%= button_to :delete, event_path(event), 
+							<%= button_to :delete, event_path(upcoming_event), 
 									options = { 
 															method: :delete, 
 															confirm: 'You sure?', 
@@ -54,9 +54,21 @@
 					<% end %>
 				</tbody>
 			</table>
-		</div><!-- END class table-responsive -->	
+		</div><!-- END class table-responsive -->
+	<% end %>	
 	</div><!-- END class container -->
 	<div class="container">
+		<div class="row-fluid">
+			<div class="span12">
+				<hr />
+			</div>
+		</div>
+	</div><!-- /spacer -->
+	<div class="container">
+		<% if @past_events.blank? %>
+			<h3><small>No Past Events Exist</small></h3>
+			<%#= render 'first_object' %>
+		<% else %>
 		<h3>Past Events</h3>
 		<div class="table-responsive">
 			<table class="table table-bordered">
@@ -72,24 +84,24 @@
 					<% @past_events.each do |past_event| %>
 					<tr>
 						<td><%= past_event.name %></td>
-						<td><%= past_event.event_on..strftime("%a %B %e, %Y") %></td>
-						<td><%= past+event.details %></td>
+						<td><%= past_event.event_on.strftime("%a %B %e, %Y") %></td>
+						<td><%= past_event.details %></td>
 						<td>
-							<%= button_to :view, event_path(event), 
+							<%= button_to :view, event_path(past_event), 
 									options = { 
 															method: :get, 
 															class: 'btn btn-xs btn-info' 
 														} %>
 						</td>
 						<td>
-							<%= button_to :edit, edit_event_path(event), 
+							<%= button_to :edit, edit_event_path(past_event), 
 									options = { 
 															method: :get, 
 															class: 'btn btn-xs btn-default' 
 														} %>
 						</td>
 						<td>
-							<%= button_to :delete, event_path(event), 
+							<%= button_to :delete, event_path(past_event), 
 									options = { 
 															method: :delete, 
 															confirm: 'You sure?', 

@@ -1,8 +1,9 @@
 class TeamsController < ApplicationController
-  before_filter :get_university
+  before_filter :get_university, except: :index
 
   def index
-    @teams = @university.teams
+    @teams = Team.all
+    # @teams = @university.teams
   end
 
   def new
@@ -13,7 +14,10 @@ class TeamsController < ApplicationController
     @team = @university.teams.build(params[:team])
     if @team.save
       flash[:success] = 'Team created!'
-      redirect_to action: :show, id: :team_id 
+      redirect_to  university_team_path([@univeristy, @team]),  
+                   options = {
+                              method: :get
+                              } 
     else
       flash[:error] = 'There was an error processing your form'
       render :new
@@ -21,6 +25,7 @@ class TeamsController < ApplicationController
   end
 
   def show
+    @team = @university.teams.find(params[:id])
   end
 
   def edit
@@ -37,21 +42,17 @@ class TeamsController < ApplicationController
   end
 
   def destroy
-    @team.delete
+    @team = Team.find(params[:id])
+    @team.destroy
     flash[:notice] = 'You sure?'
     redirect_to teams_path
   end
 
   private
   def get_university
-    if has_university?
-      @team = @university.teams.find(params[:id])
-    else
-      University.find(params[:id])
-    end
+    @university = University.where("params[:id] = ?", :id)
   end
-
-  def has_university?
-    @university.teams.present?
+  def get_team
+    @team = @university.teams.where("team_id = ?", :id)
   end
 end

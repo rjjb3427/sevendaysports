@@ -14,6 +14,10 @@ Sevendaysports::Application.routes.draw do
     resources :medias
   end
 
+  resources :universities do 
+    resources :teams 
+  end
+
   resources :teams do
     resources :events
   end

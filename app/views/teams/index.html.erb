@@ -3,8 +3,7 @@
 		<h3><small>No Teams Exist</small></h3>
 		<%= render 'first_object' %>
 	<% else %>
-		<% @teams.each do |team| %>
-		<%= link_to :back, root_path %>
+		<%= link_to :back, universities_path %>
 		<div>
 			<%= button_to 'Create a Team', new_team_path, 
 					options = { 
@@ -24,6 +23,7 @@
 					<th>Delete</th>
 				</thead>
 				<tbody>
+					<% @teams.each do |team| %>
 					<tr>
 						<td><%= team.name %></td>
 						<td><%= team.sport_type %></td>
@@ -54,9 +54,9 @@
 														} %>
 						</td>
 					</tr>
+					<% end %>
 				</tbody>
 			</table>
 		</div><!-- END class table-responsive -->
-		<% end %>
 	<% end %>
 </div><!-- END class container -->
