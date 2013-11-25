@@ -4,12 +4,12 @@ require 'spec_helper'
 # the PagesHelper. For example:
 #
 # describe PagesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
+#   describe 'string concat' do
+#     it 'concats two strings with spaces' do
+#       expect(helper.concat_strings('this','that')).to eq('this that')
 #     end
 #   end
 # end
 describe PagesHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  pending "add some examples to (or delete) #{__FILE__"
 end

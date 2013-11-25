@@ -23,11 +23,11 @@
 					<th>Delete</th>
 				</thead>
 				<tbody>
-					<% @events.each do |event| %>
+					<% @upcoming_events.each do |upcoming_event| %>
 					<tr>
-						<td><%= event.name %></td>
-						<td><%= event.event_on.strftime("%a %B %e, %Y") %></td>
-						<td><%= event.details %></td>
+						<td><%= upcoming_event.name %></td>
+						<td><%= upcoming_event.event_on.strftime("%a %B %e, %Y") %></td>
+						<td><%= upcoming_event.details %></td>
 						<td>
 							<%= button_to :view, event_path(event), 
 									options = { 
@@ -58,7 +58,48 @@
 	</div><!-- END class container -->
 	<div class="container">
 		<h3>Past Events</h3>
+		<div class="table-responsive">
+			<table class="table table-bordered">
+				<thead>
+					<th>Event Name</th>
+					<th>Date</th>
+					<th>Details</th>
+					<th>View</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</thead>
+				<tbody>
+					<% @past_events.each do |past_event| %>
+					<tr>
+						<td><%= past_event.name %></td>
+						<td><%= past_event.event_on..strftime("%a %B %e, %Y") %></td>
+						<td><%= past+event.details %></td>
+						<td>
+							<%= button_to :view, event_path(event), 
+									options = { 
+															method: :get, 
+															class: 'btn btn-xs btn-info' 
+														} %>
+						</td>
+						<td>
+							<%= button_to :edit, edit_event_path(event), 
+									options = { 
+															method: :get, 
+															class: 'btn btn-xs btn-default' 
+														} %>
+						</td>
+						<td>
+							<%= button_to :delete, event_path(event), 
+									options = { 
+															method: :delete, 
+															confirm: 'You sure?', 
+															class: 'btn btn-xs btn-danger' 
+														} %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div><!-- END class table-responsive -->
 	</div><!-- END class container -->
 	<% end %>
-
-
