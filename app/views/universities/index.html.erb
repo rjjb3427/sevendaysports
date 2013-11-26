@@ -1,7 +1,7 @@
 <div class="container">	
 	<% if @universities.blank? %>
 		<h3><small>No Universitites Exist</small></h3>
-		<%= render 'teams/first_object' %>
+		<%= render 'universities/first_object' %>
 	<% else %>
 		<%= link_to :back %>
 		<%= button_to 'Create a University', new_university_path, 
@@ -20,10 +20,10 @@
 					<th>Edit</th>
 					<th>Delete</th>
 				</thead>
+				<% @universities.each do |university| %>
 				<tbody>
-					<% @universities.each do |university| %>
 					<tr>
-						<td><%= university.name %></td>
+						<td><%= university.id %></td>
 						<td><%= university.url %></td>
 						<td>
 							<%= button_to :view, university_path(university), 
@@ -53,8 +53,8 @@
 						</td>
 					</tr>
 				</tbody>
+				<% end %>
 			</table>
 		</div><!-- END class table-responsive -->
-		<% end %>
-	<% end %>
+	<% end %>	
 </div><!-- END class container -->

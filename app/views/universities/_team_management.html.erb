@@ -1,10 +1,10 @@
 <div>
 	<h3>Team Management</h3>
-	<% if @teams.nil? %>
+	<% if @teams.blank? %>
 		<div>
 			<h3><small>No Team Exists</small></h3>
 			<em>
-				<%= link_to 'Create the first team!', new_university_team_path(university) %>
+				<%= link_to 'Create the first team!', new_university_team_path(@university) %>
 			</em>
 		</div>
 		<% else %>

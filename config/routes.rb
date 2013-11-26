@@ -8,6 +8,7 @@ Sevendaysports::Application.routes.draw do
   resources :events
   resources :articles
   resources :medias
+  resources :teams
 
   resources :events do
     resources :articles
