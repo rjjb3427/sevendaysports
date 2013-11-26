@@ -1,20 +1,13 @@
-<div class="container">	
+<div>	
 	<% if @teams.blank? %>
 		<h3><small>No Teams Exist</small></h3>
-		<%= render 'first_object' %>
+		<%= render 'teams/first_object' %>
 	<% else %>
 		<%= link_to :back, universities_path %>
-		<div>
-			<%= button_to 'Create a Team', new_team_path, 
-					options = { 
-											method: :get, 
-											class: 'btn btn-lg btn-primary pull-right', 
-											style: 'margin-bottom: 2%;' 
-										} %>
-		</div>
+
 		<br />
 		<div class="table-responsive">
-			<table class="table table-bordered">
+			<table class="table table-bordered" style="width: 50%;">
 				<thead>
 					<th>Name</th>
 					<th>Sport Type</th>
@@ -58,5 +51,13 @@
 				</tbody>
 			</table>
 		</div><!-- END class table-responsive -->
+		<div class="pull-left">
+			<%= button_to 'Create a Team', new_team_path, 
+					options = { 
+											method: :get, 
+											class: 'btn btn-lg btn-primary pull-right', 
+											style: 'margin-bottom: 2%;' 
+										} %>
+		</div>
 	<% end %>
 </div><!-- END class container -->

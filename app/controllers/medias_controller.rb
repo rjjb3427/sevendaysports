@@ -15,10 +15,10 @@ class MediasController < ApplicationController
   def create
     @media = @mediable.medias.new(params[:media])
     if @media.save
-      flash[:success] = 'Media created!'
+      flash.now[:success] = 'Media created!'
       redirect_to [@mediable, :medias]
     else
-      flash[:error] = 'There was an error processing your form'
+      flash.now[:error] = 'There was an error processing your form'
       render :new
     end
   end
@@ -31,10 +31,10 @@ class MediasController < ApplicationController
 
   def update
     if @media.update_attributes(params[:media])
-      flash[:success] = 'Media updated!'
+      flash.now[:success] = 'Media updated!'
       redirect_to [@event, @media], id: params[:id]
     else
-      render :edit, flash[:error] = 'There was an error updating your form'
+      render :edit, flash.now[:error] = 'There was an error updating your form'
     end
   end
 
@@ -43,7 +43,7 @@ class MediasController < ApplicationController
 
   def destroy
     @media.delete
-    flash[:notice] = 'You sure?'
+    flash.now[:notice] = 'You sure?'
     redirect_to medias_path
   end
 

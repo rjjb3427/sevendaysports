@@ -16,5 +16,9 @@
 	<%= f.text_field :title, placeholder: 'Enter an article title' %>
 	<%= f.text_field :author, placeholder: 'Tell us your name' %>
 	<%= f.submit 'Create Article!', class: 'btn btn-large btn-primary' %>
-	<%= button_to :cancel, articles_path, options = { method: :get, class: 'btn btn-sm btn-danger' } %>
+	<%= link_to :cancel, articles_path, 
+			options = {
+									method: :get,
+									class: 'btn btn-sm btn-danger'
+								} %>
 <% end %>

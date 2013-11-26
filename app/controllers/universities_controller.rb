@@ -1,6 +1,5 @@
  class UniversitiesController < ApplicationController
   def index
-    # @university = University.where("university_id = ?", :university_id)
     @team = Team.where('id < 100').where('name ASC')
     @universities = University.all
   end
@@ -12,10 +11,10 @@
   def create
     @university = University.new(params[:university])
     if @university.save
-      flash[:success] = 'University added!'
+      flash.now[:success] = 'University added!'
       redirect_to university_team_path([@university, @team])
     else
-      flash[:error] = 'There was an error processing your form'
+      flash.now[:error] = 'There was an error processing your form'
       render :new
     end
   end
@@ -32,10 +31,10 @@
   def update
     get_university
     if @university.update_attributes(params[:university])
-      flash[:success] = 'University updated!'
-      redirect_to university_path
+      
+      redirect_to university_path, flash[:success] = 'University updated!'
     else
-      flash[:error] = 'There was an error updating your form'
+      flash.now[:error] = 'There was an error updating your form'
       render :edit
     end
   end
@@ -43,7 +42,7 @@
   def destroy
     get_university
     @university.delete
-    # flash[:notice] = 'You sure?'
+    flash.now[:notice] = 'You sure?'
     redirect_to universities_path
   end
 
@@ -51,9 +50,4 @@
   def get_university
     @university = University.find(params[:id])
   end
-
-  # def get_team
-  #   get_university
-  #   @team = @university.teams.find(params[:id])
-  # end
 end

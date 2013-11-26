@@ -10,10 +10,10 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(params[:article])
     if @article.save
-      flash[:success] = 'Article created!'
+      flash.now[:success] = 'Article created!'
       redirect_to @article
     else
-      flash[:error] = 'There was an error processing your form'
+      flash.now[:error] = 'There was an error processing your form'
       render :new
     end
   end
@@ -29,10 +29,10 @@ class ArticlesController < ApplicationController
   def update
     get_article
     if @article.update_attributes(params[:article])
-      flash[:success] = 'Article updated!'
+      flash.now[:success] = 'Article updated!'
       redirect_to [@event, @article], id: params[:id]
     else
-      render :edit, flash[:error] = 'There was an error updating your form'
+      render :edit, flash.now[:error] = 'There was an error updating your form'
     end
   end
 

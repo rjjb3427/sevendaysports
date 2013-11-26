@@ -7,6 +7,7 @@ gem 'devise'
 gem 'composite_primary_keys'
 gem 'bootstrap-sass', '~> 3.0.2.0'
 gem 'bootstrap-datetimepicker-rails'
+gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

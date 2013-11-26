@@ -1,7 +1,7 @@
 <div class="container">	
 	<% if @universities.blank? %>
 		<h3><small>No Universitites Exist</small></h3>
-		<%= render 'first_object' %>
+		<%= render 'teams/first_object' %>
 	<% else %>
 		<%= link_to :back %>
 		<%= button_to 'Create a University', new_university_path, 
