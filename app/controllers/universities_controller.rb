@@ -12,16 +12,13 @@
   def create
     @university = University.new(params[:university])
     if @university.save
-      # flash.now[:success] = 'University added!'
       redirect_to action: :show, id: @university, success: 'University added!'
     else
-      # flash.now[:error] = 'There was an error processing your form'
       render :new, error: 'There was an error processing your University'
     end
   end
 
   def show
-    get_teams
   end
 
   def edit
@@ -31,8 +28,7 @@
     if @university.update_attributes(params[:university])
       redirect_to university_path, flash[:success] = 'University updated!'
     else
-      flash.now[:error] = 'There was an error updating your form'
-      render :edit
+      render :edit, error: 'There was an error updating your University'
     end
   end
 
@@ -45,15 +41,5 @@
   private
   def get_university
     @university = University.find(params[:id])
-  end
-
-  def get_teams
-    get_university
-    @teams = @university.teams
-  end
-
-  def get_team
-    get_university
-    @team = @university.teams.find(params[:university_id])
   end
 end

@@ -16,13 +16,13 @@
 					<th>Delete</th>
 				</thead>
 				<tbody>
-					<% @teams.each do |team| %>
+					<% @teams.each_with_index do |team, university| %>
 					<tr>
-						<td><%= team.name %></td>
+						<td><%= team.id %></td>
 						<td><%= team.sport_type %></td>
 						<td>
 							<%= button_to :view, 
-									university_team_path,
+									university_team_path(university, team),
 									options = { 
 															method: :get, 
 															class: 'btn btn-xs btn-info', 
@@ -30,7 +30,11 @@
 														} %>
 						</td>
 						<td>
-							<%= button_to :edit, edit_team_path(team), 
+							<%= button_to :edit, 
+									edit_university_team_path(
+																						university_id: university,
+																						id: team
+																						), 
 									options = { 
 															method: :get, 
 															class: 'btn btn-xs btn-default', 
@@ -39,7 +43,11 @@
 														} %>
 						</td>
 						<td>
-							<%= button_to :delete, team_path(team), 
+							<%= button_to :delete, 
+									university_team_path(
+																				university_id: university,
+																				id: team
+																			), 
 									options = { 
 															confirm: 'You sure?', 
 															method: :delete, 

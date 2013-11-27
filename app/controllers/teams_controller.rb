@@ -1,8 +1,9 @@
 class TeamsController < ApplicationController
-  before_filter :get_university
+  # before_filter :get_university
   # before_filter :get_team
 
   def index
+    @university = University.find(params[:university_id])
     @teams = @university.teams
   end
 
@@ -13,8 +14,9 @@ class TeamsController < ApplicationController
   def create
     @team = @university.teams.build(params[:team])
     if @team.save
+      redirect_to [@university, @team], success: 'Team created!'
       # flash.now[:success] = 'Team created!'
-      redirect_to university_teams_path(@university), success: 'Team created!'
+      # redirect_to university_teams_path(@university), success: 'Team created!'
       # redirect_to  university_team_path([@univeristy, @team]),  
       #              options = {
       #                           method: :get
@@ -26,14 +28,17 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = @university.teams.find(params[:university_id])
+    @university = University.find(params[:university_id])
+    @team = @university.teams.find(params[:id])
   end
 
   def edit
+    @university = University.find(params[:id])
     @team = @university.teams.find(params[:id])
   end
 
   def update
+    @university = University.find(params[:id])
     @team = @university.teams.find(params[:id])
     if @team.update_attributes(params[:team])
       flash.now[:success] = 'Team updated!'
@@ -46,6 +51,7 @@ class TeamsController < ApplicationController
   end
 
   def destroy
+    @university = University.find(params[:id])
     @team = @university.teams.find(params[:id])
     @team.destroy
     redirect_to(teams_path, notice: 'You sure?')
