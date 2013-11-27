@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :get_user
+  before_filter :get_user, except: [:index, :new, :create]
 
   def index
     @users = User.all
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(params[:admin])
       flash.now[:success] = 'User updated!'
-      redirect_to :show
+      redirect_to @user
     else
       flash.now[:error] = 'There was an error updating your form'
       render :edit
@@ -44,6 +44,6 @@ class UsersController < ApplicationController
 
   private
   def get_user
-    @user.find(params[:id])
+    @user = User.find(params[:id])
   end
 end

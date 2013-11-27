@@ -4,14 +4,9 @@ describe UsersController do
   before(:each) { @user = FactoryGirl.create :user }
 
   describe 'GET #index' do
-    it 'returns http success' do
-      get :index
-      expect(response).to be_success
-    end
-
     it 'assigns @users' do
       get :index
-      expect(assigns(:users)).to eq [@user]
+      expect(assigns(:users)).to eq [@user] and be_success
     end
 
     it 'renders the index template' do
@@ -21,14 +16,11 @@ describe UsersController do
   end
 
   describe 'GET #new' do
-    it 'returns http success' do
+    it 'returns http success and instantiates a @user' do
+      user = FactoryGirl.create :user
       get :new
       expect(response).to be_success
-    end
-
-    it 'assigns @user' do
-      get :new
-      expect(assigns(:user)).to be_a User
+      expect(assigns(:user)).to be_a_kind_of User 
     end
 
     it 'renders the new template' do
@@ -39,13 +31,7 @@ describe UsersController do
 
   describe 'POST #create' do
     context 'given valid credentials' do
-      it 'returns http success' do
-        post :create, user: FactoryGirl.attributes_for(:user)
-        user = User.order(:created_at).last
-        expect(response).to redirect_to user
-      end
-
-      it 'should redirect to the show path' do
+      it 'redirects to the #show template' do
         post :create, user: FactoryGirl.attributes_for(:user)
         user = User.order(:created_at).last
         expect(response).to redirect_to user
@@ -67,9 +53,10 @@ describe UsersController do
   end
 
   describe 'GET #show' do
-    it 'returns http success' do
+    it 'returns http success and shows @user data' do
       get :show, id: @user
       expect(response).to be_success
+      expect(@user.first_name).to eql "John"
     end
 
     it 'renders the show template' do
@@ -90,15 +77,10 @@ describe UsersController do
     end
   end
 
-  describe 'GET #update' do
-    it 'returns http success' do
+  describe 'PUT #update' do
+    it 'successfully updates @user resource' do
       get :update, id: @user
-      expect(response).to be_success
-    end
-
-    it 'renders the edit template' do
-      get :update, id: @user
-      expect(response).to render_template(:edit)
+      expect(response).to redirect_to @user
     end
   end
 
