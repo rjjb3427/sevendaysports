@@ -34,7 +34,7 @@ describe UsersController do
       it 'redirects to the #show template' do
         post :create, user: FactoryGirl.attributes_for(:user)
         user = User.order(:created_at).last
-        expect(response).to redirect_to user
+        expect(response).to be_redirect
       end
     end
 

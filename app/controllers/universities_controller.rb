@@ -26,7 +26,7 @@
 
   def update
     if @university.update_attributes(params[:university])
-      redirect_to university_path, flash[:success] = 'University updated!'
+      redirect_to university_path, success: 'University updated!'
     else
       render :edit, error: 'There was an error updating your University'
     end
