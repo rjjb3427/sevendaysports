@@ -7,12 +7,12 @@ describe TeamsController do
       expect(response).to be_success
     end
 
-    # it 'assigns every team object into an @teams array' do
-    #   # team1 = FactoryGirl.create(:team) 
-    #   # team2 = FactoryGirl.create(:team) 
-    #   get :index
-    #   expect(assigns(:teams)).to eq [@team]
-    # end
+    it 'assigns every team object into an @teams array' do
+      # team1 = FactoryGirl.create(:team) 
+      # team2 = FactoryGirl.create(:team) 
+      get :index
+      expect(assigns(:teams)).to eq [@team]
+    end
 
     it 'renders the index template' do
       get :index

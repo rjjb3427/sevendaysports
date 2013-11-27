@@ -22,7 +22,7 @@
 						<td><%= team.sport_type %></td>
 						<td>
 							<%= button_to :view, 
-									university_team_path(university, team),
+									university_team_path(university_id: @university, id: team),
 									options = { 
 															method: :get, 
 															class: 'btn btn-xs btn-info', 
@@ -32,7 +32,7 @@
 						<td>
 							<%= button_to :edit, 
 									edit_university_team_path(
-																						university_id: university,
+																						university_id: @university,
 																						id: team
 																						), 
 									options = { 
@@ -45,7 +45,7 @@
 						<td>
 							<%= button_to :delete, 
 									university_team_path(
-																				university_id: university,
+																				university_id: @university,
 																				id: team
 																			), 
 									options = { 
