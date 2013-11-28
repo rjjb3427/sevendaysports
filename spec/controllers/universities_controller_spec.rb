@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe UniversitiesController do
-  before(:each) { @university = FactoryGirl.create :university }
+  let(:university) { FactoryGirl.create(:university) }
 
   describe 'GET #index' do
     it 'returns http success' do
@@ -9,11 +9,11 @@ describe UniversitiesController do
       expect(response).to be_success
     end
 
-    it 'returns http success and instantiates @universities' do
-      get :index
+    it 'returns http success and stores a list of objects in universities' do
+      get :index, id: university.id
       expect(response).to be_success
-      expect(assigns(:universities)).to eq [@university]
-      expect(@university).to be_a_kind_of University 
+      expect(assigns(:universities)).to eq [university]
+      expect(university).to be_a_kind_of University 
     end
 
     it 'renders the index template' do
@@ -39,7 +39,6 @@ describe UniversitiesController do
     context 'given valid credentials' do
       it 'returns http success and redirects to the #show template' do
         post :create, university: FactoryGirl.attributes_for(:university)
-        university = University.order(:created_at).last
         expect(response).to be_redirect
       end
     end
@@ -60,7 +59,7 @@ describe UniversitiesController do
 
   describe 'GET #show' do
     it 'returns http success and renders the #show template' do
-      get :show, id: @university
+      get :show, id: university.id
       expect(response).to be_success
       expect(response).to render_template(:show)
     end
@@ -68,7 +67,7 @@ describe UniversitiesController do
 
   describe 'GET #edit' do
     it 'returns http success and renders the edit template' do
-      get :edit, id: @university
+      get :edit, id: university.id
       expect(response).to be_success
       expect(response).to render_template(:edit)
     end
@@ -76,16 +75,16 @@ describe UniversitiesController do
 
   describe 'PUT #update' do
     it 'returns http success and redirects to the #show template' do
-      get :update, id: @university
+      get :update, id: university.id
       expect(response.status).to eq 302 
-      expect(response).to redirect_to @university
+      expect(response).to redirect_to :university
     end
   end
 
   describe 'DELETE #destroy' do
     it 'should destroy object from the database and redirect to universities_path' do
-      delete :destroy, id: @university
-      expect(@university.delete).to be_true
+      delete :destroy, id: university.id
+      expect(university.delete).to be_true
       expect(response).to redirect_to universities_path
     end
   end
