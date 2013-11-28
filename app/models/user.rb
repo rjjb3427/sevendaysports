@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: {with: VALID_EMAIL_REGEX}
-  # validates_presence_of :first_name, :last_name, :password, :password_confirmation, 
-  #                       :school_name, :dob
+  validates_presence_of :first_name, :last_name, :password, :password_confirmation, 
+                        :school_name, :dob
 
   def full_name
     "#{first_name} #{last_name}"

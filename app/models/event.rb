@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   attr_accessible :author, :home_team_score, :away_team_score, :details, 
                   :event_on, :name, :title, :kind, :winner
 
-  validates_presence_of :author, :name, :title, :kind
+  validates_presence_of :author, :name, :title, :kind, :event_on
 
   has_many :articles, dependent: :destroy
   has_many :medias, as: :mediable

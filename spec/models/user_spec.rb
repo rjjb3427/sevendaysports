@@ -1,84 +1,61 @@
 require 'spec_helper'
 
-describe User do
-	it { should validate_presence_of(:email) }
+describe 'User' do
+	let(:user) { FactoryGirl.create(:user) }
 
-	it { should allow_value('a@b.com').for(:email) }
-
-	it 'requires presence of #first_name' do
-		user = FactoryGirl.build :user, first_name: nil
-		expect(user).not_to be_valid
-		user.first_name = "bob"
-		expect(user).to be_present
+	it 'requires the presence of #email' do
+		expect(user.email).to eq 'test@example.com'
 	end
 
-	it 'requires presence of #last_name' do 
-		user = FactoryGirl.build :user, last_name: nil
-		expect(user).not_to be_valid
+	it 'requires presence of #first_name & #last_name' do
+		expect(user).to be_valid
+		user.first_name = 'bob'
 		user.last_name = 'hope'
-		expect(user.last_name).to be_present
+		expect(user.first_name).to eq 'bob'
+		expect(user.last_name).to eq 'hope'
 	end
 
 	it 'has a #full_name' do 
-		user = FactoryGirl.build :user, first_name: 'bob', last_name: 'hope'
-		expect(user.full_name).to be_present
+		user.first_name = 'bob'
+		user.last_name = 'hope'
+		expect(user.full_name).to eq 'bob hope'
+	end
+	
+	it 'requires #password to be present & a minumum of 6 characters' do
+		expect(user.password).to eq '12345678'
+		expect(user.password.length).not_to eq '12345'
 	end
 
-	it 'has a #full_name' do 
-		user = FactoryGirl.build :user, first_name: 'jane', last_name: 'hope'
-		expect(user.full_name).to be_present
-	end
-
-	it 'requires #password to be present' do
-		user = FactoryGirl.build :user, password: '12345678'
-		expect(user.password).to be_present 
-	end
-
-	it 'requires a valid #password' do
-		user = FactoryGirl.build :user, password: nil
-		expect(user).not_to be_valid
-		user.password = '12345678'
-		expect(user.password.length).to be > 7
-		expect(user.password.length).to be < 129
-	end
-
-	it 'requires a valid #password_confirmation' do 
-		user = FactoryGirl.build :user, password_confirmation: nil
-		expect(user).not_to be_valid
+	it 'requires #password be > 5 & < then 128 characters' do 
+		expect(user).to be_valid
 		user.password_confirmation = '12345678'
-		expect(user.password_confirmation.length).to be > 7
-		expect(user.password_confirmation.length).to be < 129
+		expect(user.password_confirmation.length).not_to be < 5 
+		expect(user.password_confirmation.length).not_to be > 128
 	end
 
 	it 'requires presence of #dob' do
-		user = FactoryGirl.build :user, dob: nil
-		expect(user).not_to be_valid
+		user.dob 
+		expect(user.dob).to eq Date.parse("2022-01-05")
 	end
 
 	it 'requires presence of #school_name' do
-		user = FactoryGirl.build :user, school_name: nil
-		expect(user).not_to be_valid
 		user.school_name = 'mich state'
-		expect(user.school_name).to be_present
+		expect(user.school_name).to eq 'mich state'
 	end
 
 	it 'has an #address' do
-		user = FactoryGirl.build :user, address: '123 Test Ave.'
 		expect(user.address).to eql '123 Test Ave.'
 	end
 
 	it 'has a #city' do
-		user = FactoryGirl.build :user, city: 'sample_city'
-		expect(user.city).to eql 'sample_city'
+		expect(user.city).to eql 'Sample'
 	end
 
 	it 'has a #state' do 
-		user = FactoryGirl.build :user, state: 'sample_state'
-		expect(user.state).to eql 'sample_state'
+		expect(user.state).to eql 'TS'
 	end
 
 	it 'has a #zip' do
-		user = FactoryGirl.build :user, zip: 12345
-		expect(user.zip).to eql 12345
+		expect(user.zip).to eql '12345'
 	end
 end
