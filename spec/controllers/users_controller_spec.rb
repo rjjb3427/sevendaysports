@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe UsersController do
-  before(:each) { @user = FactoryGirl.create :user }
+  let(:user) { FactoryGirl.create(:user) }
 
   describe 'GET #index' do
-    it 'assigns @users' do
-      get :index
-      expect(assigns(:users)).to eq [@user] and be_success
+    it 'assigns @users and returns http success' do
+      get :index, id: user.id
+      expect(assigns(:users)).to eq [user] and be_success
     end
 
     it 'renders the index template' do
@@ -17,7 +17,6 @@ describe UsersController do
 
   describe 'GET #new' do
     it 'returns http success and instantiates a @user' do
-      user = FactoryGirl.create :user
       get :new
       expect(response).to be_success
       expect(assigns(:user)).to be_a_kind_of User 
@@ -33,7 +32,6 @@ describe UsersController do
     context 'given valid credentials' do
       it 'redirects to the #show template' do
         post :create, user: FactoryGirl.attributes_for(:user)
-        user = User.order(:created_at).last
         expect(response).to be_redirect
       end
     end
@@ -41,11 +39,10 @@ describe UsersController do
     context 'given invalid credentials' do
       it 'returns http client error' do
         post :create, user: FactoryGirl.attributes_for(:user)
-        user = User.order(:created_at).last
         expect(response).not_to be_success 
       end
 
-      it 'should render the new template' do 
+      it 'renders the new template' do 
         post :create
         expect(response).to render_template(:new)
       end
@@ -53,46 +50,46 @@ describe UsersController do
   end
 
   describe 'GET #show' do
-    it 'returns http success and shows @user data' do
-      get :show, id: @user
+    it 'returns http success and shows the user data' do
+      get :show, id: user.id
       expect(response).to be_success
-      expect(@user.first_name).to eql "John"
+      expect(user.first_name).to eql "John"
     end
 
     it 'renders the show template' do
-      get :show, id: @user
+      get :show, id: user.id
       expect(response).to render_template(:show)
     end
   end
 
   describe 'GET #edit' do
     it 'returns http success' do
-      get :edit, id: @user
+      get :edit, id: user.id
       expect(response).to be_success
     end
 
     it 'renders the edit template' do
-      get :edit, id: @user
+      get :edit, id: user.id
       expect(response).to render_template(:edit)
     end
   end
 
   describe 'PUT #update' do
-    it 'successfully updates @user resource' do
-      get :update, id: @user
+    it 'successfully updates a user resource' do
+      get :update, id: user.id
       expect(response).to redirect_to @user
     end
   end
 
   describe 'DELETE #destroy' do
     it 'should redirect to users_path' do
-      delete 'destroy', id: @user
+      delete 'destroy', id: user.id
       expect(response).to redirect_to users_path
     end
 
     it 'deletes a user from the database' do
-      delete 'destroy', id: @user
-      expect(User.where(id: @user.id)).to be_empty
+      delete 'destroy', id: user.id
+      expect(User.where(id: user.id)).to be_empty
     end
   end
 end
