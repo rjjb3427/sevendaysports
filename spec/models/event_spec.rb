@@ -17,7 +17,7 @@ describe Event do
         expect(event.winner).to eq event.home_team_name
       end
 
-      it 'doesn't return a losing away team name' do
+      it 'does not return a losing away team name' do
         event = FactoryGirl.build :event
         away_team_name = FactoryGirl.create :team, name: 'blue jays'
         event.home_team_score = 20
@@ -36,7 +36,7 @@ describe Event do
         expect(event.winner).to eq event.away_team_name
       end
 
-      it 'doesn't return a losing home team name' do
+      it 'does not return a losing home team name' do
         event = FactoryGirl.create :event
         home_team = FactoryGirl.create :team, name: 'Bengals'
         event.home_team_score = 7
@@ -55,7 +55,7 @@ describe Event do
         expect(event.winner).to eq "#{event.home_team_name} #{event.away_team_name}"  
       end
 
-      it 'doesn't return only #home_team_name' do
+      it 'does not return only #home_team_name' do
         event = FactoryGirl.build :event
         home_team = FactoryGirl.build :team, name: 'Bengals'
         away_team = FactoryGirl.build :team, name: 'Blue Jays'
@@ -64,7 +64,7 @@ describe Event do
         expect(event.winner).not_to eq event.home_team_name
       end
 
-      it 'doesn't return only #away_team_name' do
+      it 'does not return only #away_team_name' do
         event = FactoryGirl.create :event
         away_team = FactoryGirl.create :team, name: 'Blue Jays'
         event.home_team_score = 14

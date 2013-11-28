@@ -16,7 +16,7 @@ Sevendaysports::Application.routes.draw do
   end
 
   resources :universities do 
-    resources :teams 
+    resources :teams # , controller: "teams" 
   end
 
   resources :teams do
