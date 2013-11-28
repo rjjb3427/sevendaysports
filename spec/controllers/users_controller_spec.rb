@@ -77,7 +77,7 @@ describe UsersController do
   describe 'PUT #update' do
     it 'successfully updates a user resource' do
       get :update, id: user.id
-      expect(response).to redirect_to @user
+      expect(response).to be_success
     end
   end
 
