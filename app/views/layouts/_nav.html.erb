@@ -17,10 +17,12 @@
 		<ul class="nav navbar-nav navbar-right">
 			<% if user_signed_in? %>
 			  <li>
-			  	<%= link_to('Logout', destroy_user_session_path, method: :delete) %>     
+			  	<%= link_to('Sign out', destroy_user_session_path, method: :delete) %>     
 			  </li>
 			<% else %>
-			  <li><%= link_to('Login', new_user_session_path) %></li>
+			  <li><%= link_to('Sign in', new_user_session_path) %></li>
+			  <li class="label label-default" style="margin-top: 10%; opacity: .5;">-or-</li>
+			  <li><%= link_to('Sign up', new_user_registration_path) %></li>
 			<% end %>
 		</ul>
 		<ul class="nav navbar-nav pull-right">

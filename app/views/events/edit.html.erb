@@ -10,6 +10,6 @@
 	<%= f.text_field :winner, class: 'text_field', placeholder: 'Winning team name' %>
 	<%= f.text_area :details, class: 'text_area', placeholder: 'Details about the event' %>
 	<%= f.datetime_select :event_on, class: 'datetime_field' %>
-	<%= button_to :update!, event_path(@event), options = { method: :get, class: 'btn btn-large btn-success' }%>
+	<%= button_to :update!, team_event_path(@event), options = { method: :get, class: 'btn btn-large btn-success' }%>
 <% end %>
 <%= button_to :cancel, :back, options = { method: :get, class: 'btn btn-small btn-danger' } %>

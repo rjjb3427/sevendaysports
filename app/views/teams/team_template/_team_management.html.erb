@@ -1,0 +1,15 @@
+<div>
+	<h3>Team Management</h3>
+	<%# if @teams.blank? %>
+		<div>
+			<h3><small>No Team Exists</small></h3>
+			<em>
+				<%= link_to "View team #{@team.name}", university_teams_path(@university) %>
+			</em>
+		</div>
+		<%# else %>
+		<div>
+			<%#= render template: 'teams/index' %>
+		</div>
+	<% #end %>
+</div>

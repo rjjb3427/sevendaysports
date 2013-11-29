@@ -11,10 +11,9 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     if @event.save
-      flash.now[:success] = 'Event created!'
-      redirect_to event_path(@event)
+      redirect_to event_path(@event), success: 'Event created!'
     else
-      render :new, flash.now[:error] = 'There was an error processing your form'
+      render :new, error: 'There was an error processing your form'
     end
   end
 
@@ -29,16 +28,15 @@ class EventsController < ApplicationController
   def update
     get_event
     if @event.update_attributes(params[:event])
-      flash.now[:success] = 'Event updated!'
+      redirect_to @event, success: 'Event updated!'
     else
-      render :edit, flash.now[:error] = 'There was an error updating your form'
+      render :edit, error: 'There was an error updating your form'
     end
   end
 
   def destroy
     get_event
     @event.delete
-    flash.now[:notice] = 'You sure?'
     redirect_to events_path
   end
 
@@ -46,10 +44,4 @@ class EventsController < ApplicationController
   def get_event
     @event = Event.find_by_id(params[:id])
   end
-
-  # def home_or_away_attributes_update
-  #   @home_team.update_attributes(params[:event]) || 
-  #   @away_team.update_attributes(params[:event])
-  #   @home_team.user_id = current_user_id
-  # end
 end

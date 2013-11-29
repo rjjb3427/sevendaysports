@@ -18,13 +18,13 @@
 			</ul>
 		</div>
 	</div><!-- END CLASS panel panel-default -->
-	<%= div class="row-fluid">
-		<%= button_to :edit, edit_events_path(@event),
+	<div class="row-fluid">
+		<%= button_to :edit, edit_team_event_path(@event),
 				options = {
 										method: :get,
 										class: 'btn btn-sm btn-default'
 									} %>
-		<%= button_to :delete, event_path(@event),
+		<%#= button_to :delete, event_path(@event),
 				options = {
 										method: :delete,
 										confirm: 'You sure?',

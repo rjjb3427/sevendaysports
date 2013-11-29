@@ -8,6 +8,8 @@ class Team < ActiveRecord::Base
   
   validates_presence_of :name, :sport_type
 
+  scope :by_university, ->(university_id) { where(team_id: team_id).order(name: name) }
+
   def events
     home_events + away_events
   end
