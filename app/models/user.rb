@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :password, :password_confirmation, 
                         :school_name, :dob
 
+  scope :find_user, -> { where(id: id) }
+
   def full_name
     "#{first_name} #{last_name}"
   end

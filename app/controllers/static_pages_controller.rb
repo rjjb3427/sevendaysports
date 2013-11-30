@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @medias = Media.by_user(user_id)
+    @events = Event.upcoming
   end
 
   def contact
