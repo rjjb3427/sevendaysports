@@ -33,6 +33,6 @@ class Event < ActiveRecord::Base
   end
 
   def away_team_name
-    away_team.try(:name) || "No home team associated"
+    away_team.try(:name) || "No away team associated"
   end
 end

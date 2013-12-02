@@ -3,12 +3,23 @@
 <br />
 <div>
 	<h4>Upcoming Events</h4>
-	<% @upcoming_events.each do |event| %>
+	<% @upcoming_events.each do |upcoming_event| %>
 		<ul>
-			<li><%= event.title %></li>
-			<li><%= event.name %></li>
-			<li><%= event.event_on.strftime('%A %B %d, %Y') %></li>
-			<li><%= event.author %></li>
+			<li><%= upcoming_event.title %></li>
+			<li><%= upcoming_event.name %></li>
+			<li><%= upcoming_event.event_on.strftime('%A %B %d, %Y') %></li>
+			<li><%= upcoming_event.author %></li>
+		</ul>
+	<% end %>
+</div>
+<div>
+	<h4>Recent Events</h4>
+	<% @recent_events.each do |recent_event| %>
+		<ul>
+			<li><%= recent_event.name %></li>
+			<li><%= recent_event.home_team_score %></li>
+			<li><%= recent_event.away_team_score %></li>
+			<li><%= recent_event.winner %></li>
 		</ul>
 	<% end %>
 </div>
