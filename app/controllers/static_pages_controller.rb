@@ -1,6 +1,10 @@
 class StaticPagesController < ApplicationController
   def home
-    @events = Event.upcoming
+    # @university = University.by_id
+    # @university_teams = University.by_id(talladaega)
+    @teams = Team.university_join
+    @baseball_teams = Team.by_sport_type('baseball')
+    @upcoming_events = Event.upcoming
   end
 
   def contact
