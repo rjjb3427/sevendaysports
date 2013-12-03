@@ -4,7 +4,7 @@
 		<%= render 'teams/first_object' %>
 	<% else %>
 		<%= link_to :back, universities_path %>
-		<h3><small>Teams fo <%= @university.name %></small></h3>
+		<h3><small>Teams</small></h3>
 		<br />
 		<div class="table-responsive">
 			<table class="table table-bordered" style="width: 50%;">
@@ -22,7 +22,7 @@
 						<td><%= team.sport_type %></td>
 						<td>
 							<%= button_to :view, 
-									university_team_path(university_id: @university, id: team),
+									team_path(team),
 									options = { 
 															method: :get, 
 															class: 'btn btn-xs btn-info', 
@@ -31,10 +31,7 @@
 						</td>
 						<td>
 							<%= button_to :edit, 
-									edit_university_team_path(
-																							university_id: @university,
-																							id: team
-																						), 
+									edit_team_path(team), 
 									options = { 
 															method: :get, 
 															class: 'btn btn-xs btn-default', 
@@ -44,10 +41,7 @@
 						</td>
 						<td>
 							<%= button_to :delete, 
-									university_team_path(
-																				university_id: @university,
-																				id: team
-																			), 
+									team_path(team), 
 									options = { 
 															confirm: 'You sure?', 
 															method: :delete, 
@@ -62,14 +56,14 @@
 		</div><!-- END class table-responsive -->
 		<div class="pull-left">
 			<span>
-			<%= button_to 'Create a Team', new_university_team_path(@university), 
+			<%#= button_to 'Create a Team', new_university_team_path(@university), 
 					options = { 
 											method: :get, 
 											class: 'btn btn-lg btn-primary pull-right', 
 											style: 'margin-bottom: 2%;' 
 										} %>
 
-			<%= button_to 'Back to University', university_path(@university),
+			<%#= button_to 'Back to University', university_path(@university),
 				 options = {
 				 							method: :get, 
 				 							class: 'btn btn-sm btn-inverse'

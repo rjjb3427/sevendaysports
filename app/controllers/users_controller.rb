@@ -12,10 +12,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save 
-      flash.now[:success] = 'User created!'
+      flash[:success] = 'User created!'
       redirect_to @user
     else
-      flash.now[:error] = 'There was an error processing your form'
+      flash[:error] = 'There was an error processing your form'
       render :new
     end
   end
@@ -28,17 +28,17 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(params[:admin])
-      flash.now[:success] = 'User updated!'
+      flash[:success] = 'User updated!'
       redirect_to @user
     else
-      flash.now[:error] = 'There was an error updating your form'
+      flash[:error] = 'There was an error updating your form'
       render :edit
     end
   end
 
   def destroy
     @user.destroy
-    flash.now[:notice] = 'You sure?'
+    flash[:notice] = 'You sure?'
     redirect_to users_path
   end
 

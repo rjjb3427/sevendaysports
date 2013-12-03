@@ -6,8 +6,8 @@ Sevendaysports::Application.routes.draw do
   devise_for :users
   # resources :universities
   # resources :events
-  # resources :articles
-  # resources :medias
+  resources :articles
+  resources :medias
   # resources :teams
 
   resources :events do
