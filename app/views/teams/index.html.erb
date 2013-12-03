@@ -19,7 +19,7 @@
 					<% @teams.each_with_index do |team, university| %>
 					<tr>
 						<td><%= team.id %></td>
-						<td><%#= team.sport_type %></td>
+						<td><%= team.sport_type %></td>
 						<td>
 							<%= button_to :view, 
 									university_team_path(university_id: @university, id: team),
@@ -32,8 +32,8 @@
 						<td>
 							<%= button_to :edit, 
 									edit_university_team_path(
-																						university_id: @university,
-																						id: team
+																							university_id: @university,
+																							id: team
 																						), 
 									options = { 
 															method: :get, 

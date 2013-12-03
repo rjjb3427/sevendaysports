@@ -7,12 +7,24 @@
 		</div>
 		<div class="panel-body">
 			<ul class="list-group">
-				<li class="list-group-item"><b>Name</b>: <%= @event.name %></li>
+				<li class="list-group-item">
+					<b>Home Team</b>: <%= @event.home_team_name %> 
+					<h6>vs.</h6> 
+					<b>Away Team</b>: <%= @event.away_team_name %>
+				</li>
 				<li class="list-group-item"><b>Sport</b>: <%= @event.kind %></li>
-				<li class="list-group-item"><b>Date</b>: <%= @event.event_on.strftime("%A %B %d, %Y") %></li>				
-				<li class="list-group-item"><%= @event.home_team_score %></li>
-				<li class="list-group-item"><%= @event.away_team_score %></li>
-				<li class="list-group-item"><%= @event.winner %></li>
+				<li class="list-group-item">
+					<b>Date</b>: <%= @event.event_on.strftime("%A %B %d, %Y") %>
+				</li>				
+				<li class="list-group-item">
+					<b>Winner</b>: <%= @event.winner %>
+				</li>
+				<li class="list-group-item">
+					<b>Home team score</b>: <%= @event.home_team_score %>
+				</li>
+				<li class="list-group-item">
+					<b>Away team score</b>: <%= @event.away_team_score %>
+				</li>
 				<li class="list-group-item"><b>Details</b>: <%= @event.details %></li>
 				<li class="list-group-item"><b>Author</b>: <%= @event.author %></li>
 			</ul>

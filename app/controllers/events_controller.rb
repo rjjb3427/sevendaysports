@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_filter :get_teams, only: [:new, :edit]
+
   def index
     @upcoming_events = Event.upcoming
     @past_events = Event.past
@@ -43,5 +45,9 @@ class EventsController < ApplicationController
   private
   def get_event
     @event = Event.find_by_id(params[:id])
+  end
+
+  def get_teams
+    @teams = Team.all
   end
 end

@@ -3,9 +3,8 @@ class TeamsController < ApplicationController
   # before_filter :get_team
 
   def index
-    @university = University.by_id
-    # @university = University.find(params[:university_id])
-    @teams = University.by_teams
+    # @university = University.find(params[:id])
+    @teams = @university.teams
   end
 
   def new
@@ -52,7 +51,7 @@ class TeamsController < ApplicationController
 
   private 
   def get_university
-    @university = University.find(params[:university_id])
+    @university = University.find(params[:university_id]) # can't find object without id
   end
 
   def get_team 

@@ -13,7 +13,8 @@
 		</div>
 	<% end %>
 	<%= f.text_field :author, class: 'text_field', placeholder: 'Your name' %>
-	<%= f.text_field :name, class: 'text_field', placeholder: 'Event name' %>
+	<%= f.select :home_team_id, @teams.map { |team| [team.name, team.id]} %>
+	<%= f.select :away_team_id, @teams.map { |team| [team.name, team.id]} %>
 	<%= f.text_field :title, class: 'text_field', placeholder: 'Title of event' %>
 	<%= f.text_field :kind, class: 'text_field', placeholder: 'Sport type' %>
 	<%= f.text_field :home_team_score, class: 'text_field', placeholder: 'Home team score' %>

@@ -1,8 +1,8 @@
 class Team < ActiveRecord::Base
   attr_accessible :name, :sport_type, :university_id
   
-  has_many :home_events, foreign_key: :home_team_id, class_name: "Event"
-  has_many :away_events, foreign_key: :away_team_id, class_name: "Event"
+  has_many :home_events, foreign_key: :home_team_id, class_name: 'Event'
+  has_many :away_events, foreign_key: :away_team_id, class_name: 'Event'
   has_many :medias, as: :mediable
   belongs_to :university
   
@@ -18,8 +18,7 @@ class Team < ActiveRecord::Base
   # end
 
   def self.by_university
-    # University.teams.order(name: name)
-    University.where(name: name)
+    University.where(university_id: university_id).first
   end
 
   def self.university_join
@@ -27,10 +26,10 @@ class Team < ActiveRecord::Base
   end
 
   def self.by_sport_type(sport_type)
-    Team.where(sport_type: sport_type)
+    where(sport_type: sport_type)
   end
 
-  def events
-    home_events + away_events
+  def self.baseball
+    by_sport_type('Baseball/Softball')
   end
 end

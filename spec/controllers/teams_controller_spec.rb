@@ -5,7 +5,7 @@ describe TeamsController do
   describe 'GET #index' do
     it 'returns http success and assigns every team object into an @teams array' do
       get :index, university_id: team.university_id
-      expect(assigns(:teams)).to eq [team] and be_success
+      expect(assigns(:teams_by_university)).to eq [team] and be_success
     end
 
     it 'renders the index template' do

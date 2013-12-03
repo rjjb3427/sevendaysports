@@ -83,7 +83,7 @@
 				<tbody>
 					<% @past_events.each do |past_event| %>
 					<tr>
-						<td><%= past_event.name %></td>
+						<td><%= past_event.home_team.name %></td>
 						<td><%= past_event.event_on.strftime("%a %B %e, %Y") %></td>
 						<td><%= past_event.details %></td>
 						<td>

@@ -8,12 +8,10 @@
   validates_presence_of :name, :address, :city, :state, :url
 
   scope :universities, -> { University.order(name: 'ASC') }
-  scope :by_teams, -> { Team.find_by_name_and_sport_type(:name, :sport_type) }
+  # scope :by_teams, ->(university_id) { Team.find_by_university_id(university_id) }
   # scope :team_by_university, ->(team_id) { where(team_id: team_id).order(name: name)}
 
-  def self.by_id
-    # University.where(id: "#{arg}").take(1)
-    University.find_by(id: id)
-    # University.joins(:teams).where(name: name)
+  def sport_type
+    team.sport_type
   end
 end

@@ -6,7 +6,11 @@
 	<% @upcoming_events.each do |upcoming_event| %>
 		<ul>
 			<li><%= upcoming_event.title %></li>
-			<li><%= upcoming_event.name %></li>
+			<li>
+				<%= upcoming_event.home_team_name %>
+				<h6>vs.</h6>
+				<%= upcoming_event.away_team_name %>
+			</li>
 			<li><%= upcoming_event.event_on.strftime('%A %B %d, %Y') %></li>
 			<li><%= upcoming_event.author %></li>
 		</ul>
@@ -16,12 +20,30 @@
 	<h4>Recent Events</h4>
 	<% @recent_events.each do |recent_event| %>
 		<ul>
-			<li><%= recent_event.name %></li>
+			<li>
+				<b>Home team name</b>: <%= recent_event.home_team_name %>
+			</li>
+			<li>
+				<b>Away team name</b>: <%= recent_event.away_team_name %>
+			</li>
+			<li><%= recent_event.winner %></li>
 			<li><%= recent_event.home_team_score %></li>
 			<li><%= recent_event.away_team_score %></li>
-			<li><%= recent_event.winner %></li>
 		</ul>
 	<% end %>
+</div>
+<div>
+	<h4>Teams by University</h4>
+	<ul>
+		<% @universities.each do |university| %>
+			<li><%= university.name %>: <%= university.teams.baseball.first.name %></li>
+			<li><%#= university.name %>: <%#=university.sport_type.map(&:name.join(', ')) %></li>
+			<li><%#= university.name %>: <%#=university.sport_type.map(&:name.join(', ')) %></li>
+			<li><%#= university.name %>: <%#=university.sport_type.map(&:name.join(', ')) %></li>
+			<li><%#= university.name %>: <%#=university.sport_type.map(&:name.join(', ')) %></li>
+		<% end %>
+	</ul>
+	
 </div>
 <div>
 	<h4>Teams by Sport Type</h4>
@@ -31,7 +53,10 @@
 			<li><%= baseball_team.sport_type %></li>
 			<li><%= baseball_team.id %></li>
 			<li><%= baseball_team.created_at.strftime('%A %B %d, %Y') %></li>
-			<li><%#= %></li>
 		</ul>
 	<% end %>
-</div>
+</div> 
+
+<% @recent_events.each do |event| %>
+	<%= event.home_team.name%>
+<% end %>
