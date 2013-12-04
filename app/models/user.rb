@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name,
                   :last_name, :school_name, :address, :city, :state, :zip, :dob
 
+  attr_protected :admin
+
   has_many :events, dependent: :destroy
   has_many :medias, as: :mediable
   

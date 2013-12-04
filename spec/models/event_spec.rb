@@ -10,7 +10,7 @@ describe Event do
   describe '#winner' do
     context 'a winning home team' do
       it 'returns the home team winning score' do
-        home_team_name = FactoryGirl.create :team
+        home_team_name = FactoryGirl.create :team, name: 'bengals'
         event = FactoryGirl.build :event, home_team_score: 20, away_team_score: 10
         expect(event.winner).to eq event.home_team_name
       end
@@ -88,15 +88,15 @@ describe Event do
   describe 'scopes' do
     describe '.upcoming_events' do
       it 'queries for future events up to 3 days from current time' do
-        future_events = FactoryGirl.create :event, event_on: 2.days.from_now, name: 'future'
-        past_events = FactoryGirl.create :event, event_on: 1.day.ago, name: 'past'
+        future_events = FactoryGirl.create :event, event_on: 2.days.from_now
+        past_events = FactoryGirl.create :event, event_on: 1.day.ago
         expect(future_events.event_on).to be > 1.minute.from_now
         expect(future_events.event_on).not_to be > 3.days.from_now
       end
 
       it 'should not include query results less than current time' do
-        future_events = FactoryGirl.create :event, event_on: 1.day.from_now, name: 'future'
-        past_events = FactoryGirl.create :event, event_on: 1.minute.ago, name: 'past'
+        future_events = FactoryGirl.create :event, event_on: 1.day.from_now
+        past_events = FactoryGirl.create :event, event_on: 1.minute.ago
         current_time = Time.now
         expect(future_events.event_on).to be > current_time
       end
@@ -104,8 +104,8 @@ describe Event do
 
     describe '.past_events' do
       it 'queries for past events less than 4 days from currnent time' do
-        old_events = FactoryGirl.create :event, event_on: 10.days.ago, name: 'old'
-        recent_events = FactoryGirl.create :event, event_on: 1.day.ago, name: 'recent'
+        old_events = FactoryGirl.create :event, event_on: 10.days.ago
+        recent_events = FactoryGirl.create :event, event_on: 1.day.ago
         expect(recent_events.event_on.to_s).to eql 1.day.ago.to_s
         expect(recent_events.event_on.to_s).not_to eql 4.days.ago.to_s
       end
@@ -115,8 +115,8 @@ describe Event do
       it 'queries for events less than 4 days old' do
         older_time = 4.days.ago
         recent_time = 3.days.ago
-        older_articles = FactoryGirl.create :event, event_on: older_time, name: 'older'
-        recent_articles = FactoryGirl.create :event, event_on: recent_time, name: 'recent'
+        older_articles = FactoryGirl.create :event, event_on: older_time
+        recent_articles = FactoryGirl.create :event, event_on: recent_time
         expect(older_articles.event_on).to be < recent_time
         expect(recent_articles.event_on).to eq recent_time
         expect(recent_articles.event_on).to be > older_time
@@ -125,8 +125,8 @@ describe Event do
 
     describe '.recent_scores' do
       it 'queries for events less than 4 days old' do
-        recent_scores = FactoryGirl.create :event, event_on: 3.days.ago, name: 'recent'
-        older_scores = FactoryGirl.create :event, event_on: 4.days.ago, name: 'older'
+        recent_scores = FactoryGirl.create :event, event_on: 3.days.ago
+        older_scores = FactoryGirl.create :event, event_on: 4.days.ago
         expect(recent_scores.event_on).to be > 4.days.ago
         expect(older_scores.event_on).to be < 3.days.ago
       end

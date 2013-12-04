@@ -1,7 +1,14 @@
 <div class="container">
 	<% if @upcoming_events.blank? %>
 		<h3><small>No Upcoming Events Exist</small></h3>
-		<%= render 'first_object' %>
+		<%= unless current_user.try(:admin?) %>
+			<h5>
+				<em>Please contact Adminitrator to approve an event</em>
+			</h5>
+		<% end %>
+		<% if current_user.try(:admin?) %>	
+			<%= render 'first_object' %>
+		<% end %>
 	<% else %>
 		<%= link_to :back, root_path %>
 		<% if current_user.try(:admin?) %>

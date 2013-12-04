@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(:version => 20131202172655) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
-    t.boolean  "is_admin"
     t.datetime "created_at",                                               :null => false
     t.datetime "updated_at",                                               :null => false
     t.string   "school_name"

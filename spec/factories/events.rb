@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :event do |f|
-    f.name 'bengals vs lamas'
     f.author 'charlie chattman'
     f.title 'pre-season game'
     f.details 'This is a hometown rivalry game'
