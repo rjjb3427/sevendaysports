@@ -19,7 +19,6 @@
   end
 
   def show
-    @team = @university.teams.where(team_id: 'team_id')
     @teams = @university.teams
   end
 

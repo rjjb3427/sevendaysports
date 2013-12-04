@@ -23,9 +23,8 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
-    # @university = University.find(params[:university_id])
-    # @team = @university.teams.find(params[:id])
+    @university = University.find(params[:university_id])
+    @team = @university.teams.find(params[:id])
     # @team = @university.teams.where(university_id: @university, id: @team)
   end
 

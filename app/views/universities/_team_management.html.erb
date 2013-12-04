@@ -15,7 +15,7 @@
 						<td><%= team.sport_type  %></td>
 						<td>
 							<%= link_to "View #{ team.name }", 
-									university_team_path(university_id: @university, team_id: team),
+									university_team_path(university_id: @university.id, id: team),
 									options = {
 															method: :get,
 															class: 'btn btn-sm btn-info'
@@ -23,7 +23,7 @@
 						</td>
 						<td>
 							<%= link_to "Delete #{ team.name }", 
-									university_team_path(university_id: @university, team_id: team),
+									university_team_path(university_id: @university, id: team),
 									options = {
 															method: :delete,
 															confirm: 'You sure?',
