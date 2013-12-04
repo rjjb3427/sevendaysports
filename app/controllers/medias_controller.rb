@@ -48,13 +48,13 @@ class MediasController < ApplicationController
   end
 
   private
-  def load_mediable
-    klass = [Event, Team, User].detect { |m| params["#{m.name.underscore}_id"] }
-    @mediable = klass.find(params["#{klass.name.underscore}_id"])
-  end
-
   # def load_mediable
-  #   resource, id = request.path.split('/')[1, 2]
-  #   @mediable = resource.singularize.classify.constantize.find(id)
+  #   klass = [Event, Team, User].detect { |m| params["#{m.name.underscore}_id"] }
+  #   @mediable = klass.find(params["#{klass.name.underscore}_id"])
   # end
+
+  def load_mediable
+    resource, id = request.path.split('/')[1, 2]
+    @mediable = resource.singularize.classify.constantize.find(id)
+  end
 end

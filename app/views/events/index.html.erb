@@ -7,7 +7,7 @@
 		<%= button_to 'Create an Event', new_event_path, 
 				options = { 
 										method: :get, 
-										class: 'btn btn-lg btn-primary pull-right', 
+										class: 'btn btn-primary pull-right', 
 										style: 'margin-bottom: 2%;' 
 									} %>
 		<br />
@@ -15,7 +15,7 @@
 		<div class="table-responsive">
 			<table class="table table-bordered">
 				<thead>
-					<th>Event Name</th>
+					<th>Title</th>
 					<th>Date</th>
 					<th>Details</th>
 					<th>View</th>
@@ -25,7 +25,7 @@
 				<tbody>
 					<% @upcoming_events.each do |upcoming_event| %>
 					<tr>
-						<td><%= upcoming_event.name %></td>
+						<td><%= upcoming_event.title %></td>
 						<td><%= upcoming_event.event_on.strftime("%a %B %e, %Y") %></td>
 						<td><%= upcoming_event.details %></td>
 						<td>
@@ -115,3 +115,4 @@
 		</div><!-- END class table-responsive -->
 	</div><!-- END class container -->
 	<% end %>
+	<%= link_to :back, root_path %>
