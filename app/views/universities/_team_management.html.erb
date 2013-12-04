@@ -1,5 +1,16 @@
 <div>
-	<h3>Teams</h3>
+	
+	<div class="row-fluid">
+		<h3>Teams</h3>
+		<% if current_user.try(:admin?) %>
+			<%= link_to 'Add a Team', new_university_team_path(@university),
+																options = {
+																						method: :get,
+																						class: 'btn btn-primary'
+																					} %>
+		<% end %>
+	</div>
+	<br />
 	<% @teams.each_with_index do |team, university| %>
 		<div class="table-responsive">
 			<table class="table table-bordered" style="width: 50%;">
@@ -7,7 +18,9 @@
 					<th>Name</th>
 					<th>Sport Type</th>
 					<th>View</th>
-					<th>Delete</th>
+					<% if current_user.try(:admin?) %>
+						<th>Delete</th>
+					<% end %>
 				</thead>
 				<tbody>
 					<tr>
@@ -21,15 +34,17 @@
 															class: 'btn btn-sm btn-info'
 														} %>
 						</td>
-						<td>
-							<%= link_to "Delete #{ team.name }", 
-									university_team_path(university_id: @university, id: team),
-									options = {
-															method: :delete,
-															confirm: 'You sure?',
-															class: 'btn btn-sm btn-danger'
-														} %>
-						</td>
+						<% if current_user.try(:admin?) %>
+							<td>
+								<%= link_to "Delete #{ team.name }", 
+										university_team_path(university_id: @university, id: team),
+										options = {
+																method: :delete,
+																confirm: 'You sure?',
+																class: 'btn btn-sm btn-danger'
+															} %>
+							</td>
+						<% end %>
 					</tr>
 				</tbody>
 			</table>

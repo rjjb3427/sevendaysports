@@ -3,13 +3,16 @@
 		<h3><small>No Universitites Exist</small></h3>
 		<%= render 'universities/first_object' %>
 	<% else %>
+	<h3>Universities</h3>
 		<%= link_to :back %>
-		<%= button_to 'Create a University', new_university_path, 
-				options = { 
-										method: :get, 
-										class: 'btn btn-lg btn-primary pull-right', 
-										style: 'margin-bottom: 2%;'
-									} %>
+		<% if current_user.try(:admin?) %>
+			<%= button_to 'Create a University', new_university_path, 
+					options = { 
+											method: :get, 
+											class: 'btn btn-primary pull-right', 
+											style: 'margin-bottom: 2%;'
+										} %>
+		<% end %>
 		<br />
 		<div class="table-responsive">
 			<table class="table table-bordered">
@@ -23,7 +26,7 @@
 				<% @universities.each do |university| %>
 				<tbody>
 					<tr>
-						<td><%= university.id %></td>
+						<td><%= university.name %></td>
 						<td><%= university.url %></td>
 						<td>
 							<%= button_to :view, university_path(university), 

@@ -16,20 +16,22 @@
 			</ul>
 		</div>
 	</div><!-- END CLASS panel panel-default -->
-	<div class="row-fluid">
-		<%= button_to :edit, edit_university_path(@university),
-				options = {
-										method: :get, 
-										class: 'btn btn-sm btn-default'
-									} %>
+	<% if current_user.try(:admin?) %>
+		<div class="row-fluid">
+			<%= button_to :edit, edit_university_path(@university),
+					options = {
+											method: :get, 
+											class: 'btn btn-sm btn-default'
+										} %>
 
-		<%= button_to :delete, university_path(@university), 
-				options = {
-										method: :delete,
-										confirm: 'You sure?',
-										class: 'btn btn-sm btn-danger'
-									} %>
-	</div><!-- END class row-fluid -->
+			<%= button_to :delete, university_path(@university), 
+					options = {
+											method: :delete,
+											confirm: 'You sure?',
+											class: 'btn btn-sm btn-danger'
+										} %>
+		</div><!-- END class row-fluid -->
+	<% end %>
 	<%= link_to :back, universities_path %>
 </div><!-- END CLASS container -->
 <div class="container">

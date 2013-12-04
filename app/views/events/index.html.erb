@@ -4,12 +4,14 @@
 		<%= render 'first_object' %>
 	<% else %>
 		<%= link_to :back, root_path %>
-		<%= button_to 'Create an Event', new_event_path, 
-				options = { 
-										method: :get, 
-										class: 'btn btn-primary pull-right', 
-										style: 'margin-bottom: 2%;' 
-									} %>
+		<% if current_user.try(:admin?) %>
+			<%= button_to 'Create an Event', new_event_path, 
+					options = { 
+											method: :get, 
+											class: 'btn btn-primary pull-right', 
+											style: 'margin-bottom: 2%;' 
+										} %>
+		<% end %>
 		<br />
 		<h3>Upcoming Events</h3>
 		<div class="table-responsive">
@@ -19,8 +21,10 @@
 					<th>Date</th>
 					<th>Details</th>
 					<th>View</th>
-					<th>Edit</th>
-					<th>Delete</th>
+					<% if current_user.try(:admin?) %>
+						<th>Edit</th>
+						<th>Delete</th>
+					<% end %>
 				</thead>
 				<tbody>
 					<% @upcoming_events.each do |upcoming_event| %>
@@ -35,21 +39,23 @@
 															class: 'btn btn-xs btn-info' 
 														} %>
 						</td>
-						<td>
-							<%= button_to :edit, edit_event_path(upcoming_event), 
-									options = { 
-															method: :get, 
-															class: 'btn btn-xs btn-default' 
-														} %>
-						</td>
-						<td>
-							<%= button_to :delete, event_path(upcoming_event), 
-									options = { 
-															method: :delete, 
-															confirm: 'You sure?', 
-															class: 'btn btn-xs btn-danger' 
-														} %>
-						</td>
+						<% if current_user.try(:admin?) %>
+							<td>
+								<%= button_to :edit, edit_event_path(upcoming_event), 
+										options = { 
+																method: :get, 
+																class: 'btn btn-xs btn-default' 
+															} %>
+							</td>
+							<td>
+								<%= button_to :delete, event_path(upcoming_event), 
+										options = { 
+																method: :delete, 
+																confirm: 'You sure?', 
+																class: 'btn btn-xs btn-danger' 
+															} %>
+							</td>
+						<% end %>
 					</tr>
 					<% end %>
 				</tbody>
@@ -77,8 +83,10 @@
 					<th>Date</th>
 					<th>Details</th>
 					<th>View</th>
-					<th>Edit</th>
-					<th>Delete</th>
+					<% if current_user.try(:admin?) %>
+						<th>Edit</th>
+						<th>Delete</th>
+					<% end %>
 				</thead>
 				<tbody>
 					<% @past_events.each do |past_event| %>
@@ -93,21 +101,23 @@
 															class: 'btn btn-xs btn-info' 
 														} %>
 						</td>
-						<td>
-							<%= button_to :edit, edit_event_path(past_event), 
-									options = { 
-															method: :get, 
-															class: 'btn btn-xs btn-default' 
-														} %>
-						</td>
-						<td>
-							<%= button_to :delete, event_path(past_event), 
-									options = { 
-															method: :delete, 
-															confirm: 'You sure?', 
-															class: 'btn btn-xs btn-danger' 
-														} %>
-						</td>
+						<% if current_user.try(:admin?) %>
+							<td>
+								<%= button_to :edit, edit_event_path(past_event), 
+										options = { 
+																method: :get, 
+																class: 'btn btn-xs btn-default' 
+															} %>
+							</td>
+							<td>
+								<%= button_to :delete, event_path(past_event), 
+										options = { 
+																method: :delete, 
+																confirm: 'You sure?', 
+																class: 'btn btn-xs btn-danger' 
+															} %>
+							</td>
+						<% end %>
 					</tr>
 					<% end %>
 				</tbody>

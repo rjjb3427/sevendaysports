@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_filter :get_article, except: [:index, :new, :create]
   def index
     @articles = Article.all
   end
@@ -10,24 +11,19 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(params[:article])
     if @article.save
-      flash.now[:success] = 'Article created!'
-      redirect_to @article
+      redirect_to @article, success: 'Article created!'
     else
-      flash.now[:error] = 'There was an error processing your form'
-      render :new
+      render :new, error: 'There was an error proccessing your form'
     end
   end
 
   def show
-    get_article
   end
 
   def edit
-    get_article
   end
 
   def update
-    get_article
     if @article.update_attributes(params[:article])
       flash.now[:success] = 'Article updated!'
       redirect_to [@event, @article], id: params[:id]
@@ -37,7 +33,6 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    get_article
     @article.delete
     redirect_to articles_path
   end

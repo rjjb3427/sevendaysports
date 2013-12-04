@@ -1,4 +1,6 @@
 <div class="container">
+	<h3><%= @event.home_team_name %> <small>vs.</small> <%= @event.away_team_name %></h3>
+	<h3><small><b>Date</b>: <%= @event.event_on.strftime('%A %B %d, %Y') %></small></h3>
 	<div><%= link_to :back, events_path %></div>
 	<br />
 	<div class="panel panel-default" style="width: 50%;">
@@ -14,7 +16,7 @@
 				</li>
 				<li class="list-group-item"><b>Sport</b>: <%= @event.kind %></li>
 				<li class="list-group-item">
-					<b>Date</b>: <%= @event.event_on.strftime("%A %B %d, %Y") %>
+					<b>Date</b>: <%= @event.event_on.strftime('%A %B %d, %Y') %>
 				</li>				
 				<li class="list-group-item">
 					<b>Winner</b>: <%= @event.winner %>
@@ -30,18 +32,20 @@
 			</ul>
 		</div>
 	</div><!-- END CLASS panel panel-default -->
-	<div class="row-fluid">
-		<%= button_to :edit, edit_team_event_path(@event),
-				options = {
-										method: :get,
-										class: 'btn btn-sm btn-default'
-									} %>
-		<%#= button_to :delete, event_path(@event),
-				options = {
-										method: :delete,
-										confirm: 'You sure?',
-										class: 'btn btn-sm btn-danger'
-									} %>
-	</div>
+	<% if current_user.try(:admin?) %>
+		<div class="row-fluid">
+			<%= button_to :edit, edit_team_event_path(@event),
+					options = {
+											method: :get,
+											class: 'btn btn-sm btn-default'
+										} %>
+			<%= button_to :delete, event_path(@event),
+					options = {
+											method: :delete,
+											confirm: 'You sure?',
+											class: 'btn btn-sm btn-danger'
+										} %>
+		</div>
+	<% end %>
 	<%= link_to :back, events_path %>
 </div><!-- END CLASS container -->

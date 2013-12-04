@@ -14,22 +14,24 @@
 		</div>
 
 	</div><!-- END CLASS panel panel-default -->
-	<div class="btn-toolbar">
-		<div class="btn-group">
-			<%= button_to :edit, edit_article_path(@article),
-					options = {
-											method: :get,
-											class: 'btn btn-sm btn-default',
-											style: 'display: inline-block;'
-										} %>
+	<% if current_user.try(:admin?) %>
+		<div class="btn-toolbar">
+			<div class="btn-group">
+				<%= button_to :edit, edit_article_path(@article),
+						options = {
+												method: :get,
+												class: 'btn btn-sm btn-default',
+												style: 'display: inline-block;'
+											} %>
 
-			<%= button_to :delete, article_path(@article),
-					options = {
-											method: :delete,
-											class: 'btn btn-sm btn-danger', 
-											style: 'display: inline-block;'
-										} %>
+				<%= button_to :delete, article_path(@article),
+						options = {
+												method: :delete,
+												class: 'btn btn-sm btn-danger', 
+												style: 'display: inline-block;'
+											} %>
+			</div>
 		</div>
-	</div>
+	<% end %>
 	<%= link_to :back, articles_path %>
 </div><!-- END CLASS container -->

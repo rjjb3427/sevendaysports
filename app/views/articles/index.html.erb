@@ -3,13 +3,16 @@
 		<h3><small>No Article Exists</small></h3>
 		<em><%= render 'first_object' %></em>
 	<% else %>
+	<h3>Articles</h3>
 	<%= link_to :back, articles_path %>
-	<%= button_to 'Create an Article', new_article_path, 
-			options = { 
-									method: :get, 
-									class: 'btn btn-lg btn-primary pull-right', 
-									style: 'margin-bottom: 2%;' 
-								} %>
+	<% if current_user.try(:admin?) %>
+		<%= button_to 'Create an Article', new_article_path, 
+				options = { 
+										method: :get, 
+										class: 'btn btn-primary pull-right', 
+										style: 'margin-bottom: 2%;' 
+									} %>
+	<% end %> 
 	<br />
 	<div class="table-responsive">
 		<table class="table table-bordered">
@@ -18,8 +21,10 @@
 				<th>Author</th>
 				<th>Created on</th>
 				<th>View</th>
-				<th>Edit</th>
-				<th>Delete</th>
+				<% if current_user.try(:admin?) %>
+					<th>Edit</th>
+					<th>Delete</th>
+				<% end %>
 			</thead>
 			<tbody>
 				<% @articles.each do |article| %>
@@ -34,21 +39,23 @@
 														class: 'btn btn-xs btn-info'
 													} %>
 					</td>
-					<td>
-						<%= button_to :edit, edit_article_path(article),
-								options = {
-														method: :get, 
-														class: 'btn btn-xs btn-default'
-													} %>
-					</td>
-					<td>
-						<%= button_to :delete, article_path(article),
-								options = {
-														method: :delete,
-														confirm: 'You sure?',
-														class: 'btn btn-xs btn-danger'
-													} %>
-					</td>
+					<% if current_user.try(:admin?) %>
+						<td>
+							<%= button_to :edit, edit_article_path(article),
+									options = {
+															method: :get, 
+															class: 'btn btn-xs btn-default'
+														} %>
+						</td>
+						<td>
+							<%= button_to :delete, article_path(article),
+									options = {
+															method: :delete,
+															confirm: 'You sure?',
+															class: 'btn btn-xs btn-danger'
+														} %>
+						</td>
+					<% end %>
 				</tr>
 				<% end %>
 			</tbody>

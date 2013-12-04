@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_filter :get_teams, only: [:new, :edit]
+  before_filter :get_event, except: [:index, :new, :create]
 
   def index
     @upcoming_events = Event.upcoming
@@ -20,15 +21,12 @@ class EventsController < ApplicationController
   end
 
   def show
-    get_event
   end
 
   def edit
-    get_event
   end
 
   def update
-    get_event
     if @event.update_attributes(params[:event])
       redirect_to @event, success: 'Event updated!'
     else
@@ -37,7 +35,6 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    get_event
     @event.delete
     redirect_to events_path
   end
