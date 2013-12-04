@@ -12,10 +12,6 @@ class Team < ActiveRecord::Base
   # scope :find_team, -> { Team.find_by id: id }
   # scope :by_sport_type, ->(sport_type) { Team.where(sport_type: sport_type) }
   # scope :with_university, joins: :teams 
-  # def self.by_university(university_id)
-  #   University.where(id: 1)
-  #   University.joins(:teams).where(teams: { name: name })
-  # end
 
   def self.by_university
     University.where(university_id: university_id).first
