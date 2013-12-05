@@ -2,19 +2,19 @@
 <nav id="header" class="header-navbar" role="navigation">
 	<div class="header-navbar-inner container">
 		<div id="brand" class="navbar-brand">
-			<!-- <h1 class="sr-only">Sevendaysports</h1> -->
-			<%= link_to :sevendaysports, root_path, style: 'rel=bookmark' %>
+			 <h1 class="sr-only">Sevendaysports</h1>
+				<%= link_to :sevendaysports, root_path, style: 'rel=bookmark' %>
 				<!-- to disable lazy loading, remove data-src and data-src-retina -->
 				<!-- <img src="../assets/images/dark-logo.png" data-src="../assets/images/dark-logo.png" data-src-retina="../assets/images/logo-retina.png" width="244" height="56" alt=""> -->
 				<!--fallback for no javascript browsers-->
 				<noscript>
-					<img src="../assets/images/dark-logo.png" alt="">
+					<%= image_tag("dark-logo.png") %>
 				</noscript>
 		</div><!-- END ID brand CLASS navbar-brand -->
 
 		<ul class="nav nav-pages hidden-xs">
 			<li><a href="#">About</a></li>
-			<li><a href="#">Contact</a></li>
+			<li><%= link_to 'Contact', contact_path %></li>
 			<li><a href="#">Advertise </a></li>
 			<li><a href="#">Terms &amp; Conditions</a></li>
 			<li><a href="#">Privacy</a></li>
@@ -33,7 +33,7 @@
 			<li><%= link_to 'Universities', universities_path %></li>
 			<li><%= link_to 'Events', events_path %></li>
 			<li><%= link_to 'Articles', articles_path %></li>
-			<li><%= link_to 'Contact us', contact_path %></li>
+			<li><%= render 'layouts/authenticate' %></li>
 <!--  <li>
 				<p class="navbar-text"><%= link_to 'Media', medias_path %></p>
 			</li>  -->
