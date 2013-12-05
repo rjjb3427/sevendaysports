@@ -13,7 +13,7 @@ class TeamsController < ApplicationController
   def create
     @team = @university.teams.build(params[:team])
     if @team.save
-      redirect_to [@university, @team], success: 'Team created!'
+      redirect_to @university, success: 'Team created!'
     else
       render :new, error: 'There was an error processing your team'
     end

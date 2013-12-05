@@ -4,7 +4,7 @@
 		<em><%= render 'first_object' %></em>
 	<% else %>
 	<h3>Articles</h3>
-	<%= link_to :back, articles_path %>
+	<%= link_to :back, root_path %>
 	<% if current_user.try(:admin?) %>
 		<%= button_to 'Create an Article', new_article_path, 
 				options = { 

@@ -1,50 +1,43 @@
 <!-- Navbar -->
-<nav class="navbar navbar-default" role="navigation">
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse"data-target=#bs="example-navbar-coollapse-1">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-		<%= link_to :sevendaysports, root_path, class: 'navbar-brand' %>
-	</div>
-	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		<ul class="nav navbar-nav navbar-right">
-			<% if user_signed_in? %>
-			  <li>
-			  	<%= link_to('Sign out', destroy_user_session_path, method: :delete) %>     
-			  </li>
-			<% else %>
-			  <li><%= link_to('Sign in', new_user_session_path) %></li>
-			  <li class="label label-default" style="margin-top: 10%; opacity: .5;">-or-</li>
-			  <li><%= link_to('Sign up', new_user_registration_path) %></li>
-			<% end %>
+<nav id="header" class="header-navbar" role="navigation">
+	<div class="header-navbar-inner container">
+		<div id="brand" class="navbar-brand">
+			<!-- <h1 class="sr-only">Sevendaysports</h1> -->
+			<%= link_to :sevendaysports, root_path, style: 'rel=bookmark' %>
+				<!-- to disable lazy loading, remove data-src and data-src-retina -->
+				<!-- <img src="../assets/images/dark-logo.png" data-src="../assets/images/dark-logo.png" data-src-retina="../assets/images/logo-retina.png" width="244" height="56" alt=""> -->
+				<!--fallback for no javascript browsers-->
+				<noscript>
+					<img src="../assets/images/dark-logo.png" alt="">
+				</noscript>
+		</div><!-- END ID brand CLASS navbar-brand -->
+
+		<ul class="nav nav-pages hidden-xs">
+			<li><a href="#">About</a></li>
+			<li><a href="#">Contact</a></li>
+			<li><a href="#">Advertise </a></li>
+			<li><a href="#">Terms &amp; Conditions</a></li>
+			<li><a href="#">Privacy</a></li>
 		</ul>
-		<ul class="nav navbar-nav pull-right">
+
+		<ul class="nav nav-icons">
 			<li>
-				<p class="navbar-text"><%= link_to 'Home', root_path %></p>
+				<a href="#" class="btn-icon" data-toggle=".header-navbar-inner" data-toggle-class="search-toggled-in">
+					<span class="search-toggled-out-icon glyphicon glyphicon-search"></span>
+					<span class="search-toggled-in-icon glyphicon glyphicon-remove"></span>
+				</a>
 			</li>
-			<li>
-				<p class="navbar-text"><%= link_to 'Universities', universities_path %></p>
-			</li>
-			<li>
-				<p class="navbar-text"><%= link_to 'Events', events_path %></p>
-			</li>
-			<li>
-				<p class="navbar-text"><%= link_to 'Articles', articles_path %></p>
-			</li>
-<!-- 			<li>
+		</ul>
+		<ul class="nav navbar-nav navbar-collapes pull-right">
+			<li><%= link_to 'Home', root_path %></li>
+			<li><%= link_to 'Universities', universities_path %></li>
+			<li><%= link_to 'Events', events_path %></li>
+			<li><%= link_to 'Articles', articles_path %></li>
+			<li><%= link_to 'Contact us', contact_path %></li>
+<!--  <li>
 				<p class="navbar-text"><%= link_to 'Media', medias_path %></p>
 			</li>  -->
-			<li>
-				<p class="navbar-text"><%= link_to 'Contact us', contact_path %></p>
-			</li>
 		</ul>
-	</div>
-</nav>
-<!-- /.navbar -->
+	</div><!-- END CLASS header-navbar-inner container -->
+</div><!-- END ID header CLASS header-navbar -->
+<!-- /Navbar -->

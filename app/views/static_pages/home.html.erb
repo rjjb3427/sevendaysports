@@ -1,62 +1,325 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
-<br />
-<div>
-	<h4>Upcoming Events</h4>
-	<% @upcoming_events.each do |upcoming_event| %>
-		<ul>
-			<li><%= upcoming_event.title %></li>
-			<li>
-				<%= upcoming_event.home_team_name %>
-				<h6>vs.</h6>
-				<%= upcoming_event.away_team_name %>
-			</li>
-			<li><%= upcoming_event.event_on.strftime('%A %B %d, %Y') %></li>
-			<li><%= upcoming_event.author %></li>
-		</ul>
-	<% end %>
-</div>
-<div>
-	<h4>Recent Events</h4>
-	<% @recent_events.each do |recent_event| %>
-		<ul>
-			<li>
-				<b>Home team name</b>: <%= recent_event.home_team_name %>
-			</li>
-			<li>
-				<b>Away team name</b>: <%= recent_event.away_team_name %>
-			</li>
-			<li><%= recent_event.winner %></li>
-			<li><%= recent_event.home_team_score %></li>
-			<li><%= recent_event.away_team_score %></li>
-		</ul>
-	<% end %>
-</div>
-<div>
-	<h4>Teams by University</h4>
-	<ul>
-		<% @universities.each do |university| %>
-			<li><%= university.name %>: <%= university.teams.baseball.first.name %></li>
-			<li><%#= university.name %>: <%#=university.sport_type.map(&:name.join(', ')) %></li>
-			<li><%#= university.name %>: <%#=university.sport_type.map(&:name.join(', ')) %></li>
-			<li><%#= university.name %>: <%#=university.sport_type.map(&:name.join(', ')) %></li>
-			<li><%#= university.name %>: <%#=university.sport_type.map(&:name.join(', ')) %></li>
-		<% end %>
-	</ul>
-	
-</div>
-<div>
-	<h4>Teams by Sport Type</h4>
-	<% @baseball_teams.each do |baseball_team| %>
-		<ul>
-			<li><%= baseball_team.name %></li>
-			<li><%= baseball_team.sport_type %></li>
-			<li><%= baseball_team.id %></li>
-			<li><%= baseball_team.created_at.strftime('%A %B %d, %Y') %></li>
-		</ul>
-	<% end %>
-</div> 
-
-<% @recent_events.each do |event| %>
-	<%= event.home_team.name%>
-<% end %>
+<div id="main" class="container">	
+	<div class="section row entries bg-primary secton-no-margin-bottom">
+		<div class="col-lg-6 col-xl-5">
+			<div class="row">
+				<article class="entry style-grid style-hero hero-md-largest type-post col-md-8 col-lg-12 colheight-sm-1 colheight-md-2 colheight-lg-2 colheight-xl-2">
+					<div class="ribbon ribbon-pulled ribbon-small ribbon-highlight">
+						<%= link_to 'Upcoming Events', events_path %>
+					</div>
+					<header class="entry-header">
+					<h5 class="entry-title"></h5>
+						<div class="entry-meta">
+							<div class="table-responsive">
+								<table class="table table-condensed">
+									<thead>
+										<th>Date</th>
+										<th>Title</th>
+										<th>Home Team</th>
+										<th>Away Team</th>
+									</thead>
+									<tbody>
+									<% @upcoming_events.each do |upcoming_event| %>
+										<tr>
+											<td>
+												<u>
+													<%= link_to "#{upcoming_event.event_on.strftime('%a %b %d, %Y')}",
+															event_path(upcoming_event) %>
+											</u>
+											</td>
+											<td>
+												<u>
+													<%= link_to "#{upcoming_event.title}", 
+															event_path(upcoming_event) %>
+											</u>
+											</td>
+											<td>
+												<u>
+													<%= link_to "#{upcoming_event.home_team_name}", 
+															event_path(upcoming_event) %>
+												</u>
+											</td>
+											<td>
+												<u>
+													<%= link_to "#{upcoming_event.away_team_name}", 
+															event_path(upcoming_event) %>
+												</u>
+											</td>
+										</tr>
+									</tbody>
+									<% end %>
+								</table>
+							</div><!-- END CLASS table-responsive -->
+						</div><!-- END CLASS entry-meta -->
+					</header>
+					<figure class="entry-thumbnail">
+						<a href="single.html" class="overlay overlay-primary"></a>
+						<%= image_tag("placeholder.gif", size: "720x420") %>
+					</figure>
+				</article>
+				<article class="entry style-grid style-hero hero-md-largest type-post col-md-8 col-lg-12 colheight-sm-1 colheight-md-2 colheight-lg-2 colheight-xl-2">
+					<div class="ribbon ribbon-pulled ribbon-small ribbon-highlight">
+						<%= link_to 'Recent Events', events_path %>
+					</div>
+					<header class="entry-header">
+					<h5 class="entry-title"></h5>
+						<div class="entry-meta">
+							<div class="table-responsive">
+								<table class="table table-condensed">
+									<thead>
+										<th>Date</th>
+										<th>Title</th>
+										<th>Home Team</th>
+										<th>Away Team</th>
+										<th>Wnner</th>
+									</thead>
+									<tbody>
+										<% @recent_events.each do |recent_event| %>
+										<tr>
+											<td>
+												<u>
+													<%= link_to  "#{recent_event.event_on.strftime('%a %b %d, %Y')}", 	events_path %>
+												</u>
+											</td>
+											<td>
+												<u><%= link_to  "#{recent_event.title}", events_path %></u>
+											</td>
+											<td>
+												<u>
+													<%= link_to "#{recent_event.home_team_name}", events_path %>
+												</u>
+													&nbsp;&nbsp; 
+													<small>Score</small>: <%= recent_event.home_team_score %>
+											</td>
+											<td>
+												<u>
+													<%= link_to "#{recent_event.away_team_name}", events_path %>
+												</u>
+												&nbsp;&nbsp; 
+												<small>Score</small>: <%= recent_event.away_team_score %>
+											</td>
+											<td>
+												<u>
+													<%= link_to "#{recent_event.winner}", events_path %>
+												</u>
+											</td>
+										</tr>
+									</tbody>
+									<% end %>
+								</table>
+							</div><!-- END CLASS table-responsive -->
+						</div><!-- END CLASS entry-meta -->
+					</header>
+					<figure class="entry-thumbnail">
+					<a href="single.html" class="overlay overlay-primary"></a>
+					<%= image_tag("placeholder.gif", size: "720x420") %>
+				</figure>
+			</article>
+		</div><!-- END CLASS row -->
+	</div><!-- END CLASS ribbon ribbon-pulled ribbon-small ribon-highlight -->
+	<div class="col-lg-6 col-xl-7">
+		<div class="row">
+			<article class="entry style-grid style-hero type-post col-md-4 col-lg-8 colheight-sm-1">
+				<div class="ribbon ribbon-pulled ribbon-small ribbon-highlight">
+					<%= link_to 'Latest Scores', events_path %>
+				</div>
+				<header class="entry-header">
+					<h3 class="entry-title"><a href="single.html"></a> </h3>
+					<div class="entry-meta">
+						<div class="table-responsive">
+					<table class="table table-condensed">
+						<thead>
+							<th colspan=1>Date</th>
+							<th colspan=2>Home Team</th>
+							<th colspan=2>Away Team</th>
+						</thead>
+						<tbody>
+						<% @recent_events.each do |recent_event| %>
+							<tr>
+								<td>
+									<u>
+										<%= link_to"#{recent_event.event_on.strftime('%a %b %d, %Y')}", 					events_path %>
+									</u>
+								</td>
+								<td colspan=2>
+									<u>
+										<%= link_to"#{recent_event.home_team_name}", events_path %>
+									</u>
+									&nbsp;&nbsp; 
+										<small>Score</small>: <%= recent_event.home_team_score %>
+								</td>
+								<td colspan=2> 
+									<u>
+										<%= link_to"#{recent_event.away_team_name}", events_path %>
+									</u>
+									&nbsp;&nbsp;
+									<small>Score</small>: <%= recent_event.away_team_score %>
+								</td>
+							</tr>
+						</tbody>
+						<% end %>
+					</table>
+				</div><!-- END CLASS table-responsive -->
+					</div>
+				</header>
+				<figure class="entry-thumbnail">
+					<a href="single.html" class="overlay overlay-primary"></a>
+					<%= image_tag("placeholder.gif", size: "480x280") %>
+				</figure>
+				<!--fallback for no javascript browsers-->
+				<noscript>
+					<img src="http://placehold.it/480x280" alt="">
+				</noscript>
+			</article>
+			<article class="entry style-grid style-hero type-post col-md-4 col-lg-4 colheight-sm-1">
+				<div class="ribbon ribbon-pulled ribbon-small" style="opacity: .5;">
+					<%= link_to 'Site Advertisment 1', root_path, style: 'opacity: .5' %>
+				</div>
+				<header class="entry-header">
+					<p>
+						Authoritatively leverage existing web-enabled infomediaries. 
+					</p>
+					<div class="entry-meta">
+						<span class="entry-date"></span>
+						<span class="entry-author"> by <a href="blog.html">John Doe</a></span>
+					</div>
+				</header>
+				<figure class="entry-thumbnail">
+					<a href="single.html" class="overlay overlay-primary"></a>
+					<%= image_tag("placeholder.gif", size: "380x485") %>
+					<noscript>
+						<img src="http://placehold.it/380x485" alt="">
+					</noscript>
+				</figure>
+			</article>
+		</div><!-- END CLASS row -->
+	</div><!-- END CLASS ribbon ribbon-pulled ribbon-small ribon-highlight -->
+	<div class="col-lg-6 col-xl-7">
+		<div class="row">
+			<article class="entry style-grid style-hero type-post col-md-4 col-lg-8 colheight-sm-1">
+				<div class="ribbon ribbon-pulled ribbon-small ribbon-highlight">
+					<%= link_to 'Latest Articles', articles_path %>
+				</div>
+				<header class="entry-header">
+					<h3 class="entry-title"><a href="single.html"></a> </h3>
+					<div class="entry-meta">
+						<div class="table-responsive">
+					<table class="table table-condensed">
+						<thead>
+							<th colspan=1>Date</th>
+							<th colspan=2>Title</th>
+							<th colspan=2>Author</th>
+						</thead>
+						<% @recent_articles.each do |recent_article| %>
+						<tbody>
+							<tr>
+								<td>
+									<u>
+										<%= link_to "#{recent_article.created_at.strftime('%a %b %d, %Y')}", 	  	article_path(recent_article) %>
+									</u>
+								</td>
+								<td colspan=2>
+									<u>
+										<%= link_to "#{recent_article.title}", article_path(recent_article) %>
+									</u>
+								</td>
+								<td colspan=2>
+									<u>
+										<%= link_to "#{recent_article.author}", article_path(recent_article) %>
+									</u>
+								</td>
+							</tr>
+						</tbody>
+						<% end %>
+					</table>
+				</div><!-- END CLASS table-responsive -->
+					</div>
+				</header>
+				<figure class="entry-thumbnail">
+					<a href="single.html" class="overlay overlay-primary"></a>
+					<%= image_tag("placeholder.gif", size: "480x280") %>
+				</figure>
+				<!--fallback for no javascript browsers-->
+				<noscript>
+					<img src="http://placehold.it/480x280" alt="">
+				</noscript>
+			</article>
+			<article class="entry style-grid style-hero type-post col-md-4 col-lg-4 colheight-sm-1">
+				<div class="ribbon ribbon-pulled ribbon-small" style="opacity: .5;">
+					<%= link_to 'Site Advertisment 2', root_path, style: 'opacity: .5' %>
+				</div>
+				<header class="entry-header">
+					<p>
+						Dramatically visualize worldwide convergence with superior readiness.
+					</p>
+					<div class="entry-meta">
+						<span class="entry-date"></span>
+						<span class="entry-author"> by <a href="blog.html">John Doe</a></span>
+					</div>
+				</header>
+				<figure class="entry-thumbnail">
+					<a href="single.html" class="overlay overlay-primary"></a>
+					<%= image_tag("placeholder.gif", size: "380x485") %>
+					<noscript>
+						<img src="http://placehold.it/380x485" alt="">
+					</noscript>
+				</figure>
+			</article>
+		</div><!-- END CLASS row -->
+	</div><!-- END CLASS ribbon ribbon-pulled ribbon-small ribon-highlight -->
+	<div class="col-lg-6 col-xl-7">
+		<div class="row">	
+			<article class="entry style-grid style-hero hero-md-largest type-post col-md-8 col-lg-12 colheight-sm-1 colheight-md-2 colheight-lg-2 colheight-xl-2">
+						<div class="ribbon ribbon-pulled ribbon-small ribbon-highlight">
+							<%= link_to 'Teams By University', universities_path %>
+						</div>
+						<header class="entry-header">
+						<h5 class="entry-title"></h5>
+							<div class="entry-meta">
+								<div class="table-responsive">
+									<table class="table table-condensed">
+										<% @universities.each do |university| %>
+										<thead>
+											<th>University Name</th>
+											<th>Sport Type</th>
+											<th>Team Name</th>
+											<th>Team Record</th>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													<b>
+														<u>
+															<%= link_to "#{university.name}", 
+																	university_path(university) %>
+														</u>
+													</b>
+												</td>
+												<td>Baseball/Softball</td>
+												<% if university.teams.baseball.empty? %>
+													<td>No baseball/softball team exists<td>
+												<% else %>
+												<td>
+													<u>
+														<%= link_to "#{university.teams.baseball.first.name}", university_path(university) %>
+													</u>
+												</td>
+												<% end %>
+												<td>
+													<em style="opacity: .5;">coming soon!</em> 
+												</td>
+											</tr>
+										</tbody>
+										<% end %>
+									</table>
+								</div><!-- END CLASS table-responsive -->
+							</div><!-- END CLASS entry-meta -->
+					</header>
+					<figure class="entry-thumbnail">
+						<a href="single.html" class="overlay overlay-primary"></a>
+						<%= image_tag("placeholder.gif", size: "720x420") %>
+					</figure>
+				</article>
+			</div><!-- END CLASS row -->
+		</div><!-- END CLASS ribbon ribbon-pulled ribbon-small ribon-highlight -->
+	</div><!-- END CLASS section row entries bg-primary secton-no-margin-bottom -->
+</div><!-- END ID main CLASS container -->
