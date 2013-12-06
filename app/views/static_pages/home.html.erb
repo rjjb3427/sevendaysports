@@ -1,4 +1,14 @@
 <div id="main" class="container">	
+					<div class="section row entries bg-primary secton-no-margin-bottom">
+						<div class="col-lg-6 col-xl-5">
+							<div class="row">
+								<article class="entry style-grid style-hero hero-md-largest type-post col0md08 col-lg-12 colheight-sm colheight-md-2 colheight-lg-2 colheight-xl-2">
+									<div class="ribbon ribbon-pulled ribbon-small ribon-highlight">
+
+
+
+
+<div id="main" class="container">	
 	<div class="section row entries bg-primary secton-no-margin-bottom">
 
 
@@ -125,7 +135,7 @@
 	</div><!-- END CLASS ribbon ribbon-pulled ribbon-small ribon-highlight -->
 	<div class="col-lg-6 col-xl-7">
 		<div class="row">
-			<article class="entry style-grid style-hero type-post col-md-4 col-lg-8 colheight-sm-1">
+			<article class="entry style-grid style-hero type-post col-md-4 col-lg-8 colheight-sm-1" style="left: .5%;">
 				<div class="ribbon ribbon-pulled ribbon-small ribbon-highlight">
 					<%= link_to 'Latest Scores', events_path %>
 				</div>
@@ -144,7 +154,7 @@
 							<tr>
 								<td>
 									<u>
-										<%= link_to"#{recent_event.event_on.strftime('%a %b %d, %Y')}", 					events_path %>
+										<%= link_to"#{recent_event.event_on.strftime('%a %b %d, %Y')}",  events_path %>
 									</u>
 								</td>
 								<td colspan=2>
@@ -177,9 +187,9 @@
 					<img src="http://placehold.it/480x280" alt="">
 				</noscript>
 			</article>
-			<article class="entry style-grid style-hero type-post col-md-4 col-lg-4 colheight-sm-1">
-				<div class="ribbon ribbon-pulled ribbon-small" style="opacity: .5;">
-					<%= link_to 'Site Advertisment 1', root_path, style: 'opacity: .5' %>
+			<article class="entry style-grid style-hero type-post col-md-4 col-lg-4 colheight-sm-1" style="left: 1%;">
+				<div class="ribbon ribbon-pulled ribbon-small" style="opacity: 1;">
+					<%= link_to 'Site Advertisment 1', root_path, style: 'opacity: 1.5' %>
 				</div>
 				<header class="entry-header">
 					<p>
@@ -202,7 +212,7 @@
 	</div><!-- END CLASS ribbon ribbon-pulled ribbon-small ribon-highlight -->
 	<div class="col-lg-6 col-xl-7">
 		<div class="row">
-			<article class="entry style-grid style-hero type-post col-md-4 col-lg-8 colheight-sm-1">
+			<article class="entry style-grid style-hero type-post col-md-4 col-lg-8 colheight-sm-1" style="left: .5%;">
 				<div class="ribbon ribbon-pulled ribbon-small ribbon-highlight">
 					<%= link_to 'Latest Articles', articles_path %>
 				</div>
@@ -250,9 +260,9 @@
 					<img src="http://placehold.it/480x280" alt="">
 				</noscript>
 			</article>
-			<article class="entry style-grid style-hero type-post col-md-4 col-lg-4 colheight-sm-1">
-				<div class="ribbon ribbon-pulled ribbon-small" style="opacity: .5;">
-					<%= link_to 'Site Advertisment 2', root_path, style: 'opacity: .5' %>
+			<article class="entry style-grid style-hero type-post col-md-4 col-lg-4 colheight-sm-1" style="left: 1%;">
+				<div class="ribbon ribbon-pulled ribbon-small" style="opacity: 1;">
+					<%= link_to 'Site Advertisment 2', root_path, style: 'opacity: 1.5' %>
 				</div>
 				<header class="entry-header">
 					<p>
@@ -273,142 +283,623 @@
 			</article>
 		</div><!-- END CLASS row -->
 	</div><!-- END CLASS ribbon ribbon-pulled ribbon-small ribon-highlight -->
-	
+	<div id="content" class="content section row">
+		<div class="col-md-12 col-lg-12">
+			<div class="row">
+				<div class="col-md-5 col-lg-5 md-pull-right">
+					<aside class="widget" style="width: 97.5%; left: .7%;">
+						<h2 class="widget-title ribbon ribbon-focus">
+							<span>Recent Tweets</span>
+						</h2>
+						<div class="entries row">
+							<article class="type-post style-media-list media col-sm-6 col-md-12">
+								<!-- to disable lazy loading, remove data-src and data-src-retina -->
+								<!-- <img src="../img/placeholder.gif" data-src="http://placehold.it/80x80" data-src-retina="http://placehold.it/160x160" width="80" height="80" class="media-object pull-left" alt=""> -->
+								<%= link_to  do %> 
+									<%= image_tag 'http://placehold.it/80x80', 
+											class: 'media-object pull-left' %>
+								<% end %>
+								<!--fallback for no javascript browsers-->
+								<noscript>
+									<img src="http://placehold.it/80x80" alt="">
+								</noscript>
+								<div class="media-body">
+									<h3 class="entry-title" style="font-size: 18px;">
+										<small>
+											<a href="single.html" rel="bookmark">
+												Ullamco laboris nisi ut aliquip ex ea commodo consequat.
+											</a>
+										</small>
+									</h3>
+									<div class="entry-meta">
+										<span class="entry-date">
+											<a href="blog.html">
+												<time datetime="2013-07-04T23:26:34+00:00">
+													3 hours ago
+												</time>
+											</a>
+										</span>
+									</div>
+								</div>
+							</article>
+							<article class="type-post style-media-list media col-sm-6 col-md-12">
+								<!-- to disable lazy loading, remove data-src and data-src-retina -->
+								<!-- <img src="../img/placeholder.gif" data-src="http://placehold.it/80x80" data-src-retina="http://placehold.it/160x160" width="80" height="80" class="media-object pull-left" alt=""> -->
+								<%= link_to  do %> 
+									<%= image_tag 'http://placehold.it/80x80', 
+											class: 'media-object pull-left' %>
+								<% end %>
+								<!--fallback for no javascript browsers-->
+								<noscript>
+									<img src="http://placehold.it/80x80" alt="">
+								</noscript>
+								<div class="media-body">
+									<h3 class="entry-title" style="font-size: 18px;">
+										<small>
+											<a href="single.html" rel="bookmark">
+												Duis aute irure dolor in reprehenderit in voluptate velit esse.
+											</a>
+										</small>
+									</h3>
+									<div class="entry-meta">
+										<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">4 hours ago</time></a></span>
+									</div>
+								</div>
+							</article>
+							<article class="type-post style-media-list media col-sm-6 col-md-12">
+								<!-- to disable lazy loading, remove data-src and data-src-retina -->
+								<!-- <img src="../img/placeholder.gif" data-src="http://placehold.it/80x80" data-src-retina="http://placehold.it/160x160" width="80" height="80" class="media-object pull-left" alt=""> -->
+								<%= link_to  do %> 
+									<%= image_tag 'http://placehold.it/80x80', 
+											class: 'media-object pull-left' %>
+								<% end %>
+								<!--fallback for no javascript browsers-->
+								<noscript>
+									<img src="http://placehold.it/80x80" alt="">
+								</noscript>
+								<div class="media-body">
+									<h3 class="entry-title" style="font-size: 18px;">
+										<small>
+											<a href="single.html" rel="bookmark">
+												Excepteur sint occaecat cupidatat non proident.
+											</a>
+										</small>
+									</h3>
+									<div class="entry-meta">
+										<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">5 hours ago</time></a></span>
+									</div>
+								</div>
+							</article>
+							<article class="type-post style-media-list media col-sm-6 col-md-12">
+								<!-- to disable lazy loading, remove data-src and data-src-retina -->
+								<!-- <img src="../img/placeholder.gif" data-src="http://placehold.it/80x80" data-src-retina="http://placehold.it/160x160" width="80" height="80" class="media-object pull-left" alt=""> -->
+								<%= link_to  do %> 
+									<%= image_tag 'http://placehold.it/80x80', 
+											class: 'media-object pull-left' %>
+								<% end %>
+								<!--fallback for no javascript browsers-->
+								<noscript>
+									<img src="http://placehold.it/80x80" alt="">
+								</noscript>
+								<div class="media-body">
+									<h3  class="entry-title" style="font-size: 18px;">
+										<small>
+											<a href="single.html" rel="bookmark">
+												Ullamco laboris nisi ut aliquip ex ea commodo consequat.
+											</a>
+										</small>
+									</h3>
+									<div class="entry-meta">
+										<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">6 hours ago</time></a></span>
+									</div>
+								</div>
+							</article>
+							<article class="type-post style-media-list media col-sm-6 col-md-12">
+								<!-- to disable lazy loading, remove data-src and data-src-retina -->
+								<!-- <img src="../img/placeholder.gif" data-src="http://placehold.it/80x80" data-src-retina="http://placehold.it/160x160" width="80" height="80" class="media-object pull-left" alt=""> -->
+								<%= link_to  do %> 
+									<%= image_tag 'http://placehold.it/80x80', 
+											class: 'media-object pull-left' %>
+								<% end %>
+								<!--fallback for no javascript browsers-->
+								<noscript>
+									<img src="http://placehold.it/80x80" alt="">
+								</noscript>
+								<div class="media-body">
+									<h3  class="entry-title" style= "font-size: 18px;">
+										<small>
+											<a href="single.html" rel="bookmark">
+												Duis aute irure dolor in reprehenderit in voluptate velit esse.
+											</a>
+										</small>
+									</h3>
+									<div class="entry-meta">
+										<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">7 hours ago</time></a></span>
+									</div>
+								</div>
+							</article>
+							<article class="type-post style-media-list media col-sm-6 col-md-12">
+								<!-- to disable lazy loading, remove data-src and data-src-retina -->
+								<!-- <img src="../img/placeholder.gif" data-src="http://placehold.it/80x80" data-src-retina="http://placehold.it/160x160" width="80" height="80" class="media-object pull-left" alt=""> -->
+								<%= link_to  do %> 
+									<%= image_tag 'http://placehold.it/80x80', 
+											class: 'media-object pull-left' %>
+								<% end %>
+								<!--fallback for no javascript browsers-->
+								<noscript>
+									<img src="http://placehold.it/80x80" alt="">
+								</noscript>
+								<div class="media-body">
+									<h3 class="entry-title" style="font-size: 18px;">
+										<small>
+											<a href="single.html" rel="bookmark">
+												Excepteur sint occaecat cupidatat non proident.
+											</a>
+										</small>
+									</h3>
+									<div class="entry-meta">
+										<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">8 hours ago</time></a></span>
+									</div>
+								</div>
+							</article>
+							<article class="type-post style-media-list media col-sm-6 col-md-12">
+								<!-- to disable lazy loading, remove data-src and data-src-retina -->
+								<!-- <img src="../img/placeholder.gif" data-src="http://placehold.it/80x80" data-src-retina="http://placehold.it/160x160" width="80" height="80" class="media-object pull-left" alt=""> -->
+								<%= link_to  do %> 
+									<%= image_tag 'http://placehold.it/80x80', 
+											class: 'media-object pull-left' %>
+								<% end %>
+								<!--fallback for no javascript browsers-->
+								<noscript>
+									<img src="http://placehold.it/80x80" alt="">
+								</noscript>
+								<div class="media-body">
+									<h3 class="entry-title" style="font-size: 18px;">
+										<small>
+											<a href="single.html" rel="bookmark">
+												Ullamco laboris nisi ut aliquip ex ea commodo consequat.
+											</a>
+										</small>
+									</h3>
+									<div class="entry-meta">
+										<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">9 hours ago</time></a></span>
+									</div>
+								</div>
+							</article>
+							<article class="type-post style-media-list media col-sm-6 col-md-12">
+								<!-- to disable lazy loading, remove data-src and data-src-retina -->
+								<!-- <img src="../img/placeholder.gif" data-src="http://placehold.it/80x80" data-src-retina="http://placehold.it/160x160" width="80" height="80" class="media-object pull-left" alt=""> -->
+								<%= link_to  do %> 
+									<%= image_tag 'http://placehold.it/80x80', 
+											class: 'media-object pull-left' %>
+								<% end %>
+								<!--fallback for no javascript browsers-->
+								<noscript>
+									<img src="http://placehold.it/80x80" alt="">
+								</noscript>
+								<div class="media-body">
+									<h3 class="entry-title" style="font-size: 18px;">
+										<small>
+											<a href="single.html" rel="bookmark">
+												Duis aute irure dolor in reprehenderit in voluptate velit esse.
+											</a>
+										</small>
+									</h3>
+									<div class="entry-meta">
+										<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">10 hours ago</time></a></span>
+									</div>
+								</div>
+							</article>
+							<article class="type-post style-media-list media col-sm-6 col-md-12">
+								<!-- to disable lazy loading, remove data-src and data-src-retina -->
+								<!-- <img src="../img/placeholder.gif" data-src="http://placehold.it/80x80" data-src-retina="http://placehold.it/160x160" width="80" height="80" class="media-object pull-left" alt=""> -->
+								<%= link_to  do %> 
+									<%= image_tag 'http://placehold.it/80x80', 
+											class: 'media-object pull-left' %>
+								<% end %>
+								<!--fallback for no javascript browsers-->
+								<noscript>
+									<img src="http://placehold.it/80x80" alt="">
+								</noscript>
+								<div class="media-body">
+									<h3 class="entry-title" style="font-size: 18px;">
+										<small>
+											<a href="single.html" rel="bookmark">
+												Excepteur sint occaecat cupidatat non proident.
+											</a>
+										</small>
+									</h3>
+									<div class="entry-meta">
+										<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">11 hours ago</time></a></span>
+									</div>
+								</div>
+							</article>
+							<article class="type-post style-media-list media col-sm-6 col-md-12">
+								<!-- to disable lazy loading, remove data-src and data-src-retina -->
+								<!-- <img src="../img/placeholder.gif" data-src="http://placehold.it/80x80" data-src-retina="http://placehold.it/160x160" width="80" height="80" class="media-object pull-left" alt=""> -->
+								<%= link_to  do %> 
+									<%= image_tag 'http://placehold.it/80x80', 
+											class: 'media-object pull-left' %>
+								<% end %>
+								<!--fallback for no javascript browsers-->
+								<noscript>
+									<img src="http://placehold.it/80x80" alt="">
+								</noscript>
+								<div class="media-body">
+									<h3 class="entry-title" style="font-size: 18px;">
+										<small>
+											<a href="single.html" rel="bookmark">
+												Ullamco laboris nisi ut aliquip ex ea commodo consequat.
+											</a>
+										</small>
+									</h3>
+									<div class="entry-meta">
+										<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">12 hours ago</time></a></span>
+									</div>
+								</div>
+							</article>
+						</div>
+						<div class="more-wrapper">
+							<a href="https://twitter.com/sevendaysports" class="btn btn-warning btn-sm">
+								More
+							</a>
+						</div>
+					</aside><!-- / Recent Tweets -->
+					<article class="type-post style-media-list media col-sm-6 col-md-12">
 
-		<div class="bg-base col-md-6 col-lg-6">
-							
-							<h2 class="section-title ribbon ribbon-highlight"><span>What's Hot</span></h2>
+					</article>
+					<h2 id="imageAndVideo" style="margin-left: 36%;">Plays of the Week</h2>
 
-							<div class="entries">
-
-								<article class="entry style-large type-post">
-									<%= link_to url: 'http://www.placehold.it/680x452' do %>
-										<%= image_tag 'http://www.placehold.it/680x452' %>
-									<% end %>
-									<figure class="entry-thumbnail hidden-xs">
-
-										<a href="single.html">
-											<!-- to disable lazy loading, remove data-src and data-src-retina -->
-											<img src="../img/placeholder.gif" data-src="http://placehold.it/680x452" data-src-retina="http://placehold.it/1024x680" width="680" height="452" alt="">
-											
-
-											<!--fallback for no javascript browsers-->
-											<noscript>
-												<!-- <img src="http://placehold.it/680x452" alt=""> -->
-												<%= image_tag 'placeholder.gif', size: '680x452' %>
-											</noscript>
-										</a>
-
-									</figure>
-
-									<header class="entry-header">
-
-										<h3 class="entry-title">
-											<small>
-												<a href="single.html" rel="bookmark">
-													The mosts views and discussed posts on this time goes here.
-												</a>
-											</small>
-										</h3>
-										<div class="entry-meta">
-											<span class="author">by <a href="blog.html">John Doe</a></span>
-											<span class="entry-date"><a href="blog.html">on <time datetime="2013-07-04T23:26:34+00:00">September 20 2013</time></a></span>
-											<span class="category">In <a href="blog.html">Technology</a></span>
-										</div>
-
-									</header>
-
-									<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet.</p>
-
-								</article>
-
-								<article class="entry style-large type-post">
-									<%= link_to url: 'http://www.placehold.it/680x452' do %>
-										<%= image_tag 'http://www.placehold.it/680x452' %>
-									<% end %>
-									<figure class="entry-thumbnail hidden-xs">
-
-										<a href="single.html">
-
-											<!-- to disable lazy loading, remove data-src and data-src-retina -->
-											<img src="../img/placeholder.gif" data-src="http://placehold.it/680x452" data-src-retina="http://placehold.it/1024x680" width="680" height="452" alt="">
-
-											<!--fallback for no javascript browsers-->
-											<noscript>
-												<img src="http://placehold.it/680x452" alt="">
-											</noscript>
-
-										</a>
-
-									</figure>
-
-									<header class="entry-header">
-
-										<h3 class="entry-title">
-											<small>
-												<a href="single.html" rel="bookmark">
-													Excepteur sint occaecat cupidatat non proident.
-												</a>
-											</small>
-										</h3>
-										<div class="entry-meta">
-											<span class="author">by <a href="blog.html">John Doe</a></span>
-											<span class="entry-date"><a href="blog.html">on <time datetime="2013-07-04T23:26:34+00:00">September 20 2013</time></a></span>
-											<span class="category">In <a href="blog.html">Entertaintment</a></span>
-										</div>
-
-									</header>
-
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-								</article>
-								
-								<article class="entry style-large type-post">
-
-									<figure class="entry-thumbnail hidden-xs">
-
-										<a href="single.html">
-
-											<!-- to disable lazy loading, remove data-src and data-src-retina -->
-											<img src="../img/placeholder.gif" data-src="http://placehold.it/680x452" data-src-retina="http://placehold.it/1024x680" width="680" height="452" alt="">
-
-											<!--fallback for no javascript browsers-->
-											<noscript>
-												<img src="http://placehold.it/680x452" alt="">
-											</noscript>
-											
-										</a>
-
-									</figure>
-
-									<header class="entry-header">
-
-										<h3 class="entry-title">
-											<a href="single.html" rel="bookmark">Excepteur sint occaecat cupidatat non proident.</a>
-										</h3>
-										<div class="entry-meta">
-											<span class="author">by <a href="blog.html">John Doe</a></span>
-											<span class="entry-date"><a href="blog.html">on <time datetime="2013-07-04T23:26:34+00:00">September 20 2013</time></a></span>
-											<span class="category">In <a href="blog.html">Entertaintment</a></span>
-										</div>
-
-									</header>
-
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-								</article>
-								
+					<div class="row" style="padding-right: 10px;">
+						<div class="col-sm-6">
+							<a href="http://placehold.it/720x420" title="Title" data-rel="prettyPhoto">
+								<span class="overlay"><i class="icon icon-search"></i></span>
+								<img src="http://placehold.it/480x280" alt=""></a>
+						</div>
+						<div class="col-sm-6">
+							<a href="https://wrapbootstrap.com/e&amp;iframe=true&amp;width=900&amp;height=400" title="Title" data-rel="prettyPhoto">
+								<span class="overlay"><i class="icon icon-search"></i></span>
+								<img src="http://placehold.it/480x280" alt=""></a>
+						</div>
+					</div>
+					<div class="row" style="padding-right: 10px;">
+						<div class="col-sm-6">
+							<div class="video-container">
+								<iframe src="http://player.vimeo.com/video/6284199?title=0&amp;byline=0&amp;portrait=0" width="800" height="450"></iframe>
 							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="video-container">
+								<iframe src="http://youtube.com/v/t58WCSn5lNI" width="800" height="450"></iframe>
+							</div>
+						</div>
+					</div>
+					<div class="row" style="padding-right: 10px;">
+						<div class="col-sm-6">
+							<div class="video-container">
+								<iframe src="http://youtube.com/v/t58WCSn5lNI" width="800" height="450"></iframe>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="video-container">
+								<iframe src="http://youtube.com/v/t58WCSn5lNI" width="800" height="450"></iframe>
+							</div>
+						</div>
+					</div>
+			</div><!--/.col-md-4.col-lg-4.md-pull-right-->
+			<div class="col-md-4 col-lg-4 md-pull-right">
 
-						</div><!--/.bg-base.col-md-8.col-lg-8-->
+			</div><!--/.col-md-4.col-lg-4.md-pull-right-->
+						
+	<div class="bg-base col-md-7 col-lg-7" style="left: 1.5%;">				
+		<h2 class="section-title ribbon ribbon-highlight" style="right: .5%; width: 98.5%;"><span>What's Hot</span></h2>
+		<div class="entries" style="width: 93%;">
+			<article class="entry style-large type-post">
+				<%= link_to url: 'http://www.placehold.it/680x452' do %>
+					<%= image_tag 'http://www.placehold.it/680x452' %>
+				<% end %>
+				<figure class="entry-thumbnail hidden-xs">
+					<a href="single.html">
+						<!-- to disable lazy loading, remove data-src and data-src-retina -->
+						<img src="../img/placeholder.gif" data-src="http://placehold.it/680x452" data-src-retina="http://placehold.it/1024x680" width="680" height="452" alt="">
+						<!--fallback for no javascript browsers-->
+						<noscript>
+							<!-- <img src="http://placehold.it/680x452" alt=""> -->
+							<%= image_tag 'placeholder.gif', size: '680x452' %>
+						</noscript>
+					</a>
+				</figure>
+				<header class="entry-header">
+					<h3 class="entry-title">
+						<small>
+							<a href="single.html" rel="bookmark">
+								The mosts views and discussed posts on this time goes here.
+							</a>
+						</small>
+					</h3>
+					<div class="entry-meta">
+						<span class="author">by <a href="blog.html">John Doe</a></span>
+						<span class="entry-date"><a href="blog.html">on <time datetime="2013-07-04T23:26:34+00:00">September 20 2013</time></a></span>
+						<span class="category">In <a href="blog.html">Technology</a></span>
+					</div>
+				</header>
+				<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet.</p>
+			</article>
+			<article class="entry style-large type-post">
+				<%= link_to url: 'http://www.placehold.it/680x452' do %>
+					<%= image_tag 'http://www.placehold.it/680x452' %>
+				<% end %>
+				<figure class="entry-thumbnail hidden-xs">
+					<a href="single.html">
+						<!-- to disable lazy loading, remove data-src and data-src-retina -->
+						<img src="../img/placeholder.gif" data-src="http://placehold.it/680x452" data-src-retina="http://placehold.it/1024x680" width="680" height="452" alt="">
+						<!--fallback for no javascript browsers-->
+						<noscript>
+							<img src="http://placehold.it/680x452" alt="">
+						</noscript>
+					</a>
+				</figure>
+				<header class="entry-header">
+					<h3 class="entry-title">
+						<small>
+							<a href="single.html" rel="bookmark">
+								Excepteur sint occaecat cupidatat non proident.
+							</a>
+						</small>
+					</h3>
+					<div class="entry-meta">
+						<span class="author">by <a href="blog.html">John Doe</a></span>
+						<span class="entry-date"><a href="blog.html">on <time datetime="2013-07-04T23:26:34+00:00">September 20 2013</time></a></span>
+						<span class="category">In <a href="blog.html">Entertaintment</a></span>
+					</div>
+				</header>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</article>
+		</div>
+	</div><!--/.bg-base.col-md-8.col-lg-8-->
+</div><!--/.colheight-->
+<div id="coverageCarousel" class="section bg-primary carousel carousel slide" style="width: 99.9%; left: 1.3%;">
+	<h2 class="section-title ribbon ribbon-highlight" style="left: 1px; top: 0px;"><span>&nbsp;</span></h2>
+	<div class="carousel-inner">
+		<div class="item active">
+			<h2 class="section-title ribbon ribbon-highlight" style="margin-top: -1.5%;">
+				<a href="#"> Galleries</a>
+			</h2>
+			<div class="row entries">
+				<article class="entry style-grid type-post col-md-6 col-lg-3 colheight-sm-1">
+					<header class="entry-header">
+						<p class="small"><a href="blog.html">Review</a></p>
+						<h3 class="entry-title"><a href="single.html">xPhone first hand: Check out, this might be the right phone for you</a> </h3>
+						<div class="entry-meta">
+							<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">20 hours ago</time></a></span>
+							<span class="entry-author"> by <a href="blog.html">John Doe</a></span>
+						</div>
+					</header>
+					
+					<figure class="entry-thumbnail">
 
-					</div><!--/.colheight-->
+						<a href="single.html" class="overlay overlay-primary"></a>
 
-				</div><!--/.col-md-8.col-lg-4-->
+						<!-- to disable lazy loading, remove data-src and data-src-retina -->
+						<img src="../img/placeholder.gif" data-src="http://placehold.it/480x280" data-src-retina="http://placehold.it/720x420" width="480" height="280" alt="">
+
+						<!--fallback for no javascript browsers-->
+						<noscript>
+							<img src="http://placehold.it/480x280" alt="">
+						</noscript>
+
+					</figure>
+
+				</article>
+
+				<article class="entry style-grid type-post col-md-6 col-lg-3 colheight-sm-1">
+
+					<header class="entry-header">
+						<p class="small"><a href="blog.html">Event Report</a></p>
+						<h3 class="entry-title"><a href="single.html">The rumor was not a joke, lorem ispsum dolor sit amet constactetiour.</a> </h3>
+						<div class="entry-meta">
+							<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">20 hours ago</time></a></span>
+							<span class="entry-author"> by <a href="blog.html">John Doe</a></span>
+						</div>
+					</header>
+					
+					<figure class="entry-thumbnail">
+
+						<a href="single.html" class="overlay overlay-primary"></a>
+
+						<!-- to disable lazy loading, remove data-src and data-src-retina -->
+						<img src="../img/placeholder.gif" data-src="http://placehold.it/680x452" data-src-retina="http://placehold.it/1024x680" width="680" height="452" alt="">
+
+						<!--fallback for no javascript browsers-->
+						<noscript>
+							<img src="http://placehold.it/680x452" alt="">
+						</noscript>
+
+					</figure>
+
+				</article>
+
+				<article class="entry style-grid type-post col-md-6 col-lg-3 colheight-sm-1">
+					<header class="entry-header">
+						<p class="small"><a href="blog.html">Event Report</a></p>
+						<h3 class="entry-title"><a href="single.html">The Event is starting Now. Grab your popcorn, beer and notes.</a> </h3>
+						<div class="entry-meta">
+							<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">20 hours ago</time></a></span>
+							<span class="entry-author"> by <a href="blog.html">John Doe</a></span>
+						</div>
+					</header>
+					
+					<figure class="entry-thumbnail">
+
+						<a href="single.html" class="overlay overlay-primary"></a>
+
+						<!-- to disable lazy loading, remove data-src and data-src-retina -->
+						<img src="../img/placeholder.gif" data-src="http://placehold.it/480x280" data-src-retina="http://placehold.it/720x420" width="480" height="280" alt="">
+
+						<!--fallback for no javascript browsers-->
+						<noscript>
+							<img src="http://placehold.it/480x280" alt="">
+						</noscript>
+
+					</figure>
+
+				</article>
+
+				<article class="entry style-grid type-post col-md-6 col-lg-3 colheight-sm-1">
+					<header class="entry-header">
+						<p class="small"><a href="blog.html">Speculation</a></p>
+						<h3 class="entry-title"><a href="single.html">Rumor: The long awaited update for Retina Display is ready to be annaunced on the next event held by them</a> </h3>
+						<div class="entry-meta">
+							<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">20 hours ago</time></a></span>
+							<span class="entry-author"> by <a href="blog.html">John Doe</a></span>
+						</div>
+					</header>
+					
+					<figure class="entry-thumbnail">
+
+						<a href="single.html" class="overlay overlay-primary"></a>
+
+						<!-- to disable lazy loading, remove data-src and data-src-retina -->
+						<img src="../img/placeholder.gif" data-src="http://placehold.it/480x280" data-src-retina="http://placehold.it/720x420" width="480" height="280" alt="">
+
+						<!--fallback for no javascript browsers-->
+						<noscript>
+							<img src="http://placehold.it/480x280" alt="">
+						</noscript>
+
+					</figure>
+
+				</article>
+
+			</div><!--/.row.entries-->
+
+		</div><!--/.item-->
+		<div class="item">
+			<h2 class="section-title ribbon ribbon-highlight"><a href="blog.html"> #WCDC 2013</a></h2>
+			
+			<div class="row entries">
+
+				<article class="entry style-grid type-post col-md-6 col-lg-3 colheight-sm-1">
+					<header class="entry-header">
+						<p class="small"><a href="blog.html">Event Report</a></p>
+						<h3 class="entry-title"><a href="single.html">The Event is starting Now. Grab your popcorn, beer and notes.</a> </h3>
+						<div class="entry-meta">
+							<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">20 hours ago</time></a></span>
+							<span class="entry-author"> by <a href="blog.html">John Doe</a></span>
+						</div>
+					</header>
+					
+					<figure class="entry-thumbnail">
+
+						<a href="single.html" class="overlay overlay-primary"></a>
+
+						<!-- to disable lazy loading, remove data-src and data-src-retina -->
+						<img src="../img/placeholder.gif" data-src="http://placehold.it/480x280" data-src-retina="http://placehold.it/720x420" width="480" height="280" alt="">
+
+						<!--fallback for no javascript browsers-->
+						<noscript>
+							<img src="http://placehold.it/480x280" alt="">
+						</noscript>
+
+					</figure>
+
+				</article>
+
+				<article class="entry style-grid type-post col-md-6 col-lg-3 colheight-sm-1">
+					<header class="entry-header">
+						<p class="small"><a href="blog.html">Speculation</a></p>
+						<h3 class="entry-title"><a href="single.html">Rumor: The long awaited update for Retina Display is ready to be annaunced on the next event held by them</a> </h3>
+						<div class="entry-meta">
+							<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">20 hours ago</time></a></span>
+							<span class="entry-author"> by <a href="blog.html">John Doe</a></span>
+						</div>
+					</header>
+					
+					<figure class="entry-thumbnail">
+
+						<a href="single.html" class="overlay overlay-primary"></a>
+
+						<!-- to disable lazy loading, remove data-src and data-src-retina -->
+						<img src="../img/placeholder.gif" data-src="http://placehold.it/480x280" data-src-retina="http://placehold.it/720x420" width="480" height="280" alt="">
+
+						<!--fallback for no javascript browsers-->
+						<noscript>
+							<img src="http://placehold.it/480x280" alt="">
+						</noscript>
+
+					</figure>
+
+				</article>
+
+				<article class="entry style-grid type-post col-md-6 col-lg-3 colheight-sm-1">
+					
+					<header class="entry-header">
+						<p class="small"><a href="blog.html">Review</a></p>
+						<h3 class="entry-title"><a href="single.html">xPhone first hand: Check out, this might be the right phone for you</a> </h3>
+						<div class="entry-meta">
+							<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">20 hours ago</time></a></span>
+							<span class="entry-author"> by <a href="blog.html">John Doe</a></span>
+						</div>
+					</header>
+					
+					<figure class="entry-thumbnail">
+
+						<a href="single.html" class="overlay overlay-primary"></a>
+
+						<!-- to disable lazy loading, remove data-src and data-src-retina -->
+						<img src="../img/placeholder.gif" data-src="http://placehold.it/480x280" data-src-retina="http://placehold.it/720x420" width="480" height="280" alt="">
+
+						<!--fallback for no javascript browsers-->
+						<noscript>
+							<img src="http://placehold.it/480x280" alt="">
+						</noscript>
+
+					</figure>
+
+				</article>
+
+				<article class="entry style-grid type-post col-md-6 col-lg-3 colheight-sm-1">
+
+					<header class="entry-header">
+						<p class="small"><a href="blog.html">Event Report</a></p>
+						<h3 class="entry-title"><a href="single.html">The rumor was not a joke, lorem ispsum dolor sit amet constactetiour.</a> </h3>
+						<div class="entry-meta">
+							<span class="entry-date"><a href="blog.html"><time datetime="2013-07-04T23:26:34+00:00">20 hours ago</time></a></span>
+							<span class="entry-author"> by <a href="blog.html">John Doe</a></span>
+						</div>
+					</header>
+					
+					<figure class="entry-thumbnail">
+
+						<a href="single.html" class="overlay overlay-primary"></a>
+
+						<!-- to disable lazy loading, remove data-src and data-src-retina -->
+						<img src="../img/placeholder.gif" data-src="http://placehold.it/680x452" data-src-retina="http://placehold.it/1024x680" width="680" height="452" alt="">
+
+						<!--fallback for no javascript browsers-->
+						<noscript>
+							<img src="http://placehold.it/680x452" alt="">
+						</noscript>
+
+					</figure>
+
+				</article>
+
+			</div><!--/.row.entries-->
+
+		</div><!--/.item-->
+	</div><!--/.carousel-inner-->
+
+	<a class="left carousel-control" href="#coverageCarousel" data-slide="prev">
+		<span class="icon icon-angle-left"></span>
+	</a>
+	<a class="right carousel-control" href="#coverageCarousel" data-slide="next">
+		<span class="icon icon-angle-right"></span>
+	</a>
+
+</div>
+
+</div><!--/.col-md-8.col-lg-4-->
 
 
 
-
-
-	</div><!-- END CLASS section row entries bg-primary secton-no-margin-bottom -->
-</div><!-- END ID main CLASS container -->
