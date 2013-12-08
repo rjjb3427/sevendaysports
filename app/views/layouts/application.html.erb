@@ -8,17 +8,10 @@
 	  <%= render partial: 'layouts/summarize_header' %>
 	</head>
 	<body>
-			<h1 class="sr-only">Sevendaysports</h1>
-				<div>
-					<%= render 'layouts/nav' %>
-				</div>
-				<div>
-					<%= render 'layouts/flash_messages' %>
-				</div>
-						<%= yield %>
-						<%= render 'layouts/footer' %>
-				</div><!-- END ID main CLASS container -->
-			<script src="https://code.jquery.com/jquery.js"></script>
-		</div><!-- END ID main CLASS container -->
+		<%= render 'layouts/nav' %>
+		<%= render 'layouts/flash_messages' %>
+		<%= yield %>
+		<%= render 'layouts/footer' %>
+		<script src="https://code.jquery.com/jquery.js"></script>
 	</body>
 </html>
