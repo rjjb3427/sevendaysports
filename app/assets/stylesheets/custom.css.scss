@@ -1313,7 +1313,7 @@ body.scrolled .header-navbar  .nav-pages {
  * 5. Main
  */
 #main {
-  padding-top: 94px;
+  /* padding-top: 94px; removed to push content right under nav-subheader*/ 
   position: relative;
 }
 .page-header {
