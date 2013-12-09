@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+'ruby' '2.0.0'
 gem 'rails', '3.2.14'
 gem 'pg'
 gem 'devise'
@@ -29,4 +29,4 @@ group :development, :test do
 end
 
 gem 'jquery-rails'
-'ruby' '2.0.0'
+
