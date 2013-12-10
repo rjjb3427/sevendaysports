@@ -1,25 +1,82 @@
-<h3>Add a University</h3>
-<%= link_to :back %>
-<br />
-<%= form_for @university, html: { class: "form-horizontal" } do |f| %>
-	<% if @university.errors.any? %>
-		<div class="error_messages">
-			<h3>Please correct the following errors.</h3>
-			<ul>
-				<% @university.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
+<div id="main" class="container">
+	<div id="content" class="content bg-base section">	
+		<div class="ribbon ribbon-highlight">
+			<ol class="breadcrumb ribbon-inner">
+				<li><%= link_to 'Home', root_path %></li>
+				<li><%= link_to 'Universities', universities_path %></li>
+				<li class="active" title="universities/new"><em>Form</em></li>
+			</ol>
+		</div><!--/.ribbon.ribbon-highlight-->
+			<h3 class="page-title" style="margin-left: 35.5%;">
+				<em style="color: #6699CC">Add</em> a University
+			</h3>
+			<form role="form" style="margin-left: 33%;">
+				<%= form_for @university, html: { class: "form-horizontal" } do |f| %>
+				<% if @university.errors.any? %>
+					<div class="error_messages">
+						<h3>Please correct the following errors.</h3>
+						<ul>
+							<% @university.errors.full_messages.each do |msg| %>
+								<li><%= msg %></li>
+							<% end %>
+						</ul>
+					</div>
 				<% end %>
-			</ul>
-		</div>
-	<% end %>
-	<%= f.text_field :name, class: 'text_field', placeholder: 'University Name' %>
-	<%= f.text_field :url, class: 'text-field', placeholder: 'University Website' %>
-	<%= f.text_area :address, placeholder: 'University Address' %>
-	<%= f.text_field :city, class: 'text-field', placeholder: 'University City' %>
-	<%= f.text_field :state, class: 'text-field', placeholder: 'University State' %>
-	<%= f.text_field :zip, class: 'text-field', placeholder: 'University Zip' %>
-	<%= f.submit 'Create University!', options = { 
-																									method: :post, 
-																									class: 'btn btn-lg btn-primary' 
-																								} %>
-<% end %>	
+				<div class="form-group">
+					<%= f.text_field :name, class: 'text_field', 
+							placeholder: 'University Name', 
+							class: 'form-control input-lg',
+							style: 'width: 50%;'e
+							 %>
+				</div>
+				<div class="form-group">
+					<%= f.text_field :url, class: 'text-field', 
+							placeholder: 'University Website', 
+							class: 'form-control input-lg',
+							style: 'width: 50%;'
+							 %>
+				</div>
+				<div class="form-group">				
+					<%= f.text_area :address, 
+							placeholder: 'University Address', 
+							size: '32x3', 
+							class: 'form-control input-lg',
+							style: 'width: 50%;'
+							 %>
+				</div>
+				<div class="form-group">
+					<%= f.text_field :city, class: 'text-field', 
+							placeholder: 'University City', 
+							class: 'form-control input-lg',
+							style: 'width: 50%;'
+							 %>
+				</div>
+				<div class="form-group">
+					<%= f.text_field :state, class: 'text-field', 
+							placeholder: 'University State', 
+							class: 'form-control input-lg',
+							style: 'width: 50%;'
+							 %>
+				</div>
+				<div class="form-group">
+					<%= f.text_field :zip, class: 'text-field', 
+							placeholder: 'University Zip', 
+							class: 'form-control input-lg',
+							style: 'width: 50%;'
+							 %>
+				</div>
+				<div class="form-group" style="margin-left: 15%;">
+					<%= f.submit 'Create University!', 
+							options = { 
+													method: :post, 
+													class: 'btn btn-primary' 
+												} %>
+				</div>
+				<% end %>	
+			</form>
+	</div><!--/#content.content.bg-base.section-->
+</div><!--/#main.container-->
+
+
+
+

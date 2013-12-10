@@ -8,13 +8,13 @@
 		</div>
 		<% if @universities.blank? %>
 			<h3><small>No Universitites Exist</small></h3>
-			<% unless current_user.try(:admin?) %>
+			<% if user_signed_in? %>
 				<h5>
 					<em>Please contact Adminitrator to add a university</em>
 				</h5>
 			<% end %>
 		<% end %>
-		<% if current_user.try(:admin?) %>
+		<% if @universities.blank? && user_signed_in? %>
 			<%= render 'universities/first_object' %>
 		<% end %>
 	<% else %>

@@ -1,20 +1,63 @@
-<h3>Edit an Article</h3>
-<%= link_to :back, articles_path %>
-<br />
-<%= form_for @article, html: { class: 'form-horizontal' } do |f| %>
-<% if @article.errors.any? %>
-		<div class="error_messages">
-			<h3>Please correct the following errors.</h3>
-			<ul>
-				<% @article.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
+<div id="main" class="container">
+	<div id="content" class="content bg-base section">	
+		<div class="ribbon ribbon-highlight">
+			<ol class="breadcrumb ribbon-inner">
+				<li><%= link_to 'Home', root_path %></li>
+				<li><%= link_to 'Articles', articles_path %></li>
+				<li class="active" title="articles/edit"><em>Edit Article</em></li>
+			</ol>
+		</div><!--/.ribbon.ribbon-highlight-->
+			<h6 class="page-title" style="margin-left: 37%;">
+				<span style="color: #FF3333"><em>Edit</em></span> an Article
+			</h6>
+			<form role="form" style="margin-left: 33%;">
+				<%= form_for @article, html: { class: "form-horizontal" } do |f| %>
+				<% if @article.errors.any? %>
+					<div class="error_messages">
+						<h3>Please correct the following errors.</h3>
+						<ul>
+							<% @article.errors.full_messages.each do |msg| %>
+								<li><%= msg %></li>
+							<% end %>
+						</ul>
+					</div>
 				<% end %>
-			</ul>
-		</div>
-	<% end %>
-	<%= f.text_area :body, placeholder: 'Enter article here' %>
-	<%= f.text_field :title, placeholder: 'Enter an article title' %>
-	<%= f.text_field :author, placeholder: 'Tell us your name' %>
-	<%= f.submit 'Update Article!', class: 'btn btn-large btn-success' %>
-	<%= button_to :cancel, articles_path, options = { method: :get, class: 'btn btn-sm btn-danger' } %>
-<% end %>
+				<div class="form-group">
+					<%= f.text_field :title, class: 'text-field', 
+							placeholder: 'Title',
+							class: 'form-control input-lg',
+							style: 'width: 50%;'
+							 %>
+				</div>
+				<div class="form-group">				
+					<%= f.text_area :body, 
+							placeholder: 'Article Content', 
+							size: '32x3', 
+							class: 'form-control input-lg',
+							style: 'width: 50%;'
+							 %>
+				</div>
+				<div class="form-group">
+					<%= f.text_field :author, class: 'text_field', 
+							placeholder: 'Author Name', 
+							class: 'form-control input-lg',
+							style: 'width: 50%;'
+							 %>
+				</div>
+				<div class="form-group" style="margin-left: 10%;">
+					<%= f.submit 'Update Article!', 
+							options = { 
+													method: :post, 
+													class: 'btn btn-success btn-lg ' 
+												} %>
+												<%= link_to :cancel, articles_path, 
+			options = {
+									method: :get,
+									class: 'btn btn-sm btn-danger',
+									style: 'margin-top: 2%;'
+								} %>
+				</div>
+				<% end %>	
+			</form>
+	</div><!--/#content.content.bg-base.section-->
+</div><!--/#main.container-->

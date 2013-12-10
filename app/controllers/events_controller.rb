@@ -28,7 +28,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update_attributes(params[:event])
-      redirect_to @event, success: 'Event updated!'
+      redirect_to event_path(@event), success: 'Event updated!'
     else
       render :edit, error: 'There was an error updating your form'
     end

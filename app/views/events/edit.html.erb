@@ -1,16 +1,92 @@
-<h3>Edit Event</h3>
-<%= link_to :back, events_path %>
-<%= form_for [@team, @event], html: { class: 'form-horizontal'  } do |f| %>
-	<%= f.text_field :author, class: 'text_field', placeholder: 'Your name' %>
-	<%= f.select :home_team_id, @teams.map { |team| [team.name, team.id] } %>
-	<%= f.select :away_team_id, @teams.map { |team| [team.name, team.id] } %>
-	<%= f.text_field :title, class: 'text_field', placeholder: 'Title of event' %>
-	<%= f.text_field :kind, class: 'text_field', placeholder: 'Sport type' %>
-	<%= f.text_field :home_team_score, class: 'text_field', placeholder: 'Home team score' %>
-	<%= f.text_field :away_team_score, class: 'text_field', placeholder: 'Away team away_team_score' %>
-	<%= f.text_field :winner, class: 'text_field', placeholder: 'Winning team name' %>
-	<%= f.text_area :details, class: 'text_area', placeholder: 'Details about the event' %>
-	<%= f.datetime_select :event_on, class: 'datetime_field' %>
-	<%= button_to :update!, team_event_path(@event), options = { method: :get, class: 'btn btn-large btn-success' }%>
-<% end %>
-<%= button_to :cancel, :back, options = { method: :get, class: 'btn btn-small btn-danger' } %>
+<div id="main" class="container">
+	<div id="content" class="content bg-base section">	
+		<div class="ribbon ribbon-highlight">
+			<ol class="breadcrumb ribbon-inner">
+				<li><%= link_to 'Home', root_path %></li>
+				<li><%= link_to 'Events', events_path %></li>
+				<li class="active" title="events/new">
+						<em>Edit Event</em>
+				</li>
+			</ol>
+		</div><!--/.ribbon.ribbon-highlight-->
+		<h6 class="page-title" style="margin-left: 34%;">
+			<span style="color: #FF3333"><em>Edit</em></span> an Event
+		</h6>
+		<form role="form" style="margin-left: 33%;">
+			<%= form_for [@team, @event], html: { class: "form-horizontal" } do |f| %>
+			<% if @event.errors.any? %>
+				<div class="error_messages">
+					<h3>Please correct the following errors.</h3>
+					<ul>
+						<% @event.errors.full_messages.each do |msg| %>
+							<li><%= msg %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
+			<div class="form-group">
+				<%= f.text_field :author, class: 'text_field', 
+						placeholder: 'Your name', class: 'form-control input-lg', 
+						style: 'width: 50%;' %>
+			</div>
+			<div class="form-group">
+				<div class="pull-left">
+				<%= f.label 'Home Team' %><br />
+				<%= f.select :home_team_id, 
+						@teams.map { |team| [team.name, team.id] }, 
+						class: 'form-control input-lg' %>
+				</div>
+				<div style="margin-left: 37%;">
+				<%= f.label 'Away Team', style: 'margin-left: 6%; margin-top: -1%;' %><br />	
+				<%= f.select :away_team_id, 
+						@teams.map { |team| [team.name, team.id] } %>
+				</div>
+			</div>
+			<div class="form-group">	
+				<%#= f.label 'Away Team' %><br />	
+				<%#= f.select :away_team_id, 
+						@teams.map { |team| [team.name, team.id] } %>
+			</div>
+			<div class="form-group">
+				<%= f.select :kind, @teams.map { |team| [team.sport_type] }, class: 'form-control input-lg text_field', 
+						style: 'width: 50%;' %>
+			</div>
+			<div class="form-group">
+				<%= f.text_field :home_team_score, class: 'text_field', 
+						placeholder: 'Home team score', class: 'form-control input-lg', 
+						style: 'width: 50%;' %>
+			</div>
+			<div class="form-group">
+				<%= f.text_field :away_team_score, class: 'text_field', 
+						placeholder: 'Away team away_team_score', class: 'form-control input-lg', 
+						style: 'width: 50%;' %>
+			</div>
+			
+			<div class="form-group">
+				<%= f.text_field :winner, class: 'text_field', 
+						placeholder: 'Winning team name', class: 'form-control input-lg', 
+						style: 'width: 50%;' %>
+			</div>
+			<div class="form-group">
+				<%= f.text_area :details, class: 'text_area', 
+						placeholder: 'Details about the event', 
+						class: 'form-control input-lg', size: '10x3',
+						style: 'width: 50%;' %>
+			</div>
+			<div class="form-group">
+				<%= f.datetime_select :event_on, 
+						class: 'datetime_select form-control input-lg' %>
+			</div>
+			<div class="form-group" style="margin-left: 12.5%;">
+				<%= f.submit 'Update Event!', 
+					options = { 
+											method: :put, 
+											class: 'btn btn-lg btn-success' 
+										} %>
+				<%= link_to :cancel, events_path, class: 'btn btn-sm btn-danger', style: 'margin-top: 2.3%;' %>
+			</div>
+			<% end %>	
+			
+		</form>
+	</div><!--/#content.content.bg-base.section-->
+</div><!--/#main.container-->
