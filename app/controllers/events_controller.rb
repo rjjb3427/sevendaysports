@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :get_teams, only: [:new, :edit]
+  before_filter :get_teams, only: [:new, :create, :edit]
   before_filter :get_event, except: [:index, :new, :create]
 
   def index
