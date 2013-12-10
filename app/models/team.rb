@@ -28,4 +28,8 @@ class Team < ActiveRecord::Base
   def self.baseball
     by_sport_type('Baseball/Softball')
   end
+
+  def university_name
+    university.name
+  end
 end

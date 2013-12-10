@@ -1,37 +1,51 @@
-<div class="container">
-	<div><%= link_to :back, articles_path %></div>
-	<br />
-	<div class="panel panel-default" style="width: 50%;">
-		<div class="panel-heading">
-			<h3 class="panel-title"><%= @article.title %></h3>
-		</div>
-		<div class="panel-body">
-			<ul class="list-group">
-				<li class="list-group-item"><b>Title</b>: <%= @article.title %></li>
-				<li class="list-group-item"><b>Body</b>: <%= @article.body %></li>
-				<li class="list-group-item"><b>Author</b>: <%= @article.author %></li>				
-			</ul>
-		</div>
-
-	</div><!-- END CLASS panel panel-default -->
-	<% if current_user.try(:admin?) %>
-		<div class="btn-toolbar">
-			<div class="btn-group">
-				<%= button_to :edit, edit_article_path(@article),
-						options = {
-												method: :get,
-												class: 'btn btn-sm btn-default',
-												style: 'display: inline-block;'
-											} %>
-
-				<%= button_to :delete, article_path(@article),
-						options = {
-												method: :delete,
-												class: 'btn btn-sm btn-danger', 
-												style: 'display: inline-block;'
-											} %>
-			</div>
-		</div>
-	<% end %>
-	<%= link_to :back, articles_path %>
-</div><!-- END CLASS container -->
+<div id="main" class="container">
+	<div id="content" class="content bg-base section">	
+		<div class="ribbon ribbon-highlight">
+			<ol class="breadcrumb ribbon-inner">
+				<li><%= link_to 'Home', root_path %></li>
+				<li class="active" title="Articles">
+					<%= link_to 'Articles', articles_path %>
+				</li>
+				<li>
+					<em><%= @article.title %></em>
+				</li>
+			</ol>
+		</div><!--/.ribbon.ribbon-highlight-->
+		<div class="table-responsive">
+			<table class="table table-hover table-bordered">
+				<thead>
+					<th>Title</th>
+					<th>Body</th>
+					<th>Author</th>
+					<% if current_user.try(:admin?) %>
+						<th>Edit</th>
+						<th>Delete</th>
+					<% end %>
+				</thead>
+				<tbody>
+					<td><%= @article.title %></td>
+					<td><%= @article.body %></td>
+					<td><%= @article.author %></td>
+					<% if current_user.try(:admin?) %>
+						<td>
+							<%= button_to :edit, edit_article_path(@article),
+									options = {
+															method: :get,
+															class: 'btn btn-sm btn-default'
+														} %>
+						</td>
+						<td>
+							<%= button_to :delete, article_path(@article),
+									options = {
+															method: :delete,
+															confirm: 'You sure?',
+															class: 'btn btn-sm btn-danger'
+														} %>
+						</td>
+					<% end %>
+				</tbody>
+			</table>
+		</div><!--/.table-responsive-->
+		<%= button_to :back, articles_path, class: 'btn btn-sm', method: :get %>
+	</div><!--/#content.content.bg-base.section-->
+</div><!--/#main.container-->

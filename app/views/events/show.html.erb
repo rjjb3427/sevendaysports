@@ -5,77 +5,73 @@
 				<li><%= link_to 'Home', root_path %></li>
 				<li><%= link_to 'Events', events_path %></li>
 				<li class="active" title="Specific Event Page">
-					<%= @event.home_team_name %>
+					<em><%= @event.home_team_name %></em>
 					&nbsp;&nbsp;vs.&nbsp;&nbsp;
-					<%= @event.away_team_name %>
-					&nbsp;&nbsp;-&nbsp;&nbsp;
-					<i><small><%= @event.event_on.strftime('%A %B %d, %Y') %></small></i>
+					<em><%= @event.away_team_name %></em>
+					&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;&nbsp;
+					<em><%= @event.event_on.strftime('%m-%d-%y') %></em>
 				</li>
 			</ol>
 		</div>
 		<header class="page-header">
-			<h1 class="page-title full-page-title">
+			<h1 class="page-title">
 				<%= @event.home_team_name %> 
 				<small>vs.</small> 
 				<%= @event.away_team_name %>
 			</h1>
 			<small><b>Date</b>: <%= @event.event_on.strftime('%A %B %d, %Y') %></small>
 		</header>
-
-	
-	<br />
-	<!--.table-->
-	<h2 id="table"><%= @event.title %></h2>
-
-	<div class="table-responsive">
-		<table class="table table-hover table-bordered">
-			<thead>
-				<tr>
-					<th>Home Team</th>
-					<th>Away Team</th>
-					<th>Sport Type</th>
-					<th>Date</th>
-					<th>Home Team Score</th>
-					<th>Away Team Score</th>
-					<th>Winner</th>
-					<th>Details</th>
-					<% if current_user.try(:admin?) %>
-						<th>Edit</th>
-						<th>Delete</th>
-					<% end %>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><%= @event.home_team_name %></td>
-					<td><%= @event.away_team_name %></td>
-					<td><%= @event.kind %></td>
-					<td><%= @event.event_on.strftime('%A %B %d, %Y') %></td>
-					<td><%= @event.home_team_score %></td>
-					<td><%= @event.away_team_score %></td>
-					<td><%= @event.winner %></td>
-					<td><%= @event.details %></td>
-					<% if current_user.try(:admin?) %>
-						<td>
-							<%= button_to :edit, edit_team_event_path(@event),
-									options = {
-															method: :get,
-															class: 'btn btn-sm btn-default'
-														} %>
-						</td>
-						<td>
-							<%= button_to :delete, event_path(@event),
-									options = {
-															method: :delete,
-															confirm: 'You sure?',
-															class: 'btn btn-sm btn-danger'
-														} %>
-						</td>
-					<% end %>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<br />
-	<%= button_to :back, events_path, class: 'btn btn-sm' %>
+		<!--.table-->
+		<h1 id="table"><%= @event.title %></h1>
+		<div class="table-responsive">
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th>Home Team</th>
+						<th>Away Team</th>
+						<th>Sport Type</th>
+						<th>Date</th>
+						<th>Home Team Score</th>
+						<th>Away Team Score</th>
+						<th>Winner</th>
+						<th>Details</th>
+						<% if current_user.try(:admin?) %>
+							<th>Edit</th>
+							<th>Delete</th>
+						<% end %>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><%= @event.home_team_name %></td>
+						<td><%= @event.away_team_name %></td>
+						<td><%= @event.kind %></td>
+						<td><%= @event.event_on.strftime('%A %B %d, %Y') %></td>
+						<td><%= @event.home_team_score %></td>
+						<td><%= @event.away_team_score %></td>
+						<td><%= @event.winner %></td>
+						<td><%= @event.details %></td>
+						<% if current_user.try(:admin?) %>
+							<td>
+								<%= button_to :edit, edit_team_event_path(@event),
+										options = {
+																method: :get,
+																class: 'btn btn-sm btn-default'
+															} %>
+							</td>
+							<td>
+								<%= button_to :delete, event_path(@event),
+										options = {
+																method: :delete,
+																confirm: 'You sure?',
+																class: 'btn btn-sm btn-danger'
+															} %>
+							</td>
+						<% end %>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<br />
+		<%= button_to :back, events_path, class: 'btn btn-sm', method: :get %>
 </div><!-- END CLASS container -->

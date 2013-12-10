@@ -3,11 +3,10 @@
 		<div class="ribbon ribbon-highlight">
 			<ol class="breadcrumb ribbon-inner">
 				<li><%= link_to 'Home', root_path %></li>
-				<!-- <li><a href="#">Events</a></li> -->
-				<li class="active" title="Upcoming & Past Events">Events</li>
+
+				<li class="active" title="Upcoming & Past Events"><em>Events</em></li>
 			</ol>
 		</div>
-
 		<% if @upcoming_events.blank? %>
 			<h3><small>No Upcoming Events Exist</small></h3>
 			<% unless current_user.try(:admin?) %>
@@ -19,7 +18,6 @@
 				<%= render 'first_object' %>
 			<% end %>
 		<% else %>
-			<%= button_to :back, root_path, class: 'btn btn-sm' %>
 			<% if current_user.try(:admin?) %>
 				<%= button_to 'Create an Event', new_event_path, 
 						options = { 
@@ -28,7 +26,6 @@
 												style: 'margin-bottom: 2%;' 
 											} %>
 			<% end %>
-			<br />
 			<h1 class="entry-title">Upcoming Events</h1>
 			<div class="table-responsive">
 				<table class="table table-hover table-bordered">
