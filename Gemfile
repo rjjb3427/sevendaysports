@@ -28,5 +28,5 @@ group :development, :test do
   gem 'guard-rspec', require: false
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', "2.3.0"
 
