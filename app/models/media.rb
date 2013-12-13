@@ -1,5 +1,5 @@
 class Media < ActiveRecord::Base
-  attr_accessible :author, :details, :title, :url, :mediable_type, :mediable_id
+  attr_protected :author, :details, :title, :url, :mediable_type, :mediable_id
 
   validates_presence_of :author, :details, :title, :mediable_type, :url
 
