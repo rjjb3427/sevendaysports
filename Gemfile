@@ -9,6 +9,8 @@ gem 'bootstrap-sass', '~> 3.0.2.0'
 gem 'bootstrap-datetimepicker-rails'
 gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'rails_12factor', group: :production
+gem 'font-awesome-rails'
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

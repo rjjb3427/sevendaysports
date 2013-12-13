@@ -72,6 +72,8 @@ GEM
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
     ffi (1.9.0)
+    font-awesome-rails (4.0.3.0)
+      railties (>= 3.2, < 5.0)
     formatador (0.2.4)
     guard (2.2.2)
       formatador (>= 0.2.4)
@@ -207,6 +209,7 @@ DEPENDENCIES
   composite_primary_keys
   devise
   factory_girl_rails
+  font-awesome-rails
   guard-rspec
   guard-zeus
   jquery-rails (= 2.3.0)
