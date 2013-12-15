@@ -61,5 +61,9 @@ module Sevendaysports
 
     # fix precompile error: http://goo.gl/7VQrCI
     config.assets.initialize_on_precompile = false
-  end
+
+    # Include Bower components in compilde assets
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+    
+    end
 end

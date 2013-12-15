@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: 4b8a511e65181e28fd3caecdcf5ba730f4afe2b1
+  revision: 51f75ddde70f8e6bb40672b8513d24523fc6f608
   specs:
     twitter-bootstrap-rails (2.2.8)
       actionpack (>= 3.1)
@@ -44,6 +44,7 @@ GEM
     bootstrap-datetimepicker-rails (0.0.11)
     bootstrap-sass (3.0.2.1)
       sass (~> 3.2)
+    bower-rails (0.6.0)
     builder (3.0.4)
     celluloid (0.15.2)
       timers (~> 1.1.0)
@@ -108,6 +109,11 @@ GEM
     orm_adapter (0.4.0)
     pg (0.17.0)
     polyglot (0.3.3)
+    prettyphoto-rails (0.2.1)
+      jquery-rails
+      rails (>= 3.1)
+      sass-rails
+      uglifier
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -205,6 +211,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-datetimepicker-rails
   bootstrap-sass (~> 3.0.2.0)
+  bower-rails (~> 0.6.0)
   coffee-rails (~> 3.2.1)
   composite_primary_keys
   devise
@@ -214,6 +221,7 @@ DEPENDENCIES
   guard-zeus
   jquery-rails (= 2.3.0)
   pg
+  prettyphoto-rails
   pry
   pry-rails
   pry-remote

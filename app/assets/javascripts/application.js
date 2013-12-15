@@ -10,7 +10,18 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require main
+// Bower packages
+//= bootstrap
+//= bootstrap-javascript
+//= bootstrap-js-dropdown
+//= reveal
+//= font-awesome
+//= jquery
+//= modernizr
+//= jquery-prettyPhoto
+//= unveil
+//= jquery-ui-bootstrap
+// 
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .

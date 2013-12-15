@@ -37,8 +37,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    flash[:notice] = 'You sure?'
+    @user.delete
     redirect_to users_path
   end
 
