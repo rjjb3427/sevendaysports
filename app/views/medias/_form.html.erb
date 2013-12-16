@@ -1,7 +1,11 @@
 <h3>Add some Media</h3>
 <%= link_to :back %>
 <br />
-<%= form_for [@mediable, @media], html: { class: 'form-horizontal' } do |f| %>
+<%= form_for [@mediable, @media], 
+		html: { 
+						class: 'form-horizontal',
+						style: 'form',
+					} do |f| %>
 	<% if @media.errors.any? %>
 		<div class="error_messages">
 			<h3>Please correct the following errors.</h3>

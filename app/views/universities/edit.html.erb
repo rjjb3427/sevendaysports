@@ -10,8 +10,12 @@
 			<h6 class="page-title" style="margin-left: 36%;">
 				<span style="color: #FF3333"><em>Edit</em></span> a University
 			</h6>
-			<form role="form" style="margin-left: 33%;">
-				<%= form_for @university, html: { class: "form-horizontal" } do |f| %>
+			<%= form_for @university, 
+ 								html: { 
+ 												class: 'form-horizontal', 
+ 												role: 'form', 
+ 												style: 'margin-left: 33%;' 
+ 											} do |f| %>
 				<% if @university.errors.any? %>
 					<div class="error_messages">
 						<h3>Please correct the following errors.</h3>
@@ -80,6 +84,5 @@
 													style: 'margin-left: 53%; margin-top: -6.8%;'
 												} %>
 				</div>
-			</form>
 	</div><!--/#content.content.bg-base.section-->
 </div><!--/#main.container-->

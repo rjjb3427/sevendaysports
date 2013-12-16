@@ -1,11 +1,42 @@
-<h3>Edit a Team</h3>
-<%= link_to :back %>
-<br />
-<%= form_for [@university, @team], html: { class: 'form-horizontal' } do |f| %>
-	<%= f.text_field :name, class: 'text_field', placeholder: 'Team name' %>
-	<%= select_tag :sport_type, options_for_select([['Baseball/Softball', 1], 
-	['Basketball', 2], ['Golf, 3'], ['Soccer', 4], ['Track & Field', 5]]), 
-	class: 'select_tag' %>
-	<%= button_to 'Update Team!', name: 'commit', class: 'btn btn-large btn-primary' %>
-	<%= button_to :cancel, university_team_path(university_id: @university, id: @team), options = { method: :get, class: 'btn btn-sm btn-danger' } %>
-<% end %>
+<div id="main" class="container">
+	<div id="content" class="content bg-base section">	
+		<div class="ribbon ribbon-highlight">
+			<ol class="breadcrumb ribbon-inner">
+				<li><%= link_to 'Home', root_path %></li>
+				<li><%= link_to 'Teams', teams_path %></li>
+				<li class="active" title="teams/new"><em>New Team</em></li>
+			</ol>
+		</div><!--/.ribbon.ribbon-highlight-->
+		<h3 class="page-title" style="margin-left: 35.5%;">
+			<em style="color: #6699CC">Add</em> a Team
+		</h3>
+		<%= form_for [@university, @team], 
+				html: { 
+								class: 'form-horizontal',
+								role: 'form',
+								style: 'margin-left: 35%;'
+							} do |f| %>
+			<div class="form-group">
+				<%= f.text_field :name, class: 'form-control input-group', placeholder: 'Team name' %>
+			</div>
+			<div class="form-group">
+				<%= select_tag :sport_type, 
+						options_for_select([
+											          	['Baseball/Softball', 1], 
+																	['Basketball', 2], 
+																	['Golf, 3'], 
+																	['Soccer', 4], 
+																	['Track & Field', 5]
+																]), 
+						class: 'form-control input-group' %>
+			</div>
+			<div class="form-group">
+				<%= link_to do %>
+				<%= button_to 'Update Team!', name: 'commit', class: 'btn btn-block btn-primary', style: 'width: 39.6%;' %>
+			</div>
+			<div class="form-group">
+				<%= button_to :cancel, university_team_path(university_id: @university, id: @team), options = { method: :get, class: 'btn btn-block btn-danger' } %>
+			</div>
+		<% end %>
+	</div><!--/#content.content.bg-base.section-->
+</div><!--/#main.container-->

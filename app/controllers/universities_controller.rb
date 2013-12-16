@@ -12,7 +12,7 @@
   def create
     @university = University.new(params[:university])
     if @university.save
-      redirect_to action: :show, id: @university, success: 'University added!'
+      redirect_to  @university, success: 'University added!'
     else
       render :new, error: 'There was an error processing your University'
     end

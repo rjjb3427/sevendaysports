@@ -1,0 +1,13 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "jquery": "1.10.1",
+    "bootstrap": "latest",
+    "bootstrap-javascript": "latest",
+    "reveal.js": "latest",
+    "font-awesome": "latest",
+    "modernizr": "2.7.1",
+    "jquery-prettyPhoto": "latest",
+    "unveil": "latest"
+  }
+}

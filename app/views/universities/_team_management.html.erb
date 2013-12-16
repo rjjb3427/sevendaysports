@@ -15,6 +15,7 @@
 				<th>Sport Type</th>
 				<th>View</th>
 				<% if current_user.try(:admin?) %>
+					<th>Edit</th>
 					<th>Delete</th>
 				<% end %>
 			</thead>
@@ -37,7 +38,7 @@
 									edit_university_team_path(university_id: @university, id: team),
 									options = {
 															method: :get,
-															class: 'btn btn-sm btn-danger'
+															class: 'btn btn-sm btn-default'
 														} %>
 						</td>
 						<td>

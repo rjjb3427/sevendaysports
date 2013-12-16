@@ -1,27 +1,55 @@
-<h3>Create a Team</h3>
-<%= link_to :back, university_path(@university) %>
-<br />
-<%= form_for [@university, @team], html: { class: 'form-horizontal' } do |f| %>
-	<div>
-		<%= f.text_field :name, class: 'text_field', placeholder: "Add this team's name" %>
-	</div>
-	<br />
-	<div>
-		<span><%= "Sport Type:" %></span><br />
-		<%= f.select :sport_type, [
-																['Baseball/Softball', 'Baseball/Softball'],
-																['Basketball', 'Basketball'], 
-																['Golf', 'Golf'],
-																['Soccer', 'Soccer'],
-																['Track & Field', 'Track & Field']
-															] %>
-	</div>
-	<br />
-	<%= f.submit 'Create Team!', options = { class: 'btn btn-large btn-primary' } %>
-<% end %>
-	<%= button_to :cancel, university_path(@university), 
-			options = {
-									method: :get,
-									confirm: 'You sure?',
-									class: 'btn btn-sm btn-danger'
-								} %>
+<div id="main" class="container">
+	<div id="content" class="content bg-base section">	
+		<div class="ribbon ribbon-highlight">
+			<ol class="breadcrumb ribbon-inner">
+				<li><%= link_to 'Home', root_path %></li>
+				<li><%= link_to 'Teams', teams_path %></li>
+				<li class="active" title="teams/new"><em>New Team</em></li>
+			</ol>
+		</div><!--/.ribbon.ribbon-highlight-->
+			<h3 class="page-title" style="margin-left: 35.5%;">
+				<em style="color: #6699CC">Add</em> a Team
+			</h3>
+			<%= form_for [@university, @team], 
+									 html: { 
+														class: 'form-horizontal',
+														role: 'form',
+														style: 'margin-left: 35%;'
+												 	} do |f| %>
+				<div class="form-group">
+					<%= f.text_field :name, 
+							placeholder: "Add this team's name",
+							class: 'form-control input-group',
+							style: 'width: 40%;' %>
+				</div>
+				<br />
+				<div class="form-group">
+					<span>Sport Type:</span><br />
+					<%= f.select :sport_type, [
+																			['Baseball/Softball', 'Baseball/Softball'],
+																			['Basketball', 'Basketball'], 
+																			['Golf', 'Golf'],
+																			['Soccer', 'Soccer'],
+																			['Track & Field', 'Track & Field']
+																		],
+																		class: 'form-control input-group',
+																		style: 'width: 50%;' %>
+				</div>
+				<br />
+				<div class="form-group">
+					<div>
+						<%= f.submit 'Create Team!', options = { class: 'btn btn-block btn-primary', style: 'width: 39.6%;' } %>
+						&nbsp;
+						<%= button_to :cancel, university_path(@university), 
+							options = {
+													method: :get,
+													confirm: 'You sure?',
+													class: 'btn btn-block btn-danger',
+													style: 'width: 39.6%;'
+												} %>
+					</div>
+				</div>
+			<% end %>
+			</div>
+	</div><!--/#content.content.bg-base.section-->
+</div><!--/#main.container-->

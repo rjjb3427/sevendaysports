@@ -10,8 +10,11 @@
 		<h3 class="page-title" style="margin-left: 34%;">
 			<em style="color: #6699CC">Create</em> an Event
 		</h3>
-		<form role="form" style="margin-left: 33%;">
-			<%= form_for @event, html: { class: "form-horizontal" } do |f| %>
+		<%= form_for @event, 
+				html: { 
+								class: 'form-horizontal',
+								role: 'form'
+							} do |f| %>
 			<% if @event.errors.any? %>
 				<div class="error_messages">
 					<h3>Please correct the following errors.</h3>
@@ -83,8 +86,6 @@
 											} %>
 				<%= link_to :cancel, events_path, class: 'btn btn-small btn-danger' %>
 			</div>
-			<% end %>	
-			
-		</form>
+		<% end %>	
 	</div><!--/#content.content.bg-base.section-->
 </div><!--/#main.container-->
