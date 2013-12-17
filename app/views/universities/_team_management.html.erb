@@ -35,7 +35,7 @@
 					<% if current_user.try(:admin?) %>
 						<td>
 							<%= link_to 'Edit', 
-									edit_university_team_path(university_id: @university, id: team),
+									edit_university_team_path(university_id: @university.id, id: team),
 									options = {
 															method: :get,
 															class: 'btn btn-sm btn-default'
@@ -43,7 +43,7 @@
 						</td>
 						<td>
 							<%= link_to 'Delete', 
-									university_team_path(university_id: @university, id: team),
+									university_team_path(university_id: @university.id, id: team),
 									options = {
 															method: :delete,
 															confirm: 'You sure?',
