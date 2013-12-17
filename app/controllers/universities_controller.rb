@@ -35,8 +35,7 @@
 
   def destroy
     @university.delete
-    flash.now[:notice] = 'You sure?'
-    redirect_to universities_path
+    redirect_to universities_path, notice: 'You sure?'
   end
 
   private
