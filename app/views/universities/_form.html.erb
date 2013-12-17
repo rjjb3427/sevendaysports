@@ -69,13 +69,21 @@
 							style: 'width: 50%;'
 							 %>
 				</div>
-				<div class="form-group" style="margin-left: 15%;">
-					<%= f.submit 'Create University!', 
+				<div class="form-group" style="margin-left: 10%;">
+					<%= f.submit 'Create University!',
 							options = { 
 													method: :post, 
 													class: 'btn btn-primary' 
 												} %>
+				
+					<%= link_to :cancel, universities_path,
+							options = {
+													method: :get,
+													class: 'btn btn-sm btn-danger',
+													style: 'margin-left: 1.5%; margin-top: .5%;'
+												} %>
+				<% end %>	
 				</div>
-			<% end %>	
+			
 	</div><!--/#content.content.bg-base.section-->
 </div><!--/#main.container-->

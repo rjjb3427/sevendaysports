@@ -10,12 +10,14 @@
 			</ol>
 		</div><!--/.ribbon.ribbon-highlight-->
 		<h6 class="page-title" style="margin-left: 34%;">
-			<span style="color: #FF3333"><em>Edit</em></span> an Event
+			<span style="color: #FF3333"><em>Edit</em></span>
+			<small><%= @event.title %></small>
 		</h6>
 		<%= form_for [@team, @event], 
 				html: { 
 								class: 'form-horizontal',
-								role: 'form'
+								role: 'form',
+								style: 'margin-left: 33%;'
 							} do |f| %>
 			<% if @event.errors.any? %>
 				<div class="error_messages">

@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_protected :author, :home_team_score, :away_team_score, :details, 
+  attr_accessible :author, :home_team_score, :away_team_score, :details, 
                   :event_on, :home_team_id, :away_team_id, :title, 
                   :kind, :winner
 
