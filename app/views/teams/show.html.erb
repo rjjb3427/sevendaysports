@@ -31,14 +31,14 @@
 					<td><%= @team.university_name %></td>
 					<% if current_user.try(:admin?) %>
 						<td>
-							<%= button_to :edit, edit_team_path(@team),
+							<%= button_to :edit, edit_university_team_path(university_id: @university, id: @team),
 									options = {
 															method: :get,
 															class: 'btn btn-sm btn-default'
 														} %>
 						</td>
 						<td>
-							<%= button_to :delete, team_path(@team),
+							<%= button_to :delete, university_team_path(university_id: @university, id: @team),
 									options = {
 															method: :delete,
 															confirm: 'You sure?',
