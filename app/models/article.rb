@@ -5,5 +5,5 @@ class Article < ActiveRecord::Base
 
   belongs_to :event
 
-  scope :recent, -> {where("created_at < ?", 3.days.ago).limit(3)}
+  scope :recent, -> {where("created_at > ?", 3.days.ago).limit(3)}
 end
