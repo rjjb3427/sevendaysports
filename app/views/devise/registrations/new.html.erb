@@ -1,47 +1,96 @@
-<h2>Sign up</h2>
+<div id="main" class="container">
+  <div id="content" class="content bg-base section" style="margin-top: -8%;"> 
+    <div class="ribbon ribbon-highlight">
+      <ol class="breadcrumb ribbon-inner">
+        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Universities', universities_path %></li>
+        <li class="active" title="devise/sessions/new"><em>New</em> User</li>
+      </ol>
+    </div><!--/.ribbon.ribbon-highlight-->
+    <h3 class="page-title" style="margin-left: 35.5%;">
+      <em style="color: #6699CC">Register</em>
+    </h3>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), 
+        html: { 
+                role: 'form', 
+                class: 'form-horizontal', 
+                style: 'margin-left: 33%;'
+              } ) do |f| %>
+      <%= devise_error_messages! %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), role: 'form', class: 'form-horizontal') do |f| %>
-  <%= devise_error_messages! %>
+      <div class="form-group">
+      	<%= f.email_field :email, autofocus: true, 
+            placeholder: 'Email address',
+            class: 'form-control input-lg',
+            style: 'width: 50%;' %>
+      </div>
 
-  <div>
-  	<%= f.email_field :email, autofocus: true, placeholder: 'Email address' %>
-  </div>
+      <div class="form-group">
+      	<%= f.password_field :password, 
+        placeholder: 'Password',
+        class: 'form-control input-lg',
+        style: 'width: 50%;' %>
+      </div>
 
-  <div>
-  	<%= f.password_field :password, placeholder: 'Password' %>
-  </div>
+      <div class="form-group">
+      	<%= f.password_field :password_confirmation, 
+        placeholder: 'Password confirmation',
+        class: 'form-control input-lg',
+        style: 'width: 50%;' %>
+      </div>
+      <div class="form-group">
+      	<%= f.text_field :first_name, 
+        placeholder: 'First name',
+        class: 'form-control input-lg',
+        style: 'width: 50%;' %>
+      </div>
+      <div class="form-group">
+      	<%= f.text_field :last_name, 
+        placeholder: 'Last name',
+        class: 'form-control input-lg',
+        style: 'width: 50%;' %>
+      </div>
+      <div class="form-group">
+      	<%= f.text_area :address, 
+        placeholder: 'Address', size: "31x5",
+        class: 'form-control input-lg',
+        style: 'width: 50%;' %>
+      </div>
+      <div class="form-group">
+      	<%= f.text_field :city, 
+        placeholder: 'City',
+        class: 'form-control input-lg',
+        style: 'width: 50%;' %>
+      </div>
+      <div class="form-group">
+      	<%= f.text_field :state, 
+        placeholder: 'State',
+        class: 'form-control input-lg',
+        style: 'width: 50%;' %>
+      </div>
+      <div class="form-group">
+      	<%= f.text_field :zip, 
+        placeholder: 'Zip code',
+        class: 'form-control input-lg',
+        style: 'width: 50%;' %>
+      </div>
+            <div class="form-group">
+        <%= f.text_field :school_name, 
+        placeholder: 'Name of current school',
+        class: 'form-control input-lg',
+        style: 'width: 50%;' %>
+      </div>
+      <div class="form-group">
+        <%= f.label 'Date of Birth', class: 'form-control', style: 'width: 50%;' %>
+      	<%= f.date_select :dob, start_year: 1950 %>
+      </div>
 
-  <div>
-  	<%= f.password_field :password_confirmation, placeholder: 'Password confirmation' %>
-  </div>
-  <div>
-  	<%= f.text_field :first_name, placeholder: 'First name' %>
-  </div>
-  <div>
-  	<%= f.text_field :last_name, placeholder: 'Last name' %>
-  </div>
-  <div>
-  	<%= f.text_area :address, placeholder: 'Address', size: "31x5" %>
-  </div>
-  <div>
-  	<%= f.text_field :city, placeholder: 'City' %>
-  </div>
-  <div>
-  	<%= f.text_field :state, placeholder: 'State' %>
-  </div>
-  <div>
-  	<%= f.text_field :zip, placeholder: 'Zip code' %>
-  </div>
-  <div>
-  	<%= f.date_select :dob, start_year: 1950 %>
-  </div>
-  <div>
-  	<%= f.text_field :school_name, placeholder: 'Name of current school' %>
-  </div>
-  <br />
-  <div>
-  	<%= f.submit 'Sign up', class: 'btn btn-large btn-primary' %>
-  </div>
-<% end %>
- - or -
-<%= render "devise/shared/links" %>
+      <br />
+      <div class="form-group" style="margin-left: 12%;">
+      	<%= f.submit 'Sign up', class: 'btn btn-lg btn-primary' %>
+        <% end %>
+        - or - 
+        <%= link_to 'Sign in', new_user_session_path, 
+            class: 'btn btn-sm btn-default',
+            style: 'margin-top: 2.2%;' %>
+      </div>

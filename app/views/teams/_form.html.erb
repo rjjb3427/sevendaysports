@@ -1,5 +1,5 @@
 <div id="main" class="container">
-	<div id="content" class="content bg-base section">	
+	<div id="content" class="content bg-base section" style="margin-top: -8%;">	
 		<div class="ribbon ribbon-highlight">
 			<ol class="breadcrumb ribbon-inner">
 				<li><%= link_to 'Home', root_path %></li>
@@ -7,14 +7,14 @@
 				<li class="active" title="teams/new"><em>New Team</em></li>
 			</ol>
 		</div><!--/.ribbon.ribbon-highlight-->
-			<h3 class="page-title" style="margin-left: 35.5%;">
+			<h3 class="page-title" style="margin-left: 39.5%;">
 				<em style="color: #6699CC">Add</em> a Team
 			</h3>
 			<%= form_for [@university, @team], 
 									 html: { 
 														class: 'form-horizontal',
 														role: 'form',
-														style: 'margin-left: 35%;'
+														style: 'margin-left: 37.5%;'
 												 	} do |f| %>
 				<div class="form-group">
 					<%= f.text_field :name, 
@@ -38,14 +38,17 @@
 				<br />
 				<div class="form-group">
 					<div>
-						<%= f.submit 'Create Team!', options = { class: 'btn btn-block btn-primary', style: 'width: 39.6%;' } %>
+						<%= f.submit 'Create Team!', 
+								options = { class: 'btn btn-primary',
+														style: 'margin-left: 6%;'
+													} %>
 						&nbsp;
-						<%= button_to :cancel, university_path(@university), 
+						<%= link_to :cancel, university_path(@university), 
 							options = {
 													method: :get,
 													confirm: 'You sure?',
-													class: 'btn btn-block btn-danger',
-													style: 'width: 39.6%;'
+													class: 'btn btn-danger',
+													style: 'margin-left: 1%; margin-top: .2%;'
 												} %>
 					</div>
 				</div>
